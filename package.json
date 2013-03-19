@@ -1,0 +1,10 @@
+{
+  "name": "cyan",
+  "version": "0.0.1",
+  "description": "Message client for magenta",
+  "author": "Tim Park <timfpark@gmail.com>",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-ember-templates": "*"
+  }
+}

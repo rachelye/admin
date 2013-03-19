@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="js/vendor/modernizr.min.js"></script>
+  </head>
+
+  <body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="brand" href="#/">Cyan</a>
+              <div class="nav-collapse collapse">
+                  <ul class="nav">
+                      <li class="active"><a href="#/messages">Inbox</a></li>
+                      <li><a href="#/about">About</a></li>
+                  </ul>
+              </div><!--/.nav-collapse -->
+          </div>
+      </div>
+  </div>
+
+    <!--[if lt IE 9]>
+      <p class="chromeframe">You are using an outdated browser.
+        <a href="http://browsehappy.com/">Upgrade your browser today</a> or
+        <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.
+      </p>
+    <![endif]-->
+
+    <!-- Ember application entry point -->
+    <section id="app"></section>
+
+    <script src="//localhost:3030/client/magenta.js"></script>
+
+    <!-- The scripts listed here will be concatened and minified in script.js -->
+    <!-- build:js js/script.js -->
+    <script src="scripts/vendor/jquery.min.js"></script>
+    <script src="scripts/vendor/handlebars-1.0.0-rc.3.js"></script>
+    <script src="scripts/vendor/ember-1.0.0-rc.1.js"></script>
+    <script src="scripts/vendor/ember-data.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/controllers/messages.js"></script>
+    <script src="scripts/models/message.js"></script>
+    <script src="scripts/views/application.js"></script>
+    <script src="scripts/templates/templates.js"></script>
+    <script src="scripts/routes/messages_route.js"></script>
+    <script src="scripts/routes/router.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>

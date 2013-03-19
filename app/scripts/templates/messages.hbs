@@ -1,0 +1,35 @@
+<table class="table">
+
+  {{#each message in controller.sorted}}
+        <tr>
+          <th colspan="2">device: {{message.from}}</th>
+        </tr>
+
+        <tr>
+          <th>{{message.message_type}}</th>
+          <th>{{message.timestamp}}</th>
+        </tr>
+
+
+    	{{#if message.isImage}}
+    	  <tr>
+    	    <td colspan="2">
+              <img {{bindAttr src="message.body.url"}} width="320" height="240" />
+    	    </td>
+    	  </tr>
+  		{{/if}}
+
+		{{#if message.isLog}}
+		  <tr>
+		    <td>{{message.body.severity}}: {{message.body.message}}</td>
+		  </tr>
+		{{/if}}
+
+    <tr>
+      <td colspan="2">
+        <hr/>
+      </td>
+    </tr>
+  {{/each}}
+
+</table>
