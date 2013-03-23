@@ -1,10 +1,16 @@
 {
-  "name": "cyan",
+  "name": "Cyan",
   "version": "0.0.1",
-  "description": "Message client for magenta",
+  "description": "A sample web client for Magenta",
   "author": "Tim Park <timfpark@gmail.com>",
   "devDependencies": {
     "grunt": "*",
     "grunt-ember-templates": "*"
-  }
+  },
+
+  "licenses"        : [ { "type"  : "MIT",
+                          "url"   : "http://www.opensource.org/licenses/mit-license.php" } ],
+
+  "repositories"    : [ { "type"  : "git",
+                          "url"   : "git://github.com/magentajs/cyan.git"} ]
 }

@@ -1,5 +1,3 @@
-var magenta = require('magenta');
-
 var config = {
     host: "magenta.azurewebsites.net",
     http_port: 80,
@@ -23,6 +21,7 @@ App.store = DS.Store.create({
     })
 });
 
+// Teach Ember Data how to handle embedded objects in JSON responses.
 DS.JSONTransforms.object = {
     deserialize: function(serialized) {
         return Em.isNone(serialized) ? {} : serialized;
@@ -32,14 +31,16 @@ DS.JSONTransforms.object = {
     }
 };
 
-// TODO: refactor with SDK abstraction.
+var service = new magenta.Service(config);
+var user = new magenta.User();
+service.connect(user, function(err, session, user) {
+    if (err) {
+        window.location = "/#/user/login";
+        return;
+    }
 
-var client = new Faye.Client(config.realtime_url, {
-    timeout: 120
-});
-
-client.subscribe('/messages', function(message) {
-    console.log("realtime message received: " + message);
-
-    App.store.load(App.Message, JSON.parse(message));
+    session.onMessage(function(message) {
+        console.log("message received: " + JSON.stringify(message));
+        App.store.load(App.Message, message);
+    });
 });
