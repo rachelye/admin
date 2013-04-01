@@ -32,12 +32,14 @@ DS.JSONTransforms.object = {
 };
 
 var service = new magenta.Service(config);
-var user = new magenta.User();
+var user = new magenta.User({ local_id: "current_user" });
 service.connect(user, function(err, session, user) {
-    if (err) {
-        window.location = "/#/user/login";
-        return;
-    }
+
+    /*
+    session.onAuthenticationFailure(function(err) {
+        window.location = "/#/principals/login";
+    });
+    */
 
     session.onMessage(function(message) {
         console.log("message received: " + JSON.stringify(message));
