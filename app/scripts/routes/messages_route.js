@@ -1,7 +1,7 @@
 App.MessagesRoute = Ember.Route.extend({
 
     model: function() {
-        return App.Message.find();
+        return magenta.Message.findAll(App.session);
     }
 
 });
