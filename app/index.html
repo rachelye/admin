@@ -30,11 +30,10 @@
               <a class="brand" href="#/" style="color: #D0417E">Magenta</a>
               <div class="nav-collapse collapse">
                   <ul class="nav">
-                      <li class="active"><a href="#/principals">Principals</a></li>
-                      <li class="active"><a href="#/messages">Messages</a></li>
-                      <li><a href="#/about">About</a></li>
+                      <li><a href="#/principals">Principals</a></li>
+                      <li><a href="#/messages">Messages</a></li>
                   </ul>
-              </div><!--/.nav-collapse -->
+              </div>
           </div>
       </div>
   </div>
@@ -61,12 +60,18 @@
 
     <!-- controllers -->
     <script src="scripts/controllers/messages.js"></script>
+    <script src="scripts/controllers/user/create.js"></script>
+    <script src="scripts/controllers/user/login.js"></script>
 
     <!-- models -->
     <script src="scripts/models/message.js"></script>
     <script src="scripts/models/principal.js"></script>
 
+    <!-- compiled handlebars templates:  make sure to update Gruntfile.js if you add or remove a template. -->
     <script src="scripts/templates/templates.js"></script>
+
+    <!-- models -->
+    <script src="scripts/helpers/modelAdapters.js"></script>
 
     <!-- routes -->
     <script src="scripts/routes/messages_route.js"></script>

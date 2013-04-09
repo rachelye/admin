@@ -13,31 +13,8 @@ App.Message = Ember.Object.extend({
 });
 
 App.Message.reopenClass({
-    findAll: function() {
-        var query = $.Deferred();
-        magenta.Message.findAll(App.session, function(err, messages) {
-            if (err) return query.reject(err);
-
-            var emberMessages = messages.map(function(message) {
-               return new App.Message(message);
-            });
-
-            query.resolve(emberMessages);
-        });
-
-        return query;
-    },
-
-    find: function(id) {
-        var query = $.Deferred();
-        magenta.Message.find(App.session, id, function(err, messages) {
-            if (err) return query.reject(err);
-
-            var emberMessage = new App.Message(message);
-            query.resolve(emberMessages);
-        });
-
-        return query;
+    find: function(query) {
+        return App.findWithAdapter(query, magenta.Message, App.Message);
     }
 });
 

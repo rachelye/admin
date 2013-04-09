@@ -38,8 +38,9 @@ module.exports = function(grunt) {
             files: {
                 'app/scripts/templates/templates.js' : ["app/scripts/templates/application.hbs",
                                                         "app/scripts/templates/messages.hbs",
-                                                        "app/scripts/templates/principals.hbs"
-                ]
+                                                        "app/scripts/templates/principals.hbs",
+                                                        "app/scripts/templates/user/create.hbs",
+                                                        "app/scripts/templates/user/login.hbs"]
             }
         }
     },
@@ -72,7 +73,7 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       ember_templates: {
-        files: ['app/scripts/{,*/}*.hbs'],
+        files: ['app/scripts/**/*.hbs'],
         tasks: ['ember_templates', 'reload']
       },
       recess: {
@@ -149,7 +150,7 @@ module.exports = function(grunt) {
     // versioning
     rev: {
       js: 'js/**/*.js',
-      css: 'css/**/*.css',
+      css: 'css/**/*.css'
       //img: 'img/**'
     },
 

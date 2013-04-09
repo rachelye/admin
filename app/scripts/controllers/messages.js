@@ -1,6 +1,6 @@
 App.MessagesController = Ember.ArrayController.extend({
 	sorted: function() {
-        console.log("messages controller");
+        if (!this.get('content')) return Em.A([]);
 
         var array = this.get('content').toArray();
 
@@ -9,6 +9,7 @@ App.MessagesController = Ember.ArrayController.extend({
             return b.get('timestamp') - a.get('timestamp');
         });
 
+        console.log(JSON.stringify(this.get('content')));
         return array;
     }.property('content.@each', 'content.length')
 });
