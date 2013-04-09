@@ -8,7 +8,7 @@
                  {{message.timestamp}}<br/>
 
             {{#if message.isImage}}
-                <img {{bindAttr src="message.body.url"}} width="320" height="240" />
+                <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
             {{/if}}
 
             {{#if message.isLog}}
