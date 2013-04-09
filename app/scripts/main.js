@@ -3,9 +3,12 @@ App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
+// We need to delay routing until we have a session setup (or fail).
+App.deferReadiness();
+
 App.config = {
-    host: "localhost",
-    http_port: 3030,
+    host: "magenta.azurewebsites.net",
+    http_port: 80,
     protocol: "http"
 };
 
@@ -20,12 +23,16 @@ App.authFailureHandler = function() {
         App.session = null;
     }
 
+    App.advanceReadiness();
+
     window.location = "/#/user/login";
     console.log("redirecting to login");
 };
 
 App.sessionHandler = function(err, session, user) {
     if (err) return App.authFailureHandler();
+
+    App.advanceReadiness();
 
     // save away the session for use in the ember application.
     App.session = session;
