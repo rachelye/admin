@@ -40,9 +40,11 @@ App.sessionHandler = function(err, session, user) {
 
     session.onAuthFailure(App.authFailureHandler);
 
-    session.onMessage(function(message) {
-        console.log("message received: " + JSON.stringify(message));
-        App.store.load(App.Message, message);
+    session.onMessage(function(messageObject) {
+        console.log("message received: " + JSON.stringify(messageObject));
+        var message = App.Message.create(messageObject);
+
+        Ember.Instrumentation.instrument('onMessage', message);
     });
 };
 

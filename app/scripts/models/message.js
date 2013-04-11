@@ -11,6 +11,11 @@ App.Message = Ember.Object.extend({
         return this.is('log');
     }.property('message_type'),
 
+    timestampString: function() {
+        var date = new Date(Date.parse(this.get('timestamp')));
+        return date.toLocaleString();
+    }.property('timestamp'),
+
     // TODO: build message specific views that encapsulate this.
     bodyUrlWithAccessToken: function() {
         if (!this.get('body') || !this.get('body.url')) return null;
@@ -24,8 +29,3 @@ App.Message.reopenClass({
         return App.findWithAdapter(query, magenta.Message, App.Message);
     }
 });
-
-//  from: DS.attr('string'),
-//  timestamp: DS.attr('date'),
-//  message_type: DS.attr('string'),
-//  body: DS.attr('object'),

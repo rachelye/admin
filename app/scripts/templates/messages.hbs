@@ -1,23 +1,24 @@
 <div class="container">
 
-  {{#each message in controller.sorted}}
-
-        <div style="float:left">
-
-            <div style="display:inline">
-                 {{message.timestamp}}<br/>
-
+    {{#each message in controller}}
+    <div class="row">
+        <div class="span3">
+            {{message.timestampString}}
+        </div>
+        <div class="span1">
+            {{message.message_type}}
+        </div>
+        <div class="span4">
             {{#if message.isImage}}
-                <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
+                {{message.body.url}}
+                <!-- <img {{bindAttr src="bodyUrlWithAccessToken"}} width="320" height="240" /> -->
             {{/if}}
-
             {{#if message.isLog}}
                 {{message.body.severity}}: {{message.body.message}}
             {{/if}}
-
-            </div>
         </div>
+    </div>
 
-  {{/each}}
+    {{/each}}
 
 </div>
