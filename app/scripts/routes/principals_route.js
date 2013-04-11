@@ -1,7 +1,7 @@
 App.PrincipalsRoute = Ember.Route.extend({
 
-    model: function() {
-        return App.Principal.find();
+    model: function(params) {
+        return App.Principal.find({ principal_type: params.principal_type });
     }
 
 });
