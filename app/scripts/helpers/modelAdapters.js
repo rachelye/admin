@@ -1,10 +1,10 @@
-App.findWithAdapter = function(query, magentaModel, emberModel) {
+App.findWithAdapter = function(query, nitrogenModel, emberModel) {
 
     var promise = $.Deferred();
-    magentaModel.find(App.session, query, function(err, magentaModels) {
+    nitrogenModel.find(App.session, query, function(err, nitrogenModels) {
         if (err) return promise.reject(err);
 
-        var emberModels = magentaModels.map(function(modelObject) {
+        var emberModels = nitrogenModels.map(function(modelObject) {
             return emberModel.create(modelObject);
         });
 

@@ -7,13 +7,13 @@ App = Ember.Application.create({
 App.deferReadiness();
 
 App.config = {
-    host: "magenta.azurewebsites.net",
-    http_port: 80,
+    host: "localhost",
+    http_port: 3030,
     protocol: "http"
 };
 
-App.config.store = new magenta.HTML5Store(App.config);
-App.service = new magenta.Service(App.config);
+App.config.store = new nitrogen.HTML5Store(App.config);
+App.service = new nitrogen.Service(App.config);
 
 // define function that we can use to jumpstart a user session.
 
@@ -51,5 +51,5 @@ App.sessionHandler = function(err, session, user) {
 // attempt to start session from the cached access token in local storage.
 // if the user doesn't exist or the access token is expired -> direct to login.
 
-var user = new magenta.User({ local_id: "current" });
+var user = new nitrogen.User({ local_id: "current" });
 App.service.resume(user, App.sessionHandler);

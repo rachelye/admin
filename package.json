@@ -1,7 +1,7 @@
 {
-  "name": "Cyan",
+  "name": "admin",
   "version": "0.0.1",
-  "description": "A sample web client for Magenta",
+  "description": "Nitrogen administrative tool",
   "author": "Tim Park <timfpark@gmail.com>",
   "devDependencies": {
     "grunt": "*",
@@ -12,5 +12,5 @@
                           "url"   : "http://www.opensource.org/licenses/mit-license.php" } ],
 
   "repositories"    : [ { "type"  : "git",
-                          "url"   : "git://github.com/magentajs/cyan.git"} ]
+                          "url"   : "git://github.com/nitrogenjs/admin.git"} ]
 }
