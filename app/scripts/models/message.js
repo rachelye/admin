@@ -20,7 +20,7 @@ App.Message = Ember.Object.extend({
     bodyUrlWithAccessToken: function() {
         if (!this.get('body') || !this.get('body.url')) return null;
 
-        return this.get('body.url') + "?access_token=" + encodeURIComponent(App.session.accessToken.token);
+        return this.get('body.url') + "?access_token=" + encodeURIComponent(App.get('session.accessToken.token'));
     }.property('body.url')
 });
 

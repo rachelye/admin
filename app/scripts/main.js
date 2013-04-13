@@ -7,9 +7,9 @@ App = Ember.Application.create({
 App.deferReadiness();
 
 App.config = {
-    host: "localhost",
-    http_port: 3030,
-    protocol: "http"
+    host: "nitrogen.azurewebsites.net",
+    http_port: 443,
+    protocol: "https"
 };
 
 App.config.store = new nitrogen.HTML5Store(App.config);
@@ -17,28 +17,36 @@ App.service = new nitrogen.Service(App.config);
 
 // define function that we can use to jumpstart a user session.
 
-App.authFailureHandler = function() {
-    if (App.session) {
-        App.session.close();
-        App.session = null;
+App.resetSession = function() {
+    if (App.get('session')) {
+        App.get('session').close();
     }
+
+    App.set('session', null);
+    App.set('user', null);
 
     App.advanceReadiness();
 
+    // TODO: what's the right way to do this outside of an ember.js controller?
     window.location = "/#/user/login";
     console.log("redirecting to login");
 };
 
 App.sessionHandler = function(err, session, user) {
-    if (err) return App.authFailureHandler();
+    if (err) return App.resetSession();
+
+    // TODO: what's the right way to do this in ember.js?
+    if (window.location.hash == "#/user/login") {
+        window.location = "/#/messages";
+    }
 
     App.advanceReadiness();
 
     // save away the session for use in the ember application.
-    App.session = session;
-    App.user = user;
+    App.set('session', session);
+    App.set('user', App.Principal.create(user));
 
-    session.onAuthFailure(App.authFailureHandler);
+    session.onAuthFailure(App.resetSession);
 
     session.onMessage(function(messageObject) {
         console.log("message received: " + JSON.stringify(messageObject));

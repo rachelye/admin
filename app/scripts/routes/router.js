@@ -5,5 +5,4 @@ App.Router.map(function() {
         this.route('create');
         this.route('login');
     });
-
 });
