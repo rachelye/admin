@@ -35,7 +35,7 @@ App.resetSession = function() {
 App.sessionHandler = function(err, session, user) {
     if (err) return App.resetSession();
 
-    // TODO: what's the right way to do this in ember.js?
+    // TODO: what's the right way transitions outside of a router in ember.js?
     if (window.location.hash == "#/user/login") {
         window.location = "/#/messages";
     }
@@ -48,9 +48,9 @@ App.sessionHandler = function(err, session, user) {
 
     session.onAuthFailure(App.resetSession);
 
-    session.onMessage(function(messageObject) {
-        console.log("message received: " + JSON.stringify(messageObject));
-        var message = App.Message.create(messageObject);
+    session.onMessage(function(nitrogenMessage) {
+        console.log("message received: " + JSON.stringify(nitrogenMessage));
+        var message = App.Message.create(nitrogenMessage);
 
         Ember.Instrumentation.instrument('onMessage', message);
     });
