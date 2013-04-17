@@ -1,27 +1,33 @@
-<div class="container">
+<table class="table">
+    <tr>
+        <th>Timestamp</th>
+        <th>From</th>
+        <th>Type</th>
+        <th>Body</th>
+    </tr>
 
     {{#each message in controller}}
 
-    <div class="row">
-        <div class="span3">
+    <tr>
+        <td>
             {{message.timestampString}}
-        </div>
-        <div class="span3">
+        </td>
+        <td>
             {{message.from}}
-        </div>
-        <div class="span1">
+        </td>
+        <td>
             {{message.message_type}}
-        </div>
-        <div class="span5">
+        </td>
+        <td>
             {{#if message.isImage}}
                 <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
             {{/if}}
             {{#if message.isLog}}
                 {{message.body.severity}}: {{message.body.message}}
             {{/if}}
-        </div>
-    </div>
+        </td>
+    </tr>
 
     {{/each}}
 
-</div>
+</table>
