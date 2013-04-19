@@ -6,10 +6,12 @@ App = Ember.Application.create({
 // We need to delay routing until we have a session setup (or fail).
 App.deferReadiness();
 
+// We try to find the headwaiter at the same host, port, and protocol this was served from by default.
+
 App.config = {
-    host: "nitrogen.azurewebsites.net",
-    http_port: 443,
-    protocol: "https"
+    host: window.location.hostname,
+    http_port: window.location.port,
+    protocol: "http"
 };
 
 App.config.store = new nitrogen.HTML5Store(App.config);
@@ -28,16 +30,15 @@ App.resetSession = function() {
     App.advanceReadiness();
 
     // TODO: what's the right way to do this outside of an ember.js controller?
-    window.location = "/#/user/login";
-    console.log("redirecting to login");
+    window.location = "#/user/login";
 };
 
 App.sessionHandler = function(err, session, user) {
     if (err) return App.resetSession();
 
-    // TODO: what's the right way transitions outside of a router in ember.js?
+    // TODO: what's the right way to transition outside of a router in ember.js?
     if (window.location.hash == "#/user/login") {
-        window.location = "/#/messages";
+        window.location = "#/messages";
     }
 
     App.advanceReadiness();
