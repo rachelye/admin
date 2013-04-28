@@ -16,7 +16,7 @@ App.Message = Ember.Object.extend({
     }.property('message_type'),
 
     isIPMatch: function() {
-        return this.is('ip');
+        return this.is('ip_match');
     }.property('message_type'),
 
     createdAtString: function() {
