@@ -32,6 +32,9 @@
             {{#if message.isIP}}
                 {{message.body.ip_address}}
             {{/if}}
+            {{#if message.isIPMatch}}
+                {{view App.IpMatchView}}
+            {{/if}}
         </td>
     </tr>
 

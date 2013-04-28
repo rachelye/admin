@@ -38,6 +38,7 @@ module.exports = function(grunt) {
             files: {
                 'app/scripts/templates/templates.js' : ["app/scripts/templates/application.hbs",
                                                         "app/scripts/templates/messages.hbs",
+                                                        "app/scripts/templates/messages/ip_match.hbs",
                                                         "app/scripts/templates/principals.hbs",
                                                         "app/scripts/templates/user/create.hbs",
                                                         "app/scripts/templates/user/login.hbs"]

@@ -13,7 +13,11 @@ App.Message = Ember.Object.extend({
 
     isIP: function() {
         return this.is('ip');
-    },
+    }.property('message_type'),
+
+    isIPMatch: function() {
+        return this.is('ip');
+    }.property('message_type'),
 
     createdAtString: function() {
         var date = new Date(Date.parse(this.get('created_at')));
