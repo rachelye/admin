@@ -3,14 +3,13 @@ App.IpMatchView = Em.View.extend({
 
     sendResponse: function(responseType, match) {
         var response = new nitrogen.Message({
-            from: App.get('user.id'),
             to: 'system',
             message_type: responseType,
             response_to: match.id,
             body: {
                 principal: match.from,
-                key: match.body.key
-            }
+            },
+            expires: 'never'
         });
 
         response.save(App.session);
