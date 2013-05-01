@@ -7,12 +7,14 @@ App.IpMatchView = Em.View.extend({
             message_type: responseType,
             response_to: match.id,
             body: {
-                principal: match.from,
+                principal: match.body.principal
             },
             expires: 'never'
         });
 
-        response.save(App.session);
+        response.save(App.session, function(err, messages) {
+            if (err) console.log(err);
+        });
     },
 
     claim: function(match) {
