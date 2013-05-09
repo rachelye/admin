@@ -1,14 +1,25 @@
-App.findWithAdapter = function(query, nitrogenModel, emberModel) {
+App.findWithAdapter = function(query, nitrogenClass, emberModel) {
 
     var promise = $.Deferred();
-    nitrogenModel.find(App.session, query, function(err, nitrogenModels) {
+    nitrogenClass.find(App.session, query, function(err, nitrogenModels) {
         if (err) return promise.reject(err);
 
-        var emberModels = nitrogenModels.map(function(modelObject) {
-            return emberModel.create(modelObject);
+        var emberModels = nitrogenModels.map(function(nitrogenModel) {
+            return emberModel.create(nitrogenModel);
         });
 
         promise.resolve(emberModels);
+    });
+
+    return promise;
+};
+
+App.saveWithDeferred = function(nitrogenModel) {
+    var promise = $.Deferred();
+    nitrogenModel.save(App.session, function (err, nitrogenModel) {
+        if (err) return promise.reject(err);
+
+        promise.resolve(nitrogenModel);
     });
 
     return promise;

@@ -34,7 +34,11 @@ App.Message = Ember.Object.extend({
         if (!this.get('body') || !this.get('body.url')) return null;
 
         return this.get('body.url') + "?access_token=" + encodeURIComponent(App.get('session.accessToken.token'));
-    }.property('body.url')
+    }.property('body.url'),
+
+    save: function() {
+        return App.saveWithDeferred(new nitrogen.Message(this));
+    }
 });
 
 App.Message.reopenClass({

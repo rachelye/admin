@@ -1,0 +1,25 @@
+<tr>
+    <td>{{principal.id}}</td>
+    <td>{{principal.principal_type}}</td>
+
+    <td>
+{{#if view.editing}}
+    {{view Ember.TextField valueBinding="principal.name" classNames="span2"}}
+{{else}}
+    {{principal.name}}
+{{/if}}
+    </td>
+
+    <td>{{principal.lastConnectionString}}</td>
+    <td>{{principal.last_ip}}</td>
+
+    <td>
+{{#if view.editing}}
+    <button {{action save principal target="view"}} class="btn btn-primary">Save</button>
+{{else}}
+    <button {{action edit target="view"}} class="btn btn-primary">Edit</button>
+{{/if}}
+
+    </td>
+
+</tr>
