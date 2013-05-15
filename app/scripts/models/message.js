@@ -26,12 +26,12 @@ App.Message = Ember.Object.extend({
     createdAtString: function() {
         var date = new Date(Date.parse(this.get('created_at')));
         return date.toLocaleString();
-    }.property('timestamp'),
+    }.property('created_at'),
 
     timestampString: function() {
-        var date = new Date(Date.parse(this.get('timestamp')));
+        var date = new Date(Date.parse(this.get('ts')));
         return date.toLocaleString();
-    }.property('timestamp'),
+    }.property('ts'),
 
     // TODO: build message specific views that encapsulate this.
     bodyUrlWithAccessToken: function() {
