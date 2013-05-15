@@ -4,7 +4,7 @@ App.IpMatchView = Em.View.extend({
     sendResponse: function(responseType, match) {
         var response = new nitrogen.Message({
             to: 'system',
-            message_type: responseType,
+            type: responseType,
             response_to: match.id,
             body: {
                 principal: match.body.principal

@@ -1,23 +1,27 @@
 App.Message = Ember.Object.extend({
-    is: function(message_type) {
-        return this.get('message_type') == message_type;
+    is: function(type) {
+        return this.get('type') === type;
     },
 
     isImage: function() {
         return this.is('image');
-    }.property('message_type'),
+    }.property('type'),
 
     isLog: function() {
         return this.is('log');
-    }.property('message_type'),
+    }.property('type'),
 
     isIP: function() {
         return this.is('ip');
-    }.property('message_type'),
+    }.property('type'),
 
     isIPMatch: function() {
         return this.is('ip_match');
-    }.property('message_type'),
+    }.property('type'),
+
+    isNotHeartbeat: function() {
+        return !this.is('heartbeat');
+    }.property('type'),
 
     createdAtString: function() {
         var date = new Date(Date.parse(this.get('created_at')));
