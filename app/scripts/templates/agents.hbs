@@ -1,0 +1,15 @@
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Executes As</th>
+        <th>Enabled</th>
+        <th></th>
+    </tr>
+
+    {{#each agent in controller}}
+        {{view App.AgentView}}
+    {{/each}}
+
+</table>
+

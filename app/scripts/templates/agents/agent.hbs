@@ -1,0 +1,15 @@
+<tr>
+    <td>{{agent.id}}</td>
+    <td>{{agent.name}}</td>
+    <td>{{agent.execute_as}}</td>
+    <td>{{view Ember.Checkbox checkedBinding="agent.enabled" disabledBinding="view.notEditing"}}</td>
+
+    <td>
+{{#if view.editing}}
+    <button {{action save agent target="view"}} class="btn btn-primary">Save</button>
+{{else}}
+    <button {{action edit target="view"}} class="btn btn-primary">Edit</button>
+{{/if}}
+    </td>
+
+</tr>
