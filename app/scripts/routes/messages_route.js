@@ -1,6 +1,6 @@
 App.MessagesRoute = Ember.Route.extend({
-
     setupController: function(controller, model) {
+        this._super(controller, model);
         Ember.Instrumentation.subscribe('onMessage', {
             before: function(name, timestamp, message) {
                 controller.send('onMessage', message);
@@ -16,5 +16,4 @@ App.MessagesRoute = Ember.Route.extend({
     model: function() {
         return App.Message.find();
     }
-
 });
