@@ -1,5 +1,5 @@
-App.PrincipalView = Em.View.extend({
-    templateName: 'principals/principal',
+App.PrincipalRowView = Em.View.extend({
+    templateName: 'principals/principalRow',
 
     editing: false,
 
