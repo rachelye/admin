@@ -13,14 +13,13 @@
                 {{#if App.session}}
                 <ul class="nav">
                     <li><a href="#/agents">Agents</a></li>
-                    <li><a href="#/principals/user">Users</a></li>
-                    <li><a href="#/principals/device">Devices</a></li>
+                    <li><a href="#/principals">Principals</a></li>
                     <li><a href="#/messages">Messages</a></li>
                 </ul>
                 {{/if}}
                 <ul class="nav pull-right">
                     {{#if App.user}}
-                        <li><a>{{App.user.name}}</a></li>
+                        <li>{{#linkTo principals.principal App.user.id}}{{App.user.name}}{{/linkTo}}</li>
                         <li><a {{action signout}}> Sign Out </a></li>
                     {{else}}
                         <li>{{#linkTo user.create}} Get Started {{/linkTo}}</li>

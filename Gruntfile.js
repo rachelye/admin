@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         compile:{
             options: {
                 templateName: function(sourceFile){
-                    console.log('sourceFile: ' + sourceFile);
+                    console.log('processing ember template: ' + sourceFile);
                     return sourceFile.replace(/app\/scripts\/templates\//, '');
                 }
             },
