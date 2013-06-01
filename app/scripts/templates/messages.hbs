@@ -9,7 +9,6 @@
 
     {{#each message in controller}}
 
-        {{#if message.isNotHeartbeat}}
         <tr>
             <td>
                 {{message.createdAtString}}
@@ -38,7 +37,6 @@
                 {{/if}}
             </td>
         </tr>
-        {{/if}}
 
     {{/each}}
 

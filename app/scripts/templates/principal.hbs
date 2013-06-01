@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="row">
+        <div class="span6">
+            {{#if view.editing}}
+                {{view Ember.TextField valueBinding="name" classNames="span2"}}
+            {{else}}
+                {{name}}
+            {{/if}}
+        </div>
+        <div class="span6">
+            {{#if view.editing}}
+                <button {{action save content target="view"}} class="btn btn-primary">Save</button>
+            {{else}}
+                <button {{action edit target="view"}} class="btn btn-primary">Edit</button>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span6">{{id}} ({{type}}) </div>
+    </div>
+
+    <div class="row">
+        <div class="span6">{{lastConnectionString}}</div>
+    </div>
+
+    <div class="row">
+        <div class="span6">{{capabilities}}</div>
+    </div>
+
+</div>

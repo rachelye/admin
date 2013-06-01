@@ -19,7 +19,7 @@
                 {{/if}}
                 <ul class="nav pull-right">
                     {{#if App.user}}
-                        <li>{{#linkTo principals.principal App.user.id}}{{App.user.name}}{{/linkTo}}</li>
+                        <li>{{#linkTo principal App.user}}{{App.user.name}}{{/linkTo}}</li>
                         <li><a {{action signout}}> Sign Out </a></li>
                     {{else}}
                         <li>{{#linkTo user.create}} Get Started {{/linkTo}}</li>

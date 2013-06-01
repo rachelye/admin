@@ -12,5 +12,8 @@ App.Principal = Ember.Object.extend({
 App.Principal.reopenClass({
     find: function(query) {
         return App.findWithAdapter(query, nitrogen.Principal, App.Principal);
+    },
+    findById: function(id) {
+        return App.findByIdWithAdapter(id, nitrogen.Principal, App.Principal);
     }
 });
