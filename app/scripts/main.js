@@ -6,12 +6,15 @@ App = Ember.Application.create({
 // We need to delay routing until we have a session setup (or fail).
 App.deferReadiness();
 
+// Enable Twitter Bootstrap radio buttons
+$('.nav-tabs').button();
+
 // We try to find the headwaiter at the same host, port, and protocol this was served from by default.
 
 App.config = {
-    host: window.location.hostname,
-    http_port: 3030,
-    protocol: "http"
+    host: 'api.nitrogen.io',
+    http_port: 80,
+    protocol: 'http'
 };
 
 App.config.store = new nitrogen.HTML5Store(App.config);
