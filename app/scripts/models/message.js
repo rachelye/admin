@@ -3,25 +3,12 @@ App.Message = Ember.Object.extend({
         return this.get('type') === type;
     },
 
-    isImage: function() {
-        return this.is('image');
-    }.property('type'),
-
-    isLog: function() {
-        return this.is('log');
-    }.property('type'),
-
-    isIP: function() {
-        return this.is('ip');
-    }.property('type'),
-
-    isIPMatch: function() {
-        return this.is('ip_match');
-    }.property('type'),
-
-    isNotHeartbeat: function() {
-        return !this.is('heartbeat');
-    }.property('type'),
+    isCameraCommand: function() { return this.is('cameraCommand'); }.property('type'),
+    isImage: function() { return this.is('image'); }.property('type'),
+    isLog: function() { return this.is('log'); }.property('type'),
+    isIP: function() { return this.is('ip'); }.property('type'),
+    isIPMatch: function() { return this.is('ip_match'); }.property('type'),
+    isNotHeartbeat: function() { return !this.is('heartbeat'); }.property('type'),
 
     createdAtString: function() {
         var date = new Date(Date.parse(this.get('created_at')));

@@ -9,12 +9,13 @@
 
     {{#each message in controller}}
 
+        {{#if message.isNotHeartbeat}}
         <tr>
             <td>
-                {{message.createdAtString}}
+                {{message.timestampString}}
             </td>
             <td>
-                {{message.timestampString}}
+                {{message.createdAtString}}
             </td>
             <td>
                 {{message.from}}
@@ -23,6 +24,9 @@
                 {{message.type}}
             </td>
             <td>
+                {{#if message.isCameraCommand}}
+                    {{message.body.command}}
+                {{/if}}
                 {{#if message.isImage}}
                     <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
                 {{/if}}
@@ -37,6 +41,7 @@
                 {{/if}}
             </td>
         </tr>
+        {{/if}}
 
     {{/each}}
 
