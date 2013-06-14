@@ -33,7 +33,7 @@ App.Message = Ember.Object.extend({
 });
 
 App.Message.reopenClass({
-    find: function(query) {
-        return App.findWithAdapter(query, nitrogen.Message, App.Message);
+    find: function(query, options) {
+        return App.findWithAdapter(query, options, nitrogen.Message, App.Message);
     }
 });

@@ -9,7 +9,7 @@ App.Agent = Ember.Object.extend({
 });
 
 App.Agent.reopenClass({
-    find: function(query) {
-        return App.findWithAdapter(query, nitrogen.Agent, App.Agent);
+    find: function(query, options) {
+        return App.findWithAdapter(query, options, nitrogen.Agent, App.Agent);
     }
 });

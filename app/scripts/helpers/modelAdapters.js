@@ -1,6 +1,6 @@
-App.findWithAdapter = function(query, nitrogenClass, emberModel) {
+App.findWithAdapter = function(query, options, nitrogenClass, emberModel) {
     var promise = $.Deferred();
-    nitrogenClass.find(App.session, query, function(err, nitrogenModels) {
+    nitrogenClass.find(App.session, query, options, function(err, nitrogenModels) {
         if (err) return promise.reject(err);
 
         var emberModels = nitrogenModels.map(function(nitrogenModel) {
