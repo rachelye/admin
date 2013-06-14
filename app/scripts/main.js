@@ -67,5 +67,5 @@ App.sessionHandler = function(err, session, user) {
 // attempt to start session from the cached access token in local storage.
 // if the user doesn't exist or the access token is expired -> direct to login.
 
-var user = new nitrogen.User({ local_id: "current" });
+var user = new nitrogen.User({ nickname: "current" });
 App.service.resume(user, App.sessionHandler);
