@@ -1,3 +1,20 @@
+<!-- navigation -->
+<div class="container">
+    <div class="row">
+        <div class="span10"></div>
+        <div class="span1">
+            {{#if controller.hasPreviousPage}}
+                {{#linkTo messages previousPage}}Previous{{/linkTo}}
+            {{/if}}
+        </div>
+        <div class="span1">
+            {{#if controller.fullPage}}
+                {{#linkTo messages nextPage}}Next{{/linkTo}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>Timestamp</th>
@@ -9,7 +26,6 @@
 
     {{#each message in controller}}
 
-        {{#if message.isNotHeartbeat}}
         <tr>
             <td>
                 {{message.timestampString}}
@@ -41,7 +57,6 @@
                 {{/if}}
             </td>
         </tr>
-        {{/if}}
 
     {{/each}}
 
