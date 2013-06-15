@@ -1,4 +1,13 @@
-App.Principal = Ember.Object.extend({
+App.Principal = Ember.Object.extend(nitrogen.Principal.prototype);
+App.Principal.reopen({
+    hasCapability: function(capability) {
+        return this.get('capabilities').indexOf(capability) !== -1;
+    },
+
+    hasCamera: function() {
+        return this.hasCapability('camera');
+    }.property('capabilities'),
+
     lastConnectionString: function() {
         var date = new Date(Date.parse(this.get('last_connection')));
         return date.toLocaleString();

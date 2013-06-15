@@ -1,14 +1,16 @@
 <div class="container">
 
     <div class="row">
-        <div class="span6">
+        <div class="span5">
+            Name:
             {{#if view.editing}}
-                {{view Ember.TextField valueBinding="name" classNames="span2"}}
+                {{view Ember.TextField valueBinding="name" classNames="span3"}}
             {{else}}
                 {{name}}
             {{/if}}
         </div>
-        <div class="span6">
+        <div class="span5">ID: {{id}}</div>
+        <div class="span2">
             {{#if view.editing}}
                 <button {{action save content target="view"}} class="btn btn-primary">Save</button>
             {{else}}
@@ -18,15 +20,22 @@
     </div>
 
     <div class="row">
-        <div class="span6">{{id}} ({{type}}) </div>
+        <div class="span5">Type: {{type}}</div>
     </div>
 
     <div class="row">
-        <div class="span6">{{lastConnectionString}}</div>
+        <div class="span6">Last Seen: {{lastConnectionString}}</div>
+    </div>
+    <div class="row">
+        <div class="span6">Total Messages: {{messages.length}}</div>
     </div>
 
-    <div class="row">
-        <div class="span6">{{capabilities}}</div>
-    </div>
+    {{#if hasCamera}}
+        {{view App.CameraCapabilityView}}
+    {{/if}}
+
+    <!-- for all current commands... -->
+        <!-- show command with cancellation x -->
+    <!-- endfor -->
 
 </div>

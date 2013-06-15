@@ -13,8 +13,8 @@ $('.nav-tabs').button();
 
 App.config = {
     host: 'api.nitrogen.io',
-    http_port: 80,
-    protocol: 'http'
+    http_port: 443,
+    protocol: 'https'
 };
 
 App.config.store = new nitrogen.HTML5Store(App.config);
@@ -55,13 +55,6 @@ App.sessionHandler = function(err, session, user) {
     App.set('user', App.Principal.create(user));
 
     session.onAuthFailure(App.resetSession);
-
-    session.onMessage(function(nitrogenMessage) {
-        console.log("message received: " + JSON.stringify(nitrogenMessage));
-        var message = App.Message.create(nitrogenMessage);
-
-        Ember.Instrumentation.instrument('onMessage', message);
-    });
 };
 
 // attempt to start session from the cached access token in local storage.

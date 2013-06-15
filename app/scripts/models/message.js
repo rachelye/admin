@@ -1,8 +1,6 @@
-App.Message = Ember.Object.extend({
-    is: function(type) {
-        return this.get('type') === type;
-    },
+App.Message = Ember.Object.extend(nitrogen.Message.prototype);
 
+App.Message.reopen({
     isCameraCommand: function() { return this.is('cameraCommand'); }.property('type'),
     isImage: function() { return this.is('image'); }.property('type'),
     isLog: function() { return this.is('log'); }.property('type'),

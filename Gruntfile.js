@@ -39,6 +39,7 @@ module.exports = function(grunt) {
                 'app/scripts/templates/templates.js' : ["app/scripts/templates/agents/agent.hbs",
                                                         "app/scripts/templates/agents.hbs",
                                                         "app/scripts/templates/application.hbs",
+                                                        "app/scripts/templates/capabilities/camera.hbs",
                                                         "app/scripts/templates/messages.hbs",
                                                         "app/scripts/templates/messages/ip_match.hbs",
                                                         "app/scripts/templates/principal.hbs",

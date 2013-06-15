@@ -1,4 +1,5 @@
-App.Agent = Ember.Object.extend({
+App.Agent = Ember.Object.extend(nitrogen.Agent.prototype);
+App.Agent.reopen({
     enabledString: function() {
         return this.get('enabled') ? "true" : "false";
     }.property('enabled'),

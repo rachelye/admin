@@ -1,5 +1,4 @@
 App.MessagesRoute = Ember.Route.extend({
-
     messagePageLimit: 50,
 
     model: function(params) {
@@ -32,19 +31,15 @@ App.MessagesRoute = Ember.Route.extend({
     },
 
     setupController: function(controller, model) {
-        var self = this;
         this._super(controller, model);
 
         this.controller.set('router', this);
 
-        Ember.Instrumentation.subscribe('onMessage', {
-            before: function(name, timestamp, message) {
-                self.query().then(function(response) {
-                    self.controller.set('content', response);
-                });
-            },
-            after: function() {}
+        var self = this;
+        App.session.onMessage(function(nitrogenMessage) {
+            self.query().then(function(messages) {
+                self.controller.set('content', messages);
+            });
         });
     }
-
 });
