@@ -21,7 +21,6 @@ App.PrincipalRoute = Ember.Route.extend({
             }
         );
 
-            ;
         this.controller.set('messages', messages);
     }
 });

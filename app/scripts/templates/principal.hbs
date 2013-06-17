@@ -4,12 +4,12 @@
         <div class="span5">
             Name:
             {{#if view.editing}}
-                {{view Ember.TextField valueBinding="name" classNames="span3"}}
+                {{view Ember.TextField valueBinding="content.name" classNames="span3"}}
             {{else}}
-                {{name}}
+                {{content.name}}
             {{/if}}
         </div>
-        <div class="span5">ID: {{id}}</div>
+        <div class="span5">ID: {{content.id}}</div>
         <div class="span2">
             {{#if view.editing}}
                 <button {{action save content target="view"}} class="btn btn-primary">Save</button>
@@ -20,17 +20,17 @@
     </div>
 
     <div class="row">
-        <div class="span5">Type: {{type}}</div>
+        <div class="span5">Type: {{content.type}}</div>
     </div>
 
     <div class="row">
-        <div class="span6">Last Seen: {{lastConnectionString}}</div>
+        <div class="span6">Last Seen: {{content.lastConnectionString}}</div>
     </div>
     <div class="row">
         <div class="span6">Total Messages: {{messages.length}}</div>
     </div>
 
-    {{#if hasCamera}}
+    {{#if content.hasCamera}}
         {{view App.CameraCapabilityView}}
     {{/if}}
 
