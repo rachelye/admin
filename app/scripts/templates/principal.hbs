@@ -1,7 +1,11 @@
 <div class="container">
 
     <div class="row">
-        <div class="span5">
+        <div class="span5">ID: {{content.id}}</div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
             Name:
             {{#if view.editing}}
                 {{view Ember.TextField valueBinding="content.name" classNames="span3"}}
@@ -9,7 +13,6 @@
                 {{content.name}}
             {{/if}}
         </div>
-        <div class="span5">ID: {{content.id}}</div>
         <div class="span2">
             {{#if view.editing}}
                 <button {{action save content target="view"}} class="btn btn-primary">Save</button>
@@ -19,23 +22,21 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="span5">Type: {{content.type}}</div>
     </div>
 
     <div class="row">
-        <div class="span6">Last Seen: {{content.lastConnectionString}}</div>
-    </div>
-    <div class="row">
-        <div class="span6">Total Messages: {{messages.length}}</div>
+        <div class="span6">Last Contact: {{content.lastConnectionString}}</div>
     </div>
 
     {{#if content.hasCamera}}
         {{view App.CameraCapabilityView}}
     {{/if}}
 
-    <!-- for all current commands... -->
-        <!-- show command with cancellation x -->
-    <!-- endfor -->
-
 </div>
+
+<h4>Recent Messages</h4>
+
+{{view App.MessagesTableView contentBinding='controller.tailMessages'}}

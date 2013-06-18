@@ -60,7 +60,14 @@ App.PrincipalsRoute = Ember.Route.extend({
 
 App.PrincipalRoute = Ember.Route.extend({
     model: function(params) {
+        this.set('params', params);
+        this.query();
+
         return App.Principal.findById(params.principal_id);
+    },
+
+    query: function() {
+        return App.Principal.findById(this.get('params.principal_id'));
     },
 
     setupController: function(controller, principal) {
@@ -75,6 +82,11 @@ App.PrincipalRoute = Ember.Route.extend({
             }
         );
 
-        this.controller.set('messages', messages);
+        App.session.onPrincipal(function(nitrogenPrincipal) {
+           if (nitrogenPrincipal.id === self.get('controller.content.id')) {
+               var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
+               self.controller.set('content', updatedPrincipal);
+           }
+        });
     }
 });

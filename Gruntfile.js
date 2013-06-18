@@ -42,6 +42,7 @@ module.exports = function(grunt) {
                                                         "app/scripts/templates/capabilities/camera.hbs",
                                                         "app/scripts/templates/messages.hbs",
                                                         "app/scripts/templates/messages/ip_match.hbs",
+                                                        "app/scripts/templates/messages/messagesTable.hbs",
                                                         "app/scripts/templates/principal.hbs",
                                                         "app/scripts/templates/principals.hbs",
                                                         "app/scripts/templates/principals/principalRow.hbs",
