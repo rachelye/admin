@@ -1,12 +1,12 @@
 App.PrincipalView = Em.View.extend({
-    editing: false,
+    viewing: true,
 
     edit: function() {
-        this.set('editing', true);
+        this.set('viewing', false);
     },
 
     save: function(principal) {
-        this.set('editing', false);
+        this.set('viewing', true);
         this.set('principal', principal.save());
     }
 });

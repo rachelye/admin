@@ -1,5 +1,6 @@
 {
   "name": "admin",
+  "homepage": "https://github.com/nitrogenjs/admin",
   "version": "0.0.1",
   "description": "Nitrogen administrative tool",
   "author": "Tim Park <timfpark@gmail.com>",

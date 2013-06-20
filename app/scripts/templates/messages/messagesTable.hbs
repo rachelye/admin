@@ -1,47 +1,47 @@
-
 <table class="table">
     <tr>
-        <th>Timestamp</th>
-        <th>Created</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Type</th>
-        <th>Body</th>
+        <td colspan='2'>
+            <h4>MESSAGES</h4>
+        </td>
+        <td colspan='2'></td>
+        <td>{{#if controller.hasPreviousPage}}
+                {{#linkTo messages previousPage class="btn"}}Previous{{/linkTo}}
+            {{/if}}
+            {{#if controller.fullPage}}
+                {{#linkTo messages nextPage class="btn"}}Next{{/linkTo}}
+            {{/if}}
+        </td>
+    </tr>
+    <tr>
+        <th>TIMESTAMP</th>
+        <th>FROM</th>
+        <th>TO</th>
+        <th>TYPE</th>
+        <th>BODY</th>
     </tr>
 
     {{#each message in view.content}}
 
     <tr>
-        <td>
-            {{message.timestampString}}
-        </td>
-        <td>
-            {{message.createdAtString}}
-        </td>
-        <td>
-            {{message.from}}
-        </td>
-        <td>
-            {{message.to}}
-        </td>
-        <td>
-            {{message.type}}
-        </td>
+        <td>{{message.timestampString}}</td>
+        <td>{{message.from}}</td>
+        <td>{{message.to}}</td>
+        <td>{{message.type}}</td>
         <td>
             {{#if message.isCameraCommand}}
-            {{message.body.command}}
+                {{message.body.command}}
             {{/if}}
             {{#if message.isImage}}
-            <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
+                <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
             {{/if}}
             {{#if message.isLog}}
-            {{message.body.severity}}: {{message.body.message}}
+                {{message.body.severity}}: {{message.body.message}}
             {{/if}}
             {{#if message.isIP}}
-            {{message.body.ip_address}}
+                {{message.body.ip_address}}
             {{/if}}
             {{#if message.isIPMatch}}
-            {{view App.IpMatchView}}
+                {{view App.IpMatchView}}
             {{/if}}
         </td>
     </tr>

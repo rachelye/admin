@@ -1,10 +1,13 @@
-<h4>Camera</h4>
-
-<table class="table">
+<table class='table'>
     <tr>
-        <th>Timestamp</th>
-        <th>From</th>
-        <th>Command</th>
+        <td><h4>CAMERA</h4></td>
+        <td></td>
+        <td><button type="button" {{action sendSnapshot}} class="btn btn-primary">Snapshot</button></td>
+    </tr>
+    <tr>
+        <th>EXECUTE AT</th>
+        <th>FROM</th>
+        <th>COMMAND</th>
     </tr>
 
     {{#each command in view.commands}}
@@ -14,12 +17,4 @@
         <td>{{command.body.command}}</td>
     </tr>
     {{/each}}
-
 </table>
-
-<div class="row">
-    <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" {{action sendSnapshot}} class="btn btn-primary">Snapshot</button>
-      <!--  <button type="button" class="btn btn-primary">Motion</button> -->
-    </div>
-</div>
