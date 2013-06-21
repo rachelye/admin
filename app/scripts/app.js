@@ -1,13 +1,23 @@
-App = Ember.Application.create({
+/*global Ember */
+
+var App = window.App = Ember.Application.create({
     rootElement: window.TESTING ? '#mocha' : '#app',
     LOG_TRANSITIONS: true
 });
 
+/* Order and include as you please. */
+require('scripts/controllers/*');
+require('scripts/controllers/user/*');
+require('scripts/helpers/*');
+require('scripts/models/*');
+require('scripts/routes/*');
+require('scripts/views/agents/*');
+require('scripts/views/capabilities/*');
+require('scripts/views/messages/*');
+require('scripts/views/principals/*');
+
 // We need to delay routing until we have a session setup (or fail).
 App.deferReadiness();
-
-// Enable Twitter Bootstrap radio buttons
-$('.nav-tabs').button();
 
 // We try to find the headwaiter at the same host, port, and protocol this was served from by default.
 

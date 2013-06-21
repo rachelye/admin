@@ -1,74 +1,48 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title></title>
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width"/>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Nitrogen</title>
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/style.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!-- Ember application entry point -->
+        <section id="app"></section>
 
-    <link rel="stylesheet" href="css/style.css"/>
+        <!-- build:js scripts/components.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/handlebars/handlebars.runtime.js"></script>
+        <script src="bower_components/ember/ember.js"></script>
+        <!-- endbuild -->
 
-    <script src="js/vendor/modernizr.min.js"></script>
-  </head>
+        <script src="//localhost:3030/client/nitrogen.js"></script>
 
-  <body>
-    <!-- Ember application entry point -->
-    <section id="app"></section>
+        <!-- build:js(.tmp) scripts/templates.js -->
+        <script src="scripts/compiled-templates.js"></script>
+        <!-- endbuild -->
 
-    <script src="//api.nitrogen.io/client/nitrogen.js"></script>
+        <!-- build:js(.tmp) scripts/main.js -->
+        <script src="scripts/combined-scripts.js"></script>
+        <!-- endbuild -->
 
-    <!-- build:js js/script.js -->
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-tooltip.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-modal.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-transition.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-button.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-popover.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-typeahead.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-carousel.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+        <!-- endbuild -->
 
-    <!-- The scripts listed here will be combined and minified in script.js -->
-
-    <!-- frameworks and main -->
-    <script src="scripts/vendor/jquery.min.js"></script>
-    <script src="scripts/vendor/handlebars-1.0.0-rc.3.js"></script>
-    <script src="scripts/vendor/ember-1.0.0-rc.3.js"></script>
-    <script src="scripts/vendor/bootstrap-button.js"></script>
-    <script src="scripts/main.js"></script>
-
-    <!-- controllers -->
-    <script src="scripts/controllers/agents.js"></script>
-    <script src="scripts/controllers/application.js"></script>
-    <script src="scripts/controllers/messages.js"></script>
-    <script src="scripts/controllers/principal.js"></script>
-    <script src="scripts/controllers/user/create.js"></script>
-    <script src="scripts/controllers/user/login.js"></script>
-
-    <!-- views -->
-    <script src="scripts/views/agents/agent.js"></script>
-    <script src="scripts/views/capabilities/camera.js"></script>
-    <script src="scripts/views/messages/ip_match.js"></script>
-    <script src="scripts/views/messages/messagesTable.js"></script>
-    <script src="scripts/views/principals/principal.js"></script>
-    <script src="scripts/views/principals/principalRow.js"></script>
-
-    <!-- models -->
-    <script src="scripts/models/agent.js"></script>
-    <script src="scripts/models/message.js"></script>
-    <script src="scripts/models/principal.js"></script>
-
-    <!-- compiled handlebars templates:  make sure to:
-         1. update Gruntfile.js if you add or remove a template.
-         2. run 'yeoman handlebars' to rebuild templates.js -->
-    <script src="scripts/templates/templates.js"></script>
-
-    <!-- helpers -->
-    <script src="scripts/helpers/modelAdapters.js"></script>
-
-    <!-- routes -->
-    <script src="scripts/routes/agents_route.js"></script>
-    <script src="scripts/routes/messages_route.js"></script>
-    <script src="scripts/routes/principals_route.js"></script>
-    <script src="scripts/routes/router.js"></script>
-    <!-- endbuild -->
-
-  </body>
+    </body>
 </html>
