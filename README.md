@@ -8,7 +8,9 @@ The admin app is a statically served single page Ember.js application that works
 
 1. Install node.js and git if you haven't already.
 2. We use yeoman for our build system.  Install this via `npm install -g yo grunt-cli bower`
-3. Start yeoman with `yeoman server`.   This will build the admin application, watch for changes you make and automatically rebuild the app, and host the application on your local machine and open a browser window with it.
+3. Yeoman uses ruby (see http://www.ruby-lang.org/en/downloads/ to install) and compass (`gem install compass` to install) for building the twitter bootstrap CSS.
+3. Install the node components with a `npm install` and the bower components with a `bower install`. 
+4. Start the local server with `grunt server`.   This will host the application on your local machine, open a browser window to it, and refresh on changes.
 
 ## How to contribute
 
