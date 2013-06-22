@@ -1,14 +1,8 @@
 App.PrincipalRowView = Em.View.extend({
     templateName: 'principals/principalRow',
 
-    editing: false,
-
-    edit: function() {
-        this.set('editing', true);
-    },
-
-    save: function(principal) {
-        this.set('editing', false);
-        this.set('principal', principal.save());
-    }
-});
+    lastConnectionClass: function() {
+    	var msSinceLastConnection = new Date().getTime() - Date.parse(this.get('principal.last_connection'));
+    	return msSinceLastConnection > 30 * 60 * 1000 ? "text-error" : "";
+    }.property('principal.last_connection')
+ });
