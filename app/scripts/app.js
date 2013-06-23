@@ -55,7 +55,7 @@ App.sessionHandler = function(err, session, user) {
 
     // TODO: what's the right way to transition outside of a router in ember.js?
     if (window.location.hash == "#/user/login" || window.location.hash == "#/user/create") {
-        window.location = "#/messages";
+        window.location = "#/messages/skip/0/sort/ts/direction/-1";
     }
 
     App.advanceReadiness();
