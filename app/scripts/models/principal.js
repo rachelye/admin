@@ -8,6 +8,10 @@ App.Principal.reopen({
         return this.hasCapability('camera');
     }.property('capabilities'),
 
+    isDevice: function() {
+        return this.is('device');
+    }.property('type'),
+
     lastConnectionString: function() {
         var date = new Date(Date.parse(this.get('last_connection')));
         return date.toLocaleString();

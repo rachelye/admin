@@ -19,8 +19,10 @@
         {{principal.lastConnectionString}} @ {{principal.last_ip}}
     </td>
 
-    <td> 
-        <!-- <button {{action delete principal}} class="btn btn-primary">Delete</button> -->
+    <td>
+        {{#if principal.isDevice}}
+        <button {{action delete principal}} class="btn btn-primary">Delete</button>
+        {{/if}}
     </td>
 
 </tr>
