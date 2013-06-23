@@ -20,7 +20,7 @@ App.PrincipalsRoute = Ember.Route.extend({
         var sort = {};
         sort[this.get('params').sort] = parseInt(this.get('params').direction);
 
-        return App.Principal.find({}, {
+        return App.Principal.find({ type: 'device', owner: App.user.id }, {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('pageLimit')),
             sort: sort

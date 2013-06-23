@@ -5,10 +5,10 @@
         </td>
         <td colspan='2'></td>
         <td>{{#if controller.hasPreviousPage}}
-                {{#linkTo messages previousPage class="btn"}}Previous{{/linkTo}}
+                <a {{bindAttr href="previousPageUrl"}} class="btn">Previous</a>
             {{/if}}
             {{#if controller.fullPage}}
-                {{#linkTo messages nextPage class="btn"}}Next{{/linkTo}}
+                <a {{bindAttr href="nextPageUrl"}} class="btn">Next</a>
             {{/if}}
         </td>
     </tr>
