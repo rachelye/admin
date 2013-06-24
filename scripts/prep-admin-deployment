@@ -4,7 +4,9 @@
 
 # It assumes that you have the admin-deploy directory for static deployment of the built admin app at ../../admin-deploy (parallel to the admin repo's directory)
 
-cd ../../admin-deploy
+cd ..
+grunt build
+cd ../admin-deploy
 find * -exec git rm -r {} \;
 cp -r ../admin/dist/* .
 git add -A
