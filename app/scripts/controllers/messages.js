@@ -1,11 +1,16 @@
 App.MessagesController = Ember.ArrayController.extend({
-    hasPreviousPage: function() {
-        return parseInt(this.get('router.params.skip')) !== 0;
-    }.property('router.params.skip'),
 
-    fullPage: function() {
-        return this.get('content.length') >= this.get('router.messagePageLimit');
-    }.property('content.length', 'messagesPerPage'),
+    buildPageUrl: function(params) {
+        return "/#/messages/skip/" + params.skip + "/sort/" + params.sort + "/direction/" + params.direction;
+    },
+
+    changePage: function(dir) {
+        return {
+            skip: parseInt(this.get('router.params.skip')) + dir * parseInt(this.get('router.messagePageLimit')),
+            direction: this.get('router.params.direction'),
+            sort: this.get('router.params.sort')
+        };
+    },
 
     claim: function() {
         var principalId = $('principalId').val();
@@ -26,17 +31,13 @@ App.MessagesController = Ember.ArrayController.extend({
         });
     },
 
-    buildPageUrl: function(params) {
-        return "/#/messages/skip/" + params.skip + "/sort/" + params.sort + "/direction/" + params.direction;
-    },
+    fullPage: function() {
+        return this.get('content.length') >= this.get('router.messagePageLimit');
+    }.property('content.length', 'messagesPerPage'),
 
-    changePage: function(dir) {
-        return {
-            skip: parseInt(this.get('router.params.skip')) + dir * parseInt(this.get('router.messagePageLimit')),
-            direction: this.get('router.params.direction'),
-            sort: this.get('router.params.sort')
-        };
-    },
+    hasPreviousPage: function() {
+        return parseInt(this.get('router.params.skip')) !== 0;
+    }.property('router.params.skip'),
 
     nextPage: function() {
         return this.changePage(1);

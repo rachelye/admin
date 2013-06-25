@@ -61,9 +61,7 @@ App.PrincipalsRoute = Ember.Route.extend({
 App.PrincipalRoute = Ember.Route.extend({
     model: function(params) {
         this.set('params', params);
-        this.query();
-
-        return App.Principal.findById(params.principal_id);
+        return this.query();
     },
 
     query: function() {
