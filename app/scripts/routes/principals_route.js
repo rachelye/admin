@@ -1,4 +1,4 @@
-App.PrincipalsRoute = Ember.Route.extend({
+App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     pageLimit: 50,
     maxUpdateRate: 10000,
     timeoutSet: false,

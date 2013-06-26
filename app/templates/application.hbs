@@ -22,8 +22,7 @@
                         <li>{{#linkTo principal App.user}}{{App.user.name}}{{/linkTo}}</li>
                         <li><a {{action signout}}> Sign Out </a></li>
                     {{else}}
-                        <li>{{#linkTo user.create}} Get Started {{/linkTo}}</li>
-                        <li>{{#linkTo user.login}} Sign In {{/linkTo}}</li>
+                        <li>{{#linkTo login}} Sign In {{/linkTo}}</li>
                     {{/if}}
                 </ul>
             </div>

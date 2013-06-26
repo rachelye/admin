@@ -1,4 +1,4 @@
-App.MessagesRoute = Ember.Route.extend({
+App.MessagesRoute = App.AuthenticatedRoute.extend({
     messagePageLimit: 50,
 
     model: function(params) {

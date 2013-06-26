@@ -1,0 +1,64 @@
+<div class="well">
+
+    <form class="form-horizontal" {{action submit on='submit'}}>
+        <div class="control-group">
+            <div class="controls">
+                <legend style="border:0">{{modeTitle}}</legend>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+                {{input value=email type='text' placeholder='Email'}}
+            </div>
+        </div>
+
+    {{#if notForgotPasswordMode}}
+        <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                {{input value=password type='password' placeholder='Password'}}
+            </div>
+        </div>
+    {{/if}}
+
+    {{#if createMode}}
+        <div class="control-group">
+            <label class="control-label" for="email">Full Name</label>
+            <div class="controls">
+                {{input value=name type='text' placeholder='Full Name'}}
+            </div>
+        </div>
+    {{/if}}
+
+        <div class="control-group">
+            <div class="controls">
+
+    {{#if signInMode}}
+                {{input class='btn btn-primary' type='submit' value='Sign in'}}
+    {{else}}
+                <a {{action switchToSignIn}} class='btn'>Sign in</a>
+    {{/if}}
+
+    {{#if createMode}}
+                {{input class='btn btn-primary' type='submit' value='Create account'}}
+    {{else}}
+                <a {{action switchToCreate}} class='btn'>Create account</a>
+    {{/if}}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+    {{#if forgotPasswordMode}}
+                {{input class='btn btn-primary' type='submit' value='Reset password'}}
+    {{else}}
+                <a {{action switchToForgotPassword}}>Forgot password?</a>
+    {{/if}}
+
+            </div>
+        </div>
+    </form>
+
+</div>
