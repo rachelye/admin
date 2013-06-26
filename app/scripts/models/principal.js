@@ -29,43 +29,21 @@ App.Principal.reopenClass({
     },
 
     findById: function(id) {
+        if (!id) return null;
+
         if (!App.Principal.cache)
             App.Principal.cache = {};
 
         if (!App.Principal.cache[id]) {
             return App.findByIdWithAdapter(id, nitrogen.Principal, App.Principal).then(function(principal) {
                 App.Principal.cache[id] = principal;
+
+                // TODO: why don't returned resolved promises trigger a recomputation of a property in Ember.js?   Invalidate hack for now...
+                App.set('principalFetched', principal.get('id'));
             });
         } else {
             return App.Principal.cache[id];
         }
     }
-    /*
-    ,
-
-    invalidated: true,
-
-    principals: function() {
-        App.Principal.set('invalidated', false);
-        return App.Principal.find({}, {});
-    }.property('invalidated'),
-
-    hashedPrincipals: function() {
-        var hash = {};
-        App.Principal.get('principals').forEach(function(principal) {
-            hash[principal.id] = principal;
-        });
-
-        return hash;
-    }.property('principals'),
-
-    nameForPrincipal: function(id) {
-        var hashedPrincipals = App.Principal.get('hashedPrincipals')
-        if (hashedPrincipals && hashedPrincipals[id] && hashedPrincipals[id].get('name')) {
-            return hashedPrincipals[id].get('name');
-        } else {
-            return id;
-        }
-    } */
 
 });

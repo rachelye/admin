@@ -15,19 +15,17 @@ App.Message.reopen({
 
     fromPrincipal: function() {
         return App.Principal.findById(this.get('from'));
-    }.property('from'),
+    }.property('from', 'App.principalFetched'),
 
     fromName: function() {
-        console.log(this.get('fromPrincipal'));
         return this.get('fromPrincipal.name') || this.get('from');
     }.property('from', 'fromPrincipal'),
 
     toPrincipal: function() {
         return App.Principal.findById(this.get('to'));
-    }.property('to'),
+    }.property('to', 'App.principalFetched'),
 
     toName: function() {
-        console.log(this.get('toPrincipal'));
         return this.get('toPrincipal.name') || this.get('to');
     }.property('to', 'toPrincipal'),
 
