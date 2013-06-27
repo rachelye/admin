@@ -12,7 +12,7 @@ App.IpMatchView = Em.View.extend({
             expires: 'never'
         });
 
-        response.save(App.session, function(err, messages) {
+        response.send(App.session, function(err, messages) {
             if (err) console.log(err);
         });
     },

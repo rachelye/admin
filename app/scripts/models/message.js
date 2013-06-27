@@ -36,8 +36,8 @@ App.Message.reopen({
     isIPMatch: function() { return this.is('ip_match'); }.property('type'),
     isNotHeartbeat: function() { return !this.is('heartbeat'); }.property('type'),
 
-    save: function() {
-        return App.saveWithDeferred(new nitrogen.Message(this));
+    send: function() {
+        return App.sendWithDeferred(new nitrogen.Message(this));
     },
 
     timestampString: function() {

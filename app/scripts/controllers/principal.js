@@ -11,7 +11,7 @@ App.PrincipalController = Ember.Controller.extend({
             }
         });
 
-        snapshot.save(App.session, function(err, messages) {
+        snapshot.send(App.session, function(err, messages) {
             if (err) console.log('snapshot command failed: ' + err);
         });
     },

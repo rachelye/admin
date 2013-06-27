@@ -34,3 +34,15 @@ App.saveWithDeferred = function(nitrogenModel) {
 
     return promise;
 };
+
+App.sendWithDeferred = function(nitrogenModel) {
+    var promise = $.Deferred();
+    nitrogenModel.send(App.session, function (err, nitrogenModel) {
+        if (err) return promise.reject(err);
+
+        promise.resolve(nitrogenModel);
+    });
+
+    return promise;
+};
+
