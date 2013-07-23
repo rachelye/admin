@@ -30,6 +30,7 @@ App.Message.reopen({
     }.property('to', 'toPrincipal'),
 
     isCameraCommand: function() { return this.is('cameraCommand'); }.property('type'),
+    isHeartbeat: function() { return this.is('heartbeat'); }.property('type'),
     isImage: function() { return this.is('image'); }.property('type'),
     isLog: function() { return this.is('log'); }.property('type'),
     isIP: function() { return this.is('ip'); }.property('type'),

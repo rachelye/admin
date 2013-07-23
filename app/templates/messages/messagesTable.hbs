@@ -43,6 +43,9 @@
             {{#if message.isIPMatch}}
                 {{view App.IpMatchView}}
             {{/if}}
+            {{#if message.isHeartbeat}}
+                {{message.body.error}}
+            {{/if}}
         </td>
     </tr>
 
