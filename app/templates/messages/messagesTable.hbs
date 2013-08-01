@@ -28,23 +28,14 @@
         <td>{{message.toName}}</td>
         <td>{{message.type}}</td>
         <td>
-            {{#if message.isCameraCommand}}
-                {{message.body.command}}
-            {{/if}}
             {{#if message.isImage}}
                 <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
-            {{/if}}
-            {{#if message.isLog}}
-                {{message.body.severity}}: {{message.body.message}}
-            {{/if}}
-            {{#if message.isIP}}
-                {{message.body.ip_address}}
-            {{/if}}
-            {{#if message.isIPMatch}}
-                {{view App.IpMatchView}}
-            {{/if}}
-            {{#if message.isHeartbeat}}
-                {{message.body.error}}
+            {{else}}
+                {{#if message.isIPMatch}}
+                    {{view App.IpMatchView}}
+                {{else}}
+                    {{message.bodyJSON}}
+                {{/if}}
             {{/if}}
         </td>
     </tr>

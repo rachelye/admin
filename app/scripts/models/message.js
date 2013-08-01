@@ -1,7 +1,11 @@
 App.Message = Ember.Object.extend(nitrogen.Message.prototype);
 
 App.Message.reopen({
-    // TODO: build message specific views that encapsulate this.
+
+    bodyJSON: function() {
+        return JSON.stringify(this.get('body'));
+    }.property('body'),
+
     bodyUrlWithAccessToken: function() {
         if (!this.get('body') || !this.get('body.url')) return null;
 
