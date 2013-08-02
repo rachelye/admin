@@ -15,7 +15,7 @@ App.MessagesRoute = App.AuthenticatedRoute.extend({
         var sort = {};
         sort[this.get('params').sort] = parseInt(this.get('params').direction);
 
-        return App.Message.find({}, {
+        return App.Message.find({ type: { $ne: 'heartbeat' } }, {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('messagePageLimit')),
             sort: sort
