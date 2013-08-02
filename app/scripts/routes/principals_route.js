@@ -33,7 +33,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
         this.controller.set('router', this);
 
         var self = this;
-        App.session.onPrincipal(function(nitrogenMessage) {
+        this.subscription = App.session.onPrincipal(function(nitrogenMessage) {
             // if we already are locked and loaded to update, just return.
             if (self.get('timeoutSet')) {
                 console.log('principals timeout already set, returning.')
@@ -55,6 +55,15 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 
             self.set('timeoutSet', true);
         });
+    },
+
+    events: {
+        willTransition: function(transition) {
+            if (this.subscription) {
+                App.session.disconnectSubscription(this.subscription);
+                this.subscription = null;
+            }
+        }        
     }
 });
 
@@ -80,11 +89,20 @@ App.PrincipalRoute = Ember.Route.extend({
             }
         );
 
-        App.session.onPrincipal(function(nitrogenPrincipal) {
+        this.subscription = App.session.onPrincipal(function(nitrogenPrincipal) {
            if (nitrogenPrincipal.id === self.get('controller.content.id')) {
                var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
                self.controller.set('content', updatedPrincipal);
            }
         });
+    },
+
+    events: {
+        willTransition: function(transition) {
+            if (this.subscription) {
+                App.session.disconnectSubscription(this.subscription);
+                this.subscription = null;
+            }
+        }        
     }
 });

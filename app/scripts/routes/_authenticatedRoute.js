@@ -1,6 +1,5 @@
 App.AuthenticatedRoute = Ember.Route.extend({
     beforeModel: function() {
-        console.log('in before model');
         if (!App.session) {
             var loginController = this.controllerFor('login');
             var user = new nitrogen.User({ nickname: "current" });

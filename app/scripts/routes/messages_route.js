@@ -36,10 +36,19 @@ App.MessagesRoute = App.AuthenticatedRoute.extend({
         this.controller.set('router', this);
 
         var self = this;
-        App.session.onMessage(function(nitrogenMessage) {
+        this.subscription = App.session.onMessage(function(nitrogenMessage) {
             self.query().then(function(messages) {
                 self.controller.set('content', messages);
             });
         });
+    },
+
+    events: {
+        willTransition: function(transition) {
+            if (this.subscription) {
+                App.session.disconnectSubscription(this.subscription);
+                this.subscription = null;
+            }
+        }        
     }
 });
