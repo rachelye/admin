@@ -2,12 +2,12 @@ App.PrincipalController = Ember.Controller.extend({
 
     maxTailMessages: 25,
 
-    sendSnapshot: function() {
+    sendCommand: function(cmd) {
         var snapshot = new nitrogen.Message({
             to: this.get('content.id'),
             type: 'cameraCommand',
             body: {
-                command: 'snapshot'
+                command: cmd
             }
         });
 
@@ -15,6 +15,9 @@ App.PrincipalController = Ember.Controller.extend({
             if (err) console.log('snapshot command failed: ' + err);
         });
     },
+
+    sendSnapshot: function() { this.sendCommand('snapshot'); },
+    sendMotion: function() { this.sendCommand('motion'); },
 
     tailMessages: function() {
         var messages = this.get('messages');
