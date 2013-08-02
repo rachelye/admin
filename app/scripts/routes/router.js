@@ -5,3 +5,9 @@ App.Router.map(function() {
     this.resource('principal', { path: 'principal/:principal_id' });
     this.resource('login');
 });
+
+App.IndexRoute = Ember.Route.extend({
+    redirect: function() {
+      this.transitionTo('principals');
+    }
+});
