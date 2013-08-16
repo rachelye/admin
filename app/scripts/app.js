@@ -17,9 +17,11 @@ require('scripts/views/messages/*');
 require('scripts/views/principals/*');
 
 App.config = {
-    host: 'api.nitrogen.io',
-    http_port: 443,
-    protocol: 'https'
+//    Nitrogen uses the following by default to connect to the service.   Modify these as necessary to point elsewhere.
+// 
+//    host: 'api.nitrogen.io',
+//    http_port: 443,
+//    protocol: 'https'
 };
 
 App.config.store = new nitrogen.HTML5Store(App.config);

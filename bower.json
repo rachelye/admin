@@ -1,11 +1,12 @@
 {
-  "name": "yo-new",
+  "name": "nitrogen-admin",
   "version": "0.0.0",
   "dependencies": {
     "jquery": "~1.9.1",
     "handlebars": "1.0.0-rc.4",
     "ember": "1.0.0-rc.6",
-    "bootstrap-sass": "~2.3.1"
+    "bootstrap-sass": "~2.3.2",
+    "nitrogen-bootswatch-scss": "e36495f242b2ddb1a4885525061ebfb225064813"
   },
   "devDependencies": {}
 }
