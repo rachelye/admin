@@ -4,7 +4,9 @@ App.AuthenticatedRoute = Ember.Route.extend({
             var loginController = this.controllerFor('login');
             var user = new nitrogen.User({ nickname: "current" });
 
-            App.service.resume(user, function(err, session, user) { loginController.sessionHandler(err, session, user); });
+            App.service.resume(user, function(err, session, user) {
+                loginController.sessionHandler(err, session, user);
+            });
         }
     },
 

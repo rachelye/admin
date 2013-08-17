@@ -5,7 +5,6 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     nextUpdate: new Date(),
 
     model: function(params) {
-        // TODO: implement sorting and paging
         params = {
             sort: 'last_connection',
             direction: -1,
@@ -20,7 +19,9 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
         var sort = {};
         sort[this.get('params').sort] = parseInt(this.get('params').direction);
 
-        return App.Principal.find({ type: 'device', owner: App.user.id }, {
+        if (!App.session) return;
+
+        return App.Principal.find({ type: 'device' }, {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('pageLimit')),
             sort: sort
@@ -28,6 +29,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     },
 
     setupController: function(controller, model) {
+
         this._super(controller, model);
 
         this.controller.set('router', this);
@@ -67,7 +69,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     }
 });
 
-App.PrincipalRoute = Ember.Route.extend({
+App.PrincipalRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
         this.set('params', params);
         return this.query();

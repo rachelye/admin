@@ -83,7 +83,8 @@ App.LoginController = Ember.Controller.extend({
         App.set('session', session);
         App.set('user', App.Principal.create(user));
 
-        session.onAuthFailure(this.resetSession);
+        var self = this;
+        session.onAuthFailure(function() { self.resetSession(); });
 
         this.transitionToRoute('principals');
     }

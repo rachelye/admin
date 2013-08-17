@@ -33,10 +33,11 @@ App.CameraCapabilityView = Em.View.extend({
 
     onMessages: function() {
         this.cameraManager = new nitrogen.CameraManager();
-        this.cameraManager.start(App.session, this.get('controller.messages'));
-
         var self = this;
-        console.log('onMessages invalidating!!!!');
-        self.set('invalidation', new Date());
+
+        this.cameraManager.start(App.session, this.get('controller.messages'), function() {
+            self.set('invalidation', new Date());
+        });
+
     }.observes('controller.messages')
 });
