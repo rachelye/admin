@@ -78,17 +78,26 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
         return App.Principal.findById(this.get('params.principal_id'));
     },
 
-    setupController: function(controller, principal) {
-        this._super(controller, principal);
-
-        this.controller.set('router', this);
-
+    queryMessages: function(principal) {
         var self = this;
         var messages = App.Message.find({$or: [ { to: principal.id }, { from: principal.id } ]}, { limit: 25 })
             .then(function(messages) {
                 self.controller.set('messages', messages);
             }
         );
+    },
+
+    setupController: function(controller, principal) {
+        this._super(controller, principal);
+
+        this.controller.set('router', this);
+
+        this.queryMessages(principal);
+
+        var self = this;
+        this.subscription = App.session.onMessage(function(nitrogenMessage) {
+            self.queryMessages(principal);
+        });
 
 //        this.subscription = App.session.onPrincipal(function(nitrogenPrincipal) {
 //           if (nitrogenPrincipal.id === self.get('controller.content.id')) {
