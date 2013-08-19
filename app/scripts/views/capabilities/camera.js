@@ -4,14 +4,13 @@ App.CameraCapabilityView = Em.View.extend({
     invalidation: null,
 
     init: function() {
+        this.cameraManager = new nitrogen.CameraManager();
         var self = this;
-        App.session.onMessage(function(nitrogenMessage) {
-            if (!self.cameraManager) return;
-            console.log("cameraManager: processing realtime message: " + JSON.stringify(message));
 
-            var message = App.Message.create(nitrogenMessage);
-            self.cameraManager.process(message);
+        var principalId = this.get('principal').id;
 
+        this.cameraManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function() {
+            console.log('********************* invalidation camera command display.');
             self.set('invalidation', new Date());
         });
     },
@@ -28,17 +27,5 @@ App.CameraCapabilityView = Em.View.extend({
         console.log('commands: ' + ret.length);
 
         return ret;
-    }.property('invalidation'),
-
-    onMessages: function() {
-        this.cameraManager = new nitrogen.CameraManager();
-        var self = this;
-
-        var principalId = this.get('principal').id;
-
-        this.cameraManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function() {
-            self.set('invalidation', new Date());
-        });
-
-    }.observes('controller.messages')
+    }.property('invalidation')
 });
