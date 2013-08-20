@@ -29,6 +29,8 @@ App.Principal.reopenClass({
     },
 
     findById: function(id) {
+        if (!id) return;
+
         return App.findByIdWithAdapter(id, nitrogen.Principal, App.Principal);
     }
 
