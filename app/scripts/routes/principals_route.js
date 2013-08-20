@@ -75,7 +75,7 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
     },
 
     query: function() {
-        return App.Principal.findById(this.get('params.principal_id'));
+        return App.Principal.findById(this.get('params.id'));
     },
 
     queryMessages: function(principal) {
