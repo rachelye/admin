@@ -84,7 +84,7 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
         this.controller.set('router', this);
 
         var self = this;
-        var messages = App.Message.find({$or: [ { to: principal.id }, { from: principal.id } ]}, {})
+        var messages = App.Message.find({$or: [ { to: principal.id }, { from: principal.id } ]}, { limit: 25 })
             .then(function(messages) {
                 self.controller.set('messages', messages);
             }

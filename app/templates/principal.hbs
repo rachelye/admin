@@ -25,7 +25,7 @@
     </div>
 
     {{#if content.hasCamera}}
-        {{view App.CameraCapabilityView}}
+        {{view App.CameraCapabilityView principalBinding='content'}}
     {{/if}}
 
     {{view App.MessagesTableView contentBinding='controller.tailMessages'}}

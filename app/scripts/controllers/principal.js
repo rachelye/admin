@@ -26,6 +26,6 @@ App.PrincipalController = Ember.Controller.extend({
         if (typeof this.get('messages') != 'object')
             return messages;
         else
-            return messages.reverse().slice(0, this.get('maxTailMessages'));
+            return messages.slice(0, this.get('maxTailMessages'));
     }.property('messages')
 });

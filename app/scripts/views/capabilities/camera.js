@@ -34,7 +34,9 @@ App.CameraCapabilityView = Em.View.extend({
         this.cameraManager = new nitrogen.CameraManager();
         var self = this;
 
-        this.cameraManager.start(App.session, this.get('controller.messages'), function() {
+        var principalId = this.get('principal').id;
+
+        this.cameraManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function() {
             self.set('invalidation', new Date());
         });
 
