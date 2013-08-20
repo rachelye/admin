@@ -46,6 +46,7 @@ App.Message.reopen({
     },
 
     timestampString: function() {
+        console.log('building timestamp string.');
         var date = new Date(Date.parse(this.get('ts')));
         return date.toLocaleString();
     }.property('ts')

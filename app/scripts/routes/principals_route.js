@@ -29,34 +29,33 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     },
 
     setupController: function(controller, model) {
-
         this._super(controller, model);
 
         this.controller.set('router', this);
 
-        var self = this;
-        this.subscription = App.session.onPrincipal(function(nitrogenMessage) {
+//        var self = this;
+//        this.subscription = App.session.onPrincipal(function(nitrogenMessage) {
             // if we already are locked and loaded to update, just return.
-            if (self.get('timeoutSet')) {
-                console.log('principals timeout already set, returning.')
-                return;
-            }
+//            if (self.get('timeoutSet')) {
+//                console.log('principals timeout already set, returning.')
+//                return;
+//            }
 
             // only update at most once every N seconds.
-            var updateTimeout = Math.max(0, self.get('nextUpdate').getTime() - new Date().getTime());
-            console.log('updating principals in ' + updateTimeout);
+//            var updateTimeout = Math.max(0, self.get('nextUpdate').getTime() - new Date().getTime());
+//            console.log('updating principals in ' + updateTimeout);
 
-            setTimeout(function() {
-                self.query().then(function(principals) {
-                    self.controller.set('content', principals);
-                });
+//            setTimeout(function() {
+//                self.query().then(function(principals) {
+//                    self.controller.set('content', principals);
+//                });
 
-                self.set('nextUpdate', new Date(new Date().getTime() + self.get('maxUpdateRate')));
-                self.set('timeoutSet', false);
-            }, updateTimeout);
+//                self.set('nextUpdate', new Date(new Date().getTime() + self.get('maxUpdateRate')));
+//                self.set('timeoutSet', false);
+//            }, updateTimeout);
 
-            self.set('timeoutSet', true);
-        });
+//            self.set('timeoutSet', true);
+//        });
     },
 
     events: {
@@ -91,12 +90,12 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
             }
         );
 
-        this.subscription = App.session.onPrincipal(function(nitrogenPrincipal) {
-           if (nitrogenPrincipal.id === self.get('controller.content.id')) {
-               var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
-               self.controller.set('content', updatedPrincipal);
-           }
-        });
+//        this.subscription = App.session.onPrincipal(function(nitrogenPrincipal) {
+//           if (nitrogenPrincipal.id === self.get('controller.content.id')) {
+//               var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
+//               self.controller.set('content', updatedPrincipal);
+//           }
+//        });
     },
 
     events: {

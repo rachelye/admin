@@ -3,7 +3,8 @@ App.PrincipalController = Ember.Controller.extend({
     maxTailMessages: 25,
 
     sendCommand: function(cmd) {
-        var snapshot = new nitrogen.Message({
+        var command = new nitrogen.Message({
+            expires: 'never',
             to: this.get('content.id'),
             type: 'cameraCommand',
             body: {
@@ -11,8 +12,8 @@ App.PrincipalController = Ember.Controller.extend({
             }
         });
 
-        snapshot.send(App.session, function(err, messages) {
-            if (err) console.log('snapshot command failed: ' + err);
+        command.send(App.session, function(err, messages) {
+            if (err) console.log('sending command failed: ' + err);
         });
     },
 

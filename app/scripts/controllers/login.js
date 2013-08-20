@@ -37,8 +37,7 @@ App.LoginController = Ember.Controller.extend({
             nickname: 'current'
         });
 
-        var self = this;
-        App.service.create(user, function(err, session, user) { self.sessionHandler(err, session, user); });
+        App.service.create(user, App.sessionHandler);
     },
 
     forgotPassword: function() {
@@ -57,36 +56,7 @@ App.LoginController = Ember.Controller.extend({
             nickname: 'current' 
         });
 
-        var self = this;
-        App.service.authenticate(user, function(err, session, user) { self.sessionHandler(err, session, user); });
-    },
-
-    resetSession: function(err) {
-        if (App.get('session')) {
-            App.get('session').close();
-        }
-
-        App.set('flash', err);
-        App.set('session', null);
-        App.set('user', null);
-
-        this.transitionToRoute('login');
-    },
-
-    sessionHandler: function(err, session, user) {
-        if (err || !session || !user) return this.resetSession(err);
-
-        App.set('flash', null);
-
-
-        // save away the session for use in the ember application.
-        App.set('session', session);
-        App.set('user', App.Principal.create(user));
-
-        var self = this;
-        session.onAuthFailure(function() { self.resetSession(); });
-
-        this.transitionToRoute('principals');
+        App.service.authenticate(user, App.sessionHandler);
     }
 
 });

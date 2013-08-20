@@ -26,3 +26,42 @@ App.config = {
 
 App.config.store = new nitrogen.HTML5Store(App.config);
 App.service = new nitrogen.Service(App.config);
+
+App.deferReadiness();
+
+App.resetSession = function(err) {
+    if (App.get('session')) {
+        App.get('session').close();
+    }
+
+    App.set('flash', err);
+    App.set('session', null);
+    App.set('user', null);
+
+    App.set('attemptedNavigation', window.location.hash);
+    window.location = "/#/login";
+};
+
+App.sessionHandler = function(err, session, user) {
+    App.advanceReadiness();
+
+    if (err || !session || !user) return App.resetSession(err);
+
+    App.set('flash', null);
+
+    // save away the session for use in the ember application.
+    App.set('session', session);
+    App.set('user', App.Principal.create(user));
+
+    if (App.get('attemptedNavigation')) {
+        console.log('successful auth, reloading attempedNavigation url: ' + App.get('attemptedNavigation'));
+        window.location = App.get('attemptedNavigation');
+    }
+
+    session.onAuthFailure(App.resetSession);
+};
+
+var user = new nitrogen.User({ nickname: "current" });
+
+App.set('attemptedNavigation', window.location.hash);
+App.service.resume(user, App.sessionHandler);

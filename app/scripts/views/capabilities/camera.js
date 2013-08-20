@@ -12,7 +12,6 @@ App.CameraCapabilityView = Em.View.extend({
             var message = App.Message.create(nitrogenMessage);
             self.cameraManager.process(message);
 
-            console.log('init invalidating!!!!');
             self.set('invalidation', new Date());
         });
     },
