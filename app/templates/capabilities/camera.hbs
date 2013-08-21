@@ -11,6 +11,7 @@
         <th>EXECUTE AT</th>
         <th>FROM</th>
         <th>COMMAND</th>
+        <th>EXPIRES</th>
     </tr>
 
     {{#each command in view.commands}}
@@ -18,6 +19,7 @@
         <td>{{command.ts}}</td>
         <td>{{command.from}}</td>
         <td>{{command.body.command}}</td>
+        <td>{{command.expires}}</td>
     </tr>
     {{/each}}
 </table>

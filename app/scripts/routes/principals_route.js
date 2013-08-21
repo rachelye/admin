@@ -87,6 +87,10 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
         );
     },
 
+    serialize: function(model, params) {
+        return { id: model.get('id') };
+    },
+
     setupController: function(controller, principal) {
         this._super(controller, principal);
 

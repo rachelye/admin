@@ -23,7 +23,6 @@ App.Principal.reopen({
 });
 
 App.Principal.reopenClass({
-
     find: function(query, options) {
         return App.findWithAdapter(query, options, nitrogen.Principal, App.Principal);
     },
@@ -33,5 +32,4 @@ App.Principal.reopenClass({
 
         return App.findByIdWithAdapter(id, nitrogen.Principal, App.Principal);
     }
-
 });
