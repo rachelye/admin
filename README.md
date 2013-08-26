@@ -4,13 +4,24 @@ Nitrogen admin application for managing devices in Nitrogen and, for administrat
 
 ## Getting Started
 
-The admin app is a statically served single page Ember.js application that works against the Nitrogen service's REST API.
+The admin app is a statically served single page Ember.js application that works against the Nitrogen service API endpoint.
+
+There is a hosted version of the admin tool for the free hosted version of Nitrogen at [https://admin.nitrogen.io](https://admin.nitrogen.io).
+
+You can also run admin locally:
 
 1. Install node.js and git if you haven't already.
 2. We use yeoman for our build system.  Install this via `npm install -g yo grunt-cli bower`
 3. Yeoman uses ruby (see http://www.ruby-lang.org/en/downloads/ to install) and compass (`gem install compass` to install) for building the twitter bootstrap CSS.
 3. Install the node components with a `npm install` and the bower components with a `bower install`. 
 4. Start the local server with `grunt server`.   This will host the application on your local machine, open a browser window to it, and refresh on changes.
+
+To build admin for deployment:
+
+1. Create a git repo at the same directory level as admin called admin-deploy: `mkdir admin-deploy && cd admin-deploy && git init`
+2. In the admin project, navigate to the scripts directory: `cd scripts`
+3. Build and minify the admin application: `./prep-admin-deployment`
+4. This will populate admin-deploy with a built version of the application.  Commit this to the git repo and then push to your static web server.
 
 ## How to contribute
 
@@ -24,4 +35,4 @@ Nitrogen has three other projects that you should have a look at as well.
 
 1. [service](https://github.com/nitrogenjs/service): The core Nitrogen service responsible for managing users, devices, and messaging between them.
 1. [client](https://github.com/nitrogenjs/client): The client library for building Nitrogen devices and applications.
-3. [chroma](https://github.com/nitrogenjs/chroma): A sample device application that connects a camera to the Nitrogen service.
+3. [camera](https://github.com/nitrogenjs/chroma): A sample device application that connects a camera to the Nitrogen service.
