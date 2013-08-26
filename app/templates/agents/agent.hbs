@@ -1,6 +1,12 @@
 <tr>
     <td>{{agent.id}}</td>
-    <td>{{agent.name}}</td>
+    <td>
+        {{#if view.editing}}
+            {{view Ember.TextField valueBinding="agent.name" classNames="span2"}}
+        {{else}}
+            {{agent.name}}
+        {{/if}}
+    </td>
     <td>{{agent.execute_as}}</td>
     <td>{{view Ember.Checkbox checkedBinding="agent.enabled" disabledBinding="view.notEditing"}}</td>
 
