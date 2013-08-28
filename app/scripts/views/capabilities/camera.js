@@ -10,7 +10,6 @@ App.CameraCapabilityView = Em.View.extend({
         var principalId = this.get('principal').id;
 
         this.cameraManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function() {
-            console.log('********************* invalidation camera command display.');
             self.set('invalidation', new Date());
         });
     },

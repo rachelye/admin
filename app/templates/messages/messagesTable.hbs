@@ -1,45 +1,49 @@
-<table class="table">
-    <tr>
-        <td colspan='2'>
+<div class="container">
+    <div class="row">
+        <div class="span3">
             <h4>MESSAGES</h4>
-        </td>
-        <td colspan='2'></td>
-        <td>{{#if controller.hasPreviousPage}}
-                <a {{bindAttr href="previousPageUrl"}} class="btn">Previous</a>
+        </div>
+        <div class="span7"></div>
+        <div class="span1">
+            {{#if controller.hasPreviousPage}}
+                <a {{bindAttr href="previousPageUrl"}} class="btn">
+                    <strong>PREVIOUS</strong>
+                </a>
             {{/if}}
+        </div>
+        <div class="span1">
             {{#if controller.fullPage}}
-                <a {{bindAttr href="nextPageUrl"}} class="btn">Next</a>
+                <a {{bindAttr href="nextPageUrl"}} class="btn">
+                    <strong>NEXT</strong>
+                </a>
             {{/if}}
-        </td>
-    </tr>
-    <tr>
-        <th>TIMESTAMP</th>
-        <th>FROM</th>
-        <th>TO</th>
-        <th>TYPE</th>
-        <th>BODY</th>
-    </tr>
+        </div>
+    </div>
 
-    {{#each message in view.content}}
+    <div class="row">
+        <div class="span2"><strong>TIMESTAMP</strong></div>
+        <div class="span2"><strong>FROM</strong></div>
+        <div class="span2"><strong>TO</strong></div>
+        <div class="span1"><strong>TYPE</strong></div>
+        <div class="span5"><strong>BODY</strong></div>
+    </div>
 
-    <tr>
-        <td>{{message.timestampString}}</td>
-        <td>{{message.fromName}}</td>
-        <td>{{message.toName}}</td>
-        <td>{{message.type}}</td>
-        <td>
+{{#each message in view.content}}
+
+    <div class="row">
+        <div class="span2">{{message.timestampString}}</div>
+        <div class="span2">{{message.fromName}}</div>
+        <div class="span2">{{message.toName}}</div>
+        <div class="span1">{{message.type}}</div>
+        <div class="span5">
             {{#if message.isImage}}
                 <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
             {{else}}
-                {{#if message.isIPMatch}}
-                    {{view App.IpMatchView}}
-                {{else}}
-                    {{message.bodyJSON}}
-                {{/if}}
+                {{message.bodyJSON}}
             {{/if}}
-        </td>
-    </tr>
+        </div>
+    </div>
 
-    {{/each}}
+{{/each}}
 
-</table>
+</div>

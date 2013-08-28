@@ -1,25 +1,27 @@
-<table class='table'>
-    <tr>
-        <td><h4>CAMERA</h4></td>
-        <td></td>
-        <td>
+<div class='container'>
+    <div class='row'>
+        <div class='span3'><h4>CAMERA</h4></div>
+        <div class='span3'></div>
+        <div class='span3'></div>
+        <div class='span3'>
             <button type="button" {{action sendSnapshot}} class="btn btn-primary">Snapshot</button>
             <button type="button" {{action sendMotion}} class="btn btn-primary">Motion</button>
-        </td>
-    </tr>
-    <tr>
-        <th>EXECUTE AT</th>
-        <th>FROM</th>
-        <th>COMMAND</th>
-        <th>EXPIRES</th>
-    </tr>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='span4'><strong>EXECUTE AT</strong></div>
+        <div class='span3'><strong>FROM</strong></div>
+        <div class='span1'><strong>COMMAND</strong></div>
+        <div class='span4'><strong>EXPIRES</strong></div>
+    </div>
 
     {{#each command in view.commands}}
-    <tr>
-        <td>{{command.ts}}</td>
-        <td>{{command.from}}</td>
-        <td>{{command.body.command}}</td>
-        <td>{{command.expires}}</td>
-    </tr>
+        <div class='row'>
+            <div class='span4'>{{command.ts}}</div>
+            <div class='span3'>{{command.from}}</div>
+            <div class='span1'>{{command.body.command}}</div>
+            <div class='span4'>{{command.expires}}</div>
+        </div>
     {{/each}}
-</table>
+</div>
