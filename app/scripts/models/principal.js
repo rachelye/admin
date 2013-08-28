@@ -5,7 +5,7 @@ App.Principal.reopen({
     },
 
     hasCamera: function() {
-        return this.hasCapability('camera');
+        return this.hasCapability('cameraCommand');
     }.property('capabilities'),
 
     isDevice: function() {
