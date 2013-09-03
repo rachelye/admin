@@ -24,8 +24,8 @@
         <div class="span2"><strong>TIMESTAMP</strong></div>
         <div class="span2"><strong>FROM</strong></div>
         <div class="span2"><strong>TO</strong></div>
-        <div class="span1"><strong>TYPE</strong></div>
-        <div class="span5"><strong>BODY</strong></div>
+        <div class="span2"><strong>TYPE</strong></div>
+        <div class="span4"><strong>BODY</strong></div>
     </div>
 
 {{#each message in view.content}}
@@ -34,8 +34,8 @@
         <div class="span2">{{message.timestampString}}</div>
         <div class="span2">{{message.fromName}}</div>
         <div class="span2">{{message.toName}}</div>
-        <div class="span1">{{message.type}}</div>
-        <div class="span5">
+        <div class="span2">{{message.type}}</div>
+        <div class="span4">
             {{#if message.isImage}}
                 <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
             {{else}}
