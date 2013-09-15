@@ -34,7 +34,7 @@ App.resetSession = function(err) {
         App.get('session').close();
     }
 
-    App.set('flash', err);
+    App.set('flash', err.message || '');
     App.set('session', null);
     App.set('user', null);
 
