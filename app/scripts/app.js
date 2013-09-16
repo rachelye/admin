@@ -34,7 +34,7 @@ App.resetSession = function(err) {
         App.get('session').close();
     }
 
-    App.set('flash', err.message || '');
+    App.set('flash', err.message || null);
     App.set('session', null);
     App.set('user', null);
 
@@ -61,7 +61,7 @@ App.sessionHandler = function(err, session, user) {
     session.onAuthFailure(App.resetSession);
 };
 
-var user = new nitrogen.User({ nickname: "current" });
+var user = new nitrogen.User({ nickname: 'user' });
 
 App.set('attemptedNavigation', window.location.hash);
 App.service.resume(user, App.sessionHandler);
