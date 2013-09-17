@@ -4,4 +4,4 @@ App.PrincipalsController = Ember.ArrayController.extend({
             window.location.reload();
         });
 	}
-})
+});
