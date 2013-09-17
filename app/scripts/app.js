@@ -19,9 +19,9 @@ require('scripts/views/principals/*');
 App.config = {
 //    Nitrogen uses the following by default to connect to the service.   Modify these as necessary to point elsewhere.
 // 
-//    host: 'api.nitrogen.io',
-//    http_port: 443,
-//    protocol: 'https'
+//    host: 'localhost',
+//    http_port: 3030,
+//    protocol: 'http'
 };
 
 App.config.store = new nitrogen.HTML5Store(App.config);
@@ -34,7 +34,11 @@ App.resetSession = function(err) {
         App.get('session').close();
     }
 
-    App.set('flash', err.message || null);
+    var flash = null;
+    if (err && err.message)
+        flash = err.message;
+
+    App.set('flash', flash);
     App.set('session', null);
     App.set('user', null);
 
@@ -61,7 +65,7 @@ App.sessionHandler = function(err, session, user) {
     session.onAuthFailure(App.resetSession);
 };
 
-var user = new nitrogen.User({ nickname: 'user' });
+var user = new nitrogen.User({ nickname: 'current' });
 
 App.set('attemptedNavigation', window.location.hash);
 App.service.resume(user, App.sessionHandler);
