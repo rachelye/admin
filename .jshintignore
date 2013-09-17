@@ -1,0 +1,8 @@
+app/bower_components
+dist
+node_modules
+test/lib
+test/spec
+Gruntfile.js
+LICENSE
+README.md

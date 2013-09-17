@@ -27,7 +27,7 @@ App.MessagesRoute = App.AuthenticatedRoute.extend({
             skip: params.skip,
             sort: params.sort,
             direction: params.direction
-        }
+        };
     },
 
     setupController: function(controller, model) {
