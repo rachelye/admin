@@ -21,7 +21,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 
         if (!App.session) return;
 
-        return App.Principal.find({ type: 'device' }, {
+        return App.Principal.find({ }, {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('pageLimit')),
             sort: sort
@@ -72,6 +72,14 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
     model: function(params) {
         this.set('params', params);
         return this.query();
+    },
+
+    actions : {
+        delete: function(principal) {
+            principal.remove(App.session, function(err) {
+                this.transitionTo('principals');
+            });
+        }
     },
 
     query: function() {

@@ -1,26 +1,18 @@
-<tr>
-    <td>
+<div class='row'>
+    <div class='span2'>
         {{#linkTo "principal" principal}}
             {{principal.id}}
         {{/linkTo}}
-    </td>
-    <td>
+    </div>
+    <div class='span3'>
     {{#if view.editing}}
         {{view Ember.TextField valueBinding="principal.name" classNames="span2"}}
     {{else}}
         {{principal.name}}
     {{/if}}
-    </td>
+    </div>
 
-    <td>{{principal.capabilities}}</td>
-    <td {{bindAttr class="view.lastConnectionClass"}}>
-        {{principal.lastConnectionString}} @ {{principal.last_ip}}
-    </td>
-
-    <td>
-        {{#if principal.isDevice}}
-        <button {{action delete principal}} class="btn btn-primary">Delete</button>
-        {{/if}}
-    </td>
-
-</tr>
+    <div class='span2'>{{principal.type}}</div>
+    <div class='span2' {{bindAttr class="view.lastConnectionClass"}}>{{principal.lastConnectionString}}</div>
+    <div class='span3'>{{principal.last_ip}}</div>
+</div>

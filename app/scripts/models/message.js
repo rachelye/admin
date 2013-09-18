@@ -18,19 +18,32 @@ App.Message.reopen({
     }.property('created_at'),
 
     fromPrincipal: function() {
-        return App.Principal.findById(this.get('from'));
-    }.property('from', 'App.principalFetched'),
+        if (!this.get('from')) return;
+        var self = this;
+
+        App.Principal.findById(this.get('from')).then(function(value) {
+             self.set('fromPrincipal', value);
+        });
+    }.property('from'),
 
     fromName: function() {
-        return this.get('fromPrincipal.name') || this.get('from');
+        console.log('recomputing fromName.');
+        return this.get('fromPrincipal.name');
     }.property('from', 'fromPrincipal'),
 
     toPrincipal: function() {
-        return App.Principal.findById(this.get('to'));
-    }.property('to', 'App.principalFetched'),
+        if (!this.get('to')) return;
+
+        var self = this;
+
+        App.Principal.findById(this.get('to')).then(function(value) {
+            self.set('toPrincipal', value);
+        });
+    }.property('to'),
 
     toName: function() {
-        return this.get('toPrincipal.name') || this.get('to');
+        console.log('recomputing toName.');
+        return this.get('toPrincipal.name');
     }.property('to', 'toPrincipal'),
 
     isCameraCommand: function() { return this.is('cameraCommand'); }.property('type'),
@@ -46,7 +59,6 @@ App.Message.reopen({
     },
 
     timestampString: function() {
-        console.log('building timestamp string.');
         var date = new Date(Date.parse(this.get('ts')));
         return date.toLocaleString();
     }.property('ts')
