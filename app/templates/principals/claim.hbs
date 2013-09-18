@@ -1,7 +1,8 @@
-<div class='row'>
+<div class='row' style='margin-top:20px'>
     <div class='span12'>
-		Claim device: 
-		{{view Ember.TextField valueBinding="view.claimCode" classNames='span2' placeholder='Claim code'}} 
-		<a class="btn btn-primary" {{action claim target="view"}}>Claim</a>    
-	</div>
+        <div class="input-append">
+            {{view Ember.TextField valueBinding="view.claimCode" classNames='span2' placeholder='Claim code for device'}}
+            <button class="btn" {{action claim target="view"}}>Claim</button>
+        </div>
+    </div>
 </div>
