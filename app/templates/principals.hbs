@@ -1,13 +1,13 @@
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>CAPABILITIES</th>
-        <th>LAST CONTACT</th>
-        <th></th>
-    </tr>
+<div class='container'>
+    <div class='row'>
+        <div class='span2'><b>ID</b></div>
+        <div class='span3'><b>NAME</b></div>
+        <div class='span2'><b>TYPE</b></div>
+        <div class='span2'><b>LAST CONTACT</b></div>
+        <div class='span3'><b>LAST IP</b></div>
+    </div>
 
     {{#each principal in controller}}
         {{view App.PrincipalRowView principalBinding='principal'}}
     {{/each}}
-</table>
+</div>
