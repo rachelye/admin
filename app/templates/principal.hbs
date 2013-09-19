@@ -1,41 +1,43 @@
 <div class='container'>
     <div class='row'>
-        <div class='span2'><b>ID</b></div>
+        <div class='span11'>
+            <h4>PRINCIPAL: {{content.nameOrId}}</h4>
+        </div>
+        <div class='span1'>
+            {{#if content.isDevice}}
+                <button {{action delete content}} class="btn">Delete</button>
+            {{/if}}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='span3'><b>ID</b></div>
         <div class='span3'><b>NAME</b></div>
         <div class='span1'><b>TYPE</b></div>
-        <div class='span2'><b>LAST CONTACT</b></div>
+        <div class='span3'><b>LAST CONTACT</b></div>
         <div class='span2'><b>LAST IP</b></div>
     </div>
 
     <div class='row'>
-         <div class='span2'>{{content.id}}</div>
+         <div class='span3'>{{content.id}}</div>
          <div class='span3'>
              <div class="input-append">
                  {{view Ember.TextField valueBinding="content.name" classNames="span2" disabledBinding='view.viewing'}}
                  {{#if view.viewing}}
-                     <button {{action edit target="view"}} class="btn btn-primary">Edit</button>
+                     <button {{action edit target="view"}} class="btn">Edit</button>
                  {{else}}
                      <button {{action save content target="view"}} class="btn btn-primary">Save</button>
                  {{/if}}
              </div>
          </div>
          <div class='span1'>{{content.type}}</div>
-         <div class='span2'>{{content.lastConnectionString}}</div>
+         <div class='span3'>{{content.lastConnectionString}}</div>
          <div class='span2'>{{content.last_ip}}</div>
 
-        <div class='span1'>
-            {{#if content.isDevice}}
-                <button {{action delete content}} class="btn btn-primary">Delete</button>
-            {{/if}}
-        </div>
     </div>
 
     {{#if content.hasCamera}}
-        <hr/>
-        {{view App.CameraCapabilityView principalBinding='content'}}
+            {{view App.CameraCapabilityView principalBinding='content'}}
     {{/if}}
-
-    <hr/>
 
     {{view App.MessagesTableView contentBinding='controller.tailMessages'}}
 

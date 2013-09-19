@@ -12,6 +12,10 @@ App.Principal.reopen({
         return this.is('device');
     }.property('type'),
 
+    nameOrId: function() {
+        return this.get('name') || this.get('id');
+    }.property('id','name'),
+
     lastConnectionString: function() {
         var date = new Date(Date.parse(this.get('last_connection')));
         return date.toLocaleString();

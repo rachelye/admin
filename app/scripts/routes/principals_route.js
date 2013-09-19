@@ -76,8 +76,9 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
 
     actions : {
         delete: function(principal) {
+            var self = this;
             principal.remove(App.session, function(err) {
-                this.transitionTo('principals');
+                self.transitionTo('principals');
             });
         }
     },

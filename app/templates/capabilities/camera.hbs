@@ -1,9 +1,14 @@
+<hr/>
 <div class='container'>
     <div class='row'>
         <div class='span8'><h4>CAMERA</h4></div>
         <div class='span4'>
-            <button type="button" {{action sendSnapshot}} class="btn btn-primary">Snapshot</button>
-            <button type="button" {{action sendMotion}} class="btn btn-primary">Motion</button>
+            <button type="button" {{action sendSnapshot target="view"}} class="btn btn-primary">
+                Snapshot
+            </button>
+            <button type="button" {{action sendMotion target="view"}} class="btn btn-primary">
+                Motion
+            </button>
         </div>
     </div>
 
@@ -23,3 +28,4 @@
         </div>
     {{/each}}
 </div>
+<hr/>

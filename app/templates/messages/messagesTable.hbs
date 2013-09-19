@@ -3,15 +3,13 @@
         <div class="span3">
             <h4>MESSAGES</h4>
         </div>
-        <div class="span7"></div>
-        <div class="span1">
+        <div class="span6"></div>
+        <div class="span3">
             {{#if controller.hasPreviousPage}}
                 <a {{bindAttr href="previousPageUrl"}} class="btn">
                     <strong>PREVIOUS</strong>
                 </a>
             {{/if}}
-        </div>
-        <div class="span1">
             {{#if controller.fullPage}}
                 <a {{bindAttr href="nextPageUrl"}} class="btn">
                     <strong>NEXT</strong>
@@ -20,7 +18,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
         <div class="span2"><strong>TIMESTAMP</strong></div>
         <div class="span2"><strong>FROM</strong></div>
         <div class="span2"><strong>TO</strong></div>
