@@ -1,5 +1,4 @@
 App.PrincipalController = Ember.Controller.extend({
-
     maxTailMessages: 25,
 
     sendCommand: function(cmd) {
@@ -17,8 +16,10 @@ App.PrincipalController = Ember.Controller.extend({
         });
     },
 
-    sendSnapshot: function() { this.sendCommand('snapshot'); },
-    sendMotion: function() { this.sendCommand('motion'); },
+    actions: {
+        sendSnapshot: function() { this.sendCommand('snapshot'); },
+        sendMotion: function() { this.sendCommand('motion'); }
+    },
 
     tailMessages: function() {
         var messages = this.get('messages');

@@ -27,7 +27,6 @@ App.Message.reopen({
     }.property('from'),
 
     fromName: function() {
-        console.log('recomputing fromName.');
         return this.get('fromPrincipal.name');
     }.property('from', 'fromPrincipal'),
 
@@ -42,7 +41,6 @@ App.Message.reopen({
     }.property('to'),
 
     toName: function() {
-        console.log('recomputing toName.');
         return this.get('toPrincipal.name');
     }.property('to', 'toPrincipal'),
 

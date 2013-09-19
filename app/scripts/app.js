@@ -24,6 +24,12 @@ App.config = {
 //    protocol: 'http'
 };
 
+request.log = {
+    debug: function() {},
+    info: function() {},
+    error: function() {}
+};
+
 App.config.store = new nitrogen.HTML5Store(App.config);
 App.service = new nitrogen.Service(App.config);
 
