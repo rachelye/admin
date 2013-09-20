@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+<header class="navbar navbar-default navbar-fixed-top bs-docs-nav" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -13,8 +13,8 @@
       <ul class="nav navbar-nav">
         {{#if App.session}}
         <!-- <li><a href="#/agents">Agents</a></li> -->
-        <li><a href="#/principals">Principals</a></li>
-        <li><a href="#/messages/skip/0/sort/ts/direction/-1">Messages</a></li>
+        <li id='principalsTab'><a href="#/principals">Principals</a></li>
+        <li id='messagesTab'><a href="#/messages/skip/0/sort/ts/direction/-1">Messages</a></li>
         {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -30,17 +30,17 @@
 </header>
 
 {{#if App.flash}}
-<div class='container'>
-    <div class='row'>
-        <div class='col-md-2'></div>
-        <div class='col-md-8'>
-            <div class="alert alert-danger">
-                <center>{{App.flash}}</center>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-2'></div>
+            <div class='col-md-8'>
+                <div class="alert alert-danger">
+                    <center>{{App.flash}}</center>
+                </div>
             </div>
+            <div class='col-md-2'></div>
         </div>
-        <div class='col-md-2'></div>
     </div>
-</div>
 {{/if}}
 
 {{outlet}}

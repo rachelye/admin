@@ -1,6 +1,14 @@
 App.MessagesRoute = App.AuthenticatedRoute.extend({
     messagePageLimit: 50,
 
+    activate: function() {
+        setTimeout(function() { $('#messagesTab').addClass('active'); }, 0);
+    },
+
+    deactivate: function() {
+        setTimeout(function() { $('#messagesTab').removeClass('active'); }, 0);
+    },
+
     model: function(params) {
         console.log('skip: ' + params.skip);
         console.log('direction: ' + params.direction);
@@ -43,7 +51,7 @@ App.MessagesRoute = App.AuthenticatedRoute.extend({
         });
     },
 
-    actions: {
+    events: {
         willTransition: function(transition) {
             if (this.subscription) {
                 App.session.disconnectSubscription(this.subscription);

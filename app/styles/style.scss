@@ -5,17 +5,21 @@
   width: 300px;
 }
 
-.navbar-inverse {
-  background-color: #407bba !important;
-  color: #FFFFFF !important;
+.navbar {
+  background-color: #407bba;
 }
 
 .navbar .nav > li > a {
-  color: #EEE   
+  color: #EEE;   
 }
 
 .navbar > .container .navbar-brand {
   color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background-color: #508bca;
+  color: #FFF;   
 }
 
 /* Fix up bootstrap navbar underflow issues */

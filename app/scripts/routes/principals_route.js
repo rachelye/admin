@@ -4,6 +4,14 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     timeoutSet: false,
     nextUpdate: new Date(),
 
+    activate: function() {
+        setTimeout(function() { $('#principalsTab').addClass('active'); }, 0);
+    },
+
+    deactivate: function() {
+        setTimeout(function() { $('#principalsTab').removeClass('active'); }, 0);
+    },
+
     model: function(params) {
         params = {
             sort: 'last_connection',
@@ -69,10 +77,6 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 });
 
 App.PrincipalRoute = App.AuthenticatedRoute.extend({
-    model: function(params) {
-        this.set('params', params);
-        return this.query();
-    },
 
     actions : {
         delete: function(principal) {
@@ -81,6 +85,19 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
                 self.transitionTo('principals');
             });
         }
+    },
+
+    activate: function() {
+        setTimeout(function() { $('#principalsTab').addClass('active'); }, 0);
+    },
+
+    deactivate: function() {
+        setTimeout(function() { $('#principalsTab').removeClass('active'); }, 0);
+    },
+
+    model: function(params) {
+        this.set('params', params);
+        return this.query();
     },
 
     query: function() {
