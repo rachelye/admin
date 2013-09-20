@@ -9,9 +9,9 @@ App.LoginController = Ember.Controller.extend({
     modeTitle: function() {
         var mode = this.get('mode');
 
-        if (mode === 'create') return "Create Account";
-        if (mode === 'signin') return "Sign In";
-        if (mode === 'forgot') return "Password Reset";
+        if (mode === 'create') return "CREATE ACCOUNT";
+        if (mode === 'signin') return "SIGN IN";
+        if (mode === 'forgot') return "RESET PASSWORD";
     }.property('mode'),
 
     switchToCreate:         function() { this.set('mode', 'create'); },

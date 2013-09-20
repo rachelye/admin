@@ -1,64 +1,39 @@
-<div class="container">
+<div class="container" style='margin-top: 25px;'>
 
-    <form class="form-horizontal" {{action submit on='submit'}}>
-        <div class="control-group">
-            <div class="controls">
-                <legend style="border:0">{{modeTitle}}</legend>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="email">Email</label>
-            <div class="controls">
-                {{input value=email type='email' placeholder='Email'}}
-            </div>
-        </div>
-
-    {{#if notForgotPasswordMode}}
-        <div class="control-group">
-            <label class="control-label" for="password">Password</label>
-            <div class="controls">
-                {{input value=password type='password' placeholder='Password'}}
-            </div>
-        </div>
-    {{/if}}
-
-    {{#if createMode}}
-        <div class="control-group">
-            <label class="control-label" for="email">Full Name</label>
-            <div class="controls">
-                {{input value=name type='text' placeholder='Full Name'}}
-            </div>
-        </div>
-    {{/if}}
-
-        <div class="control-group">
-            <div class="controls">
-
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h4>{{modeTitle}}</h4>
+        <form role="form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            {{input value=email type='email' classNames='form-control col-md-2' id='email'}}
+          </div>
+          {{#if notForgotPasswordMode}}
+              <div class="form-group">
+                <label for="password">Password</label>
+                {{input value=password type='password' classNames='form-control' id='password'}}
+              </div>
+          {{/if}}
+          {{#if createMode}}
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            {{input value=name type='text' id='name' classNames='form-control'}}
+          </div>
+          {{/if}}
     {{#if signInMode}}
-                {{input class='btn btn-primary' type='submit' value='Sign in'}}
+                <button {{action submit}} class='btn btn-primary'>Sign in</button>
     {{else}}
-                <a {{action switchToSignIn}} class='btn'>Sign in</a>
+                <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
     {{/if}}
 
     {{#if createMode}}
-                {{input class='btn btn-primary' type='submit' value='Create account'}}
+                <button {{action submit}} class='btn btn-primary'>Create account</button>
     {{else}}
-                <a {{action switchToCreate}} class='btn'>Create account</a>
+                <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
     {{/if}}
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
-    {{#if forgotPasswordMode}}
-                {{input class='btn btn-primary' type='submit' value='Reset password'}}
-    {{else}}
-                <a {{action switchToForgotPassword}}>Forgot password?</a>
-    {{/if}}
-
-            </div>
-        </div>
-    </form>
-
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 </div>

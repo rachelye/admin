@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
-        <div class="span3">
+        <div class="col-md-3">
             <h4>MESSAGES</h4>
         </div>
-        <div class="span6"></div>
-        <div class="span3">
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
             {{#if controller.hasPreviousPage}}
-                <a {{bindAttr href="previousPageUrl"}} class="btn">
+                <a {{bindAttr href="previousPageUrl"}} class="btn btn-default">
                     <strong>PREVIOUS</strong>
                 </a>
             {{/if}}
             {{#if controller.fullPage}}
-                <a {{bindAttr href="nextPageUrl"}} class="btn">
+                <a {{bindAttr href="nextPageUrl"}} class="btn btn-default">
                     <strong>NEXT</strong>
                 </a>
             {{/if}}
@@ -19,21 +19,21 @@
     </div>
 
     <div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
-        <div class="span2"><strong>TIMESTAMP</strong></div>
-        <div class="span2"><strong>FROM</strong></div>
-        <div class="span2"><strong>TO</strong></div>
-        <div class="span2"><strong>TYPE</strong></div>
-        <div class="span4"><strong>BODY</strong></div>
+        <div class="col-md-2"><strong>TIMESTAMP</strong></div>
+        <div class="col-md-2"><strong>FROM</strong></div>
+        <div class="col-md-2"><strong>TO</strong></div>
+        <div class="col-md-2"><strong>TYPE</strong></div>
+        <div class="col-md-4"><strong>BODY</strong></div>
     </div>
 
 {{#each message in view.content}}
 
     <div class="row">
-        <div class="span2">{{message.timestampString}}</div>
-        <div class="span2">{{message.fromName}}</div>
-        <div class="span2">{{message.toName}}</div>
-        <div class="span2">{{message.type}}</div>
-        <div class="span4">
+        <div class="col-md-2">{{message.timestampString}}</div>
+        <div class="col-md-2">{{message.fromName}}</div>
+        <div class="col-md-2">{{message.toName}}</div>
+        <div class="col-md-2">{{message.type}}</div>
+        <div class="col-md-4">
             {{#if message.isImage}}
                 <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
             {{else}}

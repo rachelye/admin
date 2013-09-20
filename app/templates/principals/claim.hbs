@@ -1,8 +1,10 @@
 <div class='row' style='margin-top:20px'>
-    <div class='span12'>
-        <div class="input-append">
-            {{view Ember.TextField valueBinding="view.claimCode" classNames='span3' placeholder='Claim code for device'}}
-            <button class="btn" {{action claim target="view"}}>Claim</button>
+    <div class='col-md-4'>
+        <div class="input-group">
+          {{view Ember.TextField valueBinding="view.claimCode" classNames='form-control' placeholder='Claim code for device'}}
+          <span class="input-group-btn">
+            <button class="btn btn-default" {{action claim target="view"}}>Claim</button>
+          </span>
         </div>
     </div>
 </div>
