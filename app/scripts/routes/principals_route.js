@@ -41,29 +41,12 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 
         this.controller.set('router', this);
 
-//        var self = this;
-//        this.subscription = App.session.onPrincipal(function(nitrogenMessage) {
-            // if we already are locked and loaded to update, just return.
-//            if (self.get('timeoutSet')) {
-//                console.log('principals timeout already set, returning.')
-//                return;
-//            }
-
-            // only update at most once every N seconds.
-//            var updateTimeout = Math.max(0, self.get('nextUpdate').getTime() - new Date().getTime());
-//            console.log('updating principals in ' + updateTimeout);
-
-//            setTimeout(function() {
-//                self.query().then(function(principals) {
-//                    self.controller.set('content', principals);
-//                });
-
-//                self.set('nextUpdate', new Date(new Date().getTime() + self.get('maxUpdateRate')));
-//                self.set('timeoutSet', false);
-//            }, updateTimeout);
-
-//            self.set('timeoutSet', true);
-//        });
+        var self = this;
+        setInterval(function() {
+            self.query().then(function(principals) {
+                self.controller.set('content', principals);
+            });
+        }, 10000);
     },
 
     events: {
@@ -125,16 +108,20 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
         this.queryMessages(principal);
 
         var self = this;
-        this.subscription = App.session.onMessage(function(nitrogenMessage) {
+        this.subscription = App.session.onMessage({$or: [ { to: this.get('controller.content.id') }, 
+                                                          { from: this.get('controller.content.id') } ]}, function(nitrogenMessage) {
             self.queryMessages(principal);
         });
 
-//        this.subscription = App.session.onPrincipal(function(nitrogenPrincipal) {
-//           if (nitrogenPrincipal.id === self.get('controller.content.id')) {
-//               var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
-//               self.controller.set('content', updatedPrincipal);
-//           }
-//        });
+        /*
+
+        TODO: principals_realtime: disabled until we work out rate limiting to prevent update storms.
+
+        this.subscription = App.session.onPrincipal({ id: this.get('controller.content.id') }, function(nitrogenPrincipal) {
+            var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
+            self.controller.set('content', updatedPrincipal);
+        });
+        */
     },
 
     events: {
