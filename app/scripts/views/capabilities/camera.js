@@ -28,7 +28,7 @@ App.CameraCapabilityView = Em.View.extend({
 
         var principalId = this.get('principal.id');
 
-        this.cameraManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function() {
+        this.cameraManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function(err, message) {
             self.set('invalidation', new Date());
         });
     },
