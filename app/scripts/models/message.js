@@ -58,7 +58,11 @@ App.Message.reopen({
 
     timestampString: function() {
         var date = new Date(Date.parse(this.get('ts')));
-        return date.toLocaleString();
+        var hundredths = Math.floor(this.get('ts').getMilliseconds() / 10);
+        if (hundredths < 10)
+            hundredths = "0" + hundredths;
+
+        return date.toLocaleString(navigator.language, {hour12: false}) + '.' + hundredths;
     }.property('ts')
 });
 

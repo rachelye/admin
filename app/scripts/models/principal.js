@@ -8,6 +8,10 @@ App.Principal.reopen({
         return this.hasCapability('cameraCommand');
     }.property('capabilities'),
 
+    hasSwitch: function() {
+        return this.hasCapability('switchCommand');
+    }.property('capabilities'),
+
     isDevice: function() {
         return this.is('device');
     }.property('type'),

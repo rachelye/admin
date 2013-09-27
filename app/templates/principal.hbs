@@ -40,7 +40,11 @@
     </div>
 
     {{#if content.hasCamera}}
-            {{view App.CameraCapabilityView principalBinding='content'}}
+        {{view App.CameraCapabilityView principalBinding='content'}}
+    {{/if}}
+
+    {{#if content.hasSwitch}}
+        {{view App.SwitchCapabilityView principalBinding='content'}}
     {{/if}}
 
     {{view App.MessagesTableView contentBinding='controller.tailMessages'}}
