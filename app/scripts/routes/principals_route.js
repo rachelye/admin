@@ -41,12 +41,12 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 
         this.controller.set('router', this);
 
-        var self = this;
-        setInterval(function() {
-            self.query().then(function(principals) {
-                self.controller.set('content', principals);
-            });
-        }, 10000);
+//        var self = this;
+//        setInterval(function() {
+//            self.query().then(function(principals) {
+//                self.controller.set('content', principals);
+//            });
+//        }, 10000);
     },
 
     events: {
