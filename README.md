@@ -35,4 +35,4 @@ Nitrogen has three other projects that you should have a look at as well.
 
 1. [service](https://github.com/nitrogenjs/service): The core Nitrogen service responsible for managing users, devices, and messaging between them.
 1. [client](https://github.com/nitrogenjs/client): The client library for building Nitrogen devices and applications.
-3. [camera](https://github.com/nitrogenjs/chroma): A sample device application that connects a camera to the Nitrogen service.
+3. [camera](https://github.com/nitrogenjs/camera): A sample device application that connects a camera to the Nitrogen service.
