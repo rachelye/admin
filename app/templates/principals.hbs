@@ -13,7 +13,24 @@
     </div>
 
     {{#each principal in controller}}
-        {{view App.PrincipalRowView principalBinding='principal'}}
+        <div class='row'>
+            <div class='col-md-4'>
+                {{#linkTo "principal.commands" principal}}
+                    {{principal.id}}
+                {{/linkTo}}
+            </div>
+            <div class='col-md-2'>
+                {{#if view.editing}}
+                    {{view Ember.TextField valueBinding="principal.name" classNames="col-md-2"}}
+                {{else}}
+                    {{principal.name}}
+                {{/if}}
+            </div>
+
+            <div class='col-md-1'>{{principal.type}}</div>
+            <div class='col-md-2'>{{principal.lastConnectionString}}</div>
+            <div class='col-md-3'>{{principal.last_ip}}</div>
+        </div>
     {{/each}}
 
     {{view App.ClaimView}}
