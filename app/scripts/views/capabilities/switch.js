@@ -10,9 +10,7 @@ App.SwitchCapabilityView = Em.View.extend({
                 to: this.get('principal.id'),
                 type: 'switchCommand',
                 body: {
-                    command: {
-                        on: newState
-                    }
+                    on: newState
                 }
             });
 
