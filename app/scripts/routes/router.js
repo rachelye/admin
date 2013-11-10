@@ -2,7 +2,11 @@ App.Router.map(function() {
     this.resource('agents');
     this.resource('messages', { path: '/messages/skip/:skip/sort/:sort/direction/:direction' });
     this.resource('principals');
-    this.resource('principal', { path: 'principal/:id' });
+    this.resource('principal', { path: 'principal/:id' }, function() {
+        this.route('commands');
+        this.route('logs', { path: 'logs/skip/:skip/sort/:sort/direction/:direction'});
+        this.route('messages', { path: 'messages/skip/:skip/sort/:sort/direction/:direction'});
+    });
     this.resource('login');
 });
 

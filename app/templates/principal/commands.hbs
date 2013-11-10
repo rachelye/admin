@@ -1,0 +1,7 @@
+{{#if controller.content.hasCamera}}
+    {{view App.CameraCapabilityView principalBinding='controller.content'}}
+{{/if}}
+
+{{#if controller.content.hasSwitch}}
+    {{view App.SwitchCapabilityView principalBinding='controller.content'}}
+{{/if}}

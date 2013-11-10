@@ -39,14 +39,11 @@
 
     </div>
 
-    {{#if content.hasCamera}}
-        {{view App.CameraCapabilityView principalBinding='content'}}
-    {{/if}}
+    <ul class="nav nav-tabs">
+      <li id='principalMessagesTab'>{{#linkTo "principal.messages" content}}Messages{{/linkTo}}</li>
+      <li id='commandsTab'>{{#linkTo "principal.commands" content}}Commands{{/linkTo}}</li>
+      <li id='principalLogsTab'>{{#linkTo "principal.logs" content}}Logs{{/linkTo}}</li>
+    </ul>
 
-    {{#if content.hasSwitch}}
-        {{view App.SwitchCapabilityView principalBinding='content'}}
-    {{/if}}
-
-    {{view App.MessagesTableView contentBinding='controller.tailMessages'}}
-
+    {{outlet}}
 </div>
