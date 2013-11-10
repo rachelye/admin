@@ -4,8 +4,8 @@
   "dependencies": {
     "jquery": ">=1.9.1",
     "handlebars": "~1.0.0",
-    "ember": ">=1.0.0",
-    "bootstrap-sass": ">=3.0.0"
+    "ember": "~1.1.0",
+    "bootstrap-sass": "~3.0.0"
   },
   "devDependencies": {}
 }
