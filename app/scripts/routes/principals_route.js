@@ -49,7 +49,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 //        }, 10000);
     },
 
-    events: {
+    actions: {
         willTransition: function(transition) {
             if (this.subscription) {
                 App.session.disconnectSubscription(this.subscription);
@@ -124,7 +124,7 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
         */
     },
 
-    events: {
+    actions: {
         willTransition: function(transition) {
             if (this.subscription) {
                 App.session.disconnectSubscription(this.subscription);

@@ -51,7 +51,7 @@ App.MessagesRoute = App.AuthenticatedRoute.extend({
         });
     },
 
-    events: {
+    actions: {
         willTransition: function(transition) {
             if (this.subscription) {
                 App.session.disconnectSubscription(this.subscription);
