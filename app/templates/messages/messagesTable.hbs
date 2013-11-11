@@ -1,23 +1,4 @@
 <div class="container" style="padding:0">
-    <div class="row">
-        <div class="col-md-3">
-            <h4>MESSAGES</h4>
-        </div>
-        <div class="col-md-6"></div>
-        <div class="col-md-3">
-            {{#if controller.hasPreviousPage}}
-                <a {{bindAttr href="previousPageUrl"}} class="btn btn-default">
-                    <strong>PREVIOUS</strong>
-                </a>
-            {{/if}}
-            {{#if controller.fullPage}}
-                <a {{bindAttr href="nextPageUrl"}} class="btn btn-default">
-                    <strong>NEXT</strong>
-                </a>
-            {{/if}}
-        </div>
-    </div>
-
     <div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
         <div class="col-md-2"><strong>TIMESTAMP</strong></div>
         <div class="col-md-2"><strong>FROM</strong></div>
@@ -25,6 +6,16 @@
         <div class="col-md-2"><strong>TYPE</strong></div>
         <div class="col-md-4"><strong>BODY</strong></div>
     </div>
+
+    {{#if controller.hasPreviousPage}}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a {{bindAttr href="previousPageUrl"}}>... previous page ...</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    {{/if}}
 
 {{#each message in view.content}}
 
@@ -43,5 +34,15 @@
     </div>
 
 {{/each}}
+
+    {{#if controller.fullPage}}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a {{bindAttr href="nextPageUrl"}}>... next page ...</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    {{/if}}
 
 </div>
