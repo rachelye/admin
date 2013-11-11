@@ -49,6 +49,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 //        }, 10000);
     },
 
+/*
     actions: {
         willTransition: function(transition) {
             if (this.subscription) {
@@ -57,4 +58,5 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
             }
         }        
     }
+*/
 });

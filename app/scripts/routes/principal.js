@@ -1,5 +1,4 @@
 App.PrincipalRoute = App.AuthenticatedRoute.extend({
-
     actions : {
         delete: function(principal) {
             var self = this;
@@ -26,33 +25,15 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
         return App.Principal.findById(this.get('params.id'));
     },
 
-    queryMessages: function(principal) {
-        var self = this;
-        var messages = App.Message.find({$or: [ { to: principal.id }, { from: principal.id } ]}, { limit: 25 })
-            .then(function(messages) {
-                self.controller.set('messages', messages);
-            }
-        );
-    },
-
     serialize: function(model, params) {
         return { id: model.get('id') };
-    },
+    }/*,
 
     setupController: function(controller, principal) {
         this._super(controller, principal);
 
         this.controller.set('router', this);
 
-        this.queryMessages(principal);
-
-        var self = this;
-        this.subscription = App.session.onMessage({$or: [ { to: this.get('controller.content.id') }, 
-                                                          { from: this.get('controller.content.id') } ]}, function(nitrogenMessage) {
-            self.queryMessages(principal);
-        });
-
-        /*
 
         TODO: principals_realtime: disabled until we work out rate limiting to prevent update storms.
 
@@ -60,7 +41,6 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
             var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
             self.controller.set('content', updatedPrincipal);
         });
-        */
     },
 
     actions: {
@@ -71,4 +51,6 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
             }
         }        
     }
+    */
+
 });

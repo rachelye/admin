@@ -4,8 +4,9 @@ App.Router.map(function() {
     this.resource('principals');
     this.resource('principal', { path: 'principal/:id' }, function() {
         this.route('commands');
-        this.route('logs', { path: 'logs/skip/:skip/sort/:sort/direction/:direction'});
-        this.route('messages', { path: 'messages/skip/:skip/sort/:sort/direction/:direction'});
+        this.route('logs'/*, { path: 'logs/skip/:skip/sort/:sort/direction/:direction'}*/);
+        this.route('messages'/*, { path: 'messages/skip/:skip/sort/:sort/direction/:direction'}*/);
+        this.route('permissions');
     });
     this.resource('login');
 });

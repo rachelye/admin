@@ -1,2 +1,2 @@
-App.PrincipalMessagesController = Ember.ArrayController.extend({
+App.PrincipalMessagesController = App.MessagePagingController.extend({
 });

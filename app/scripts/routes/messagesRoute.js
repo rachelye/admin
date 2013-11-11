@@ -1,5 +1,6 @@
 App.MessagesRoute = App.AuthenticatedRoute.extend({
     messagePageLimit: 50,
+    baseUrl: "/#/messages",
 
     activate: function() {
         setTimeout(function() { $('#messagesTab').addClass('active'); }, 0);

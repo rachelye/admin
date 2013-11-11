@@ -1,17 +1,29 @@
 App.PrincipalLogsRoute = App.AuthenticatedRoute.extend({
     messagePageLimit: 50,
 
+    baseUrl: function() {
+        var base = "/#/principal/" + this.modelFor('principal').id  + "/logs";
+        console.log(base);
+        return base;
+    }.property(),
+
     activate: function() {
-        console.log('activating messages tab');
         setTimeout(function() { $('#principalLogsTab').addClass('active'); }, 0);
     },
 
     deactivate: function() {
-        console.log('activating messages tab');
         setTimeout(function() { $('#principalLogsTab').removeClass('active'); }, 0);
     },
 
     model: function(params) {
+        console.log('in logs model');
+
+        params = {
+          sort: 'ts',
+          skip: 0,
+          direction: -1
+        };
+
         var principal = this.modelFor("principal");
 
         console.log('skip: ' + params.skip);
@@ -43,5 +55,19 @@ App.PrincipalLogsRoute = App.AuthenticatedRoute.extend({
             limit: parseInt(this.get('messagePageLimit')),
             sort: sort
         });
-    }
+    }/*,
+
+    serialize: function() {
+        var params = this.get('params');
+        
+        if (!params) {
+            params = {                
+                skip: '0',
+                sort: 'ts',
+                direction: '1'
+            }
+        }
+
+        return params;
+    } */
 });
