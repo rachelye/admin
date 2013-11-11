@@ -12,7 +12,6 @@ App.ClaimView = Em.View.extend({
                 expires: 'never'
             });
 
-            console.dir(response);
             response.send(App.session, function(err) {
                 if (err) App.set('flash', err.message);
 
