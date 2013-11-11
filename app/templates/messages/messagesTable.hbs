@@ -7,11 +7,11 @@
         <div class="col-md-4"><strong>BODY</strong></div>
     </div>
 
-    {{#if controller.hasPreviousPage}}
+    {{#if router.hasPreviousPage}}
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <a {{bindAttr href="previousPageUrl"}}>... previous page ...</a>
+                <a {{bindAttr href="router.previousPageUrl"}}>... previous page ...</a>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -35,11 +35,11 @@
 
 {{/each}}
 
-    {{#if controller.fullPage}}
+    {{#if router.fullPage}}
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <a {{bindAttr href="nextPageUrl"}}>... next page ...</a>
+                <a {{bindAttr href="router.nextPageUrl"}}>... next page ...</a>
             </div>
             <div class="col-md-4"></div>
         </div>

@@ -1,4 +1,4 @@
-App.PrincipalMessagesRoute = App.AuthenticatedRoute.extend({
+App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
     messagePageLimit: 50,
     baseUrl: function() {
         return "/#/principal/" + this.modelFor('principal').id  + "/messages";

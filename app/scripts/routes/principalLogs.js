@@ -1,4 +1,4 @@
-App.PrincipalLogsRoute = App.AuthenticatedRoute.extend({
+App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
     messagePageLimit: 50,
 
     baseUrl: function() {

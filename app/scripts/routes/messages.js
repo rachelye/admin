@@ -1,4 +1,4 @@
-App.MessagesRoute = App.AuthenticatedRoute.extend({
+App.MessagesRoute = App.MessagePagingRoute.extend({
     messagePageLimit: 50,
     baseUrl: "/#/messages",
 
