@@ -2,8 +2,8 @@ App.LoginController = Ember.Controller.extend({
     mode: 'signin',
 
     createMode:             function() { return this.get('mode') === 'create';   }.property('mode'),
-    forgotPasswordMode:     function() { return this.get('mode') === 'forgot';   }.property('mode'),
-    notForgotPasswordMode:  function() { return !this.get('forgotPasswordMode'); }.property('forgotPasswordMode'),
+    resetPasswordMode:      function() { return this.get('mode') === 'reset';   }.property('mode'),
+    notResetPasswordMode:   function() { return !this.get('resetPasswordMode'); }.property('resetPasswordMode'),
     signInMode:             function() { return this.get('mode') === 'signin';   }.property('mode'),
 
     modeTitle: function() {
@@ -11,52 +11,43 @@ App.LoginController = Ember.Controller.extend({
 
         if (mode === 'create') return "CREATE ACCOUNT";
         if (mode === 'signin') return "SIGN IN";
-        if (mode === 'forgot') return "RESET PASSWORD";
+        if (mode === 'reset') return "RESET PASSWORD";
     }.property('mode'),
 
-    switchToCreate:         function() { this.set('mode', 'create'); },
-    switchToForgotPassword: function() { this.set('mode', 'forgot'); },
-    switchToSignIn:         function() { this.set('mode', 'signin'); },
+    actions: {
 
-    submit: function() {
-        App.set('flash', null);
+        create: function() {
+            var user = new nitrogen.User({
+                name: this.get('name'),
+                email: this.get('email'),
+                password: this.get('password'),
+                nickname: 'current'
+            });
 
-        if (this.get('signInMode'))
-            this.login();
-        else if (this.get('forgotPasswordMode'))
-            this.forgotPassword();
-        else if (this.get('create'))
-            this.create();
-    },
+            App.service.create(user, App.sessionHandler);
+        },
 
-    create: function() {
-        var user = new nitrogen.User({
-            name: this.get('name'),
-            email: this.get('email'),
-            password: this.get('password'),
-            nickname: 'current'
-        });
+        login: function() {
+            var user = new nitrogen.User({
+                email: this.get('email'),
+                password: this.get('password'),
+                nickname: 'current' 
+            });
 
-        App.service.create(user, App.sessionHandler);
-    },
+            App.service.authenticate(user, App.sessionHandler);
+        },
 
-    forgotPassword: function() {
-        // App.service.forgotPassword(this.get('email'), function(err) {
-        //     var msg = err || "Your password has been reset.  We'll email you a link to reset your password shortly."
-        //     App.set('flash', msg);
-        //
-        //     this.switchToSignIn();
-        // });
-    },
+        resetPassword: function() {
+            // App.service.resetPassword(this.get('email'), function(err) {
+            //     var msg = err || "Your password has been reset.  We'll email you a link to reset your password shortly."
+            //     App.set('flash', msg);
+            //
+            //     this.switchToSignIn();
+            // });
+        },
 
-    login: function() {
-        var user = new nitrogen.User({
-            email: this.get('email'),
-            password: this.get('password'),
-            nickname: 'current' 
-        });
-
-        App.service.authenticate(user, App.sessionHandler);
+        switchToCreate:         function() { this.set('mode', 'create'); },
+        switchToResetPassword:  function() { this.set('mode', 'reset'); },
+        switchToSignIn:         function() { this.set('mode', 'signin'); }
     }
-
 });

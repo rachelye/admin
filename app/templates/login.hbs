@@ -9,30 +9,38 @@
             <label for="email">Email</label>
             {{input value=email type='email' classNames='form-control col-md-2' id='email'}}
           </div>
-          {{#if notForgotPasswordMode}}
-              <div class="form-group">
-                <label for="password">Password</label>
-                {{input value=password type='password' classNames='form-control' id='password'}}
-              </div>
-          {{/if}}
-          {{#if createMode}}
+{{#if notResetPasswordMode}}
+          <div class="form-group">
+            <label for="password">Password</label>
+            {{input value=password type='password' classNames='form-control' id='password'}}
+          </div>
+    {{#if createMode}}
           <div class="form-group">
             <label for="name">Full Name</label>
             {{input value=name type='text' id='name' classNames='form-control'}}
           </div>
-          {{/if}}
+    {{/if}}
+{{/if}}
+
     {{#if signInMode}}
-                <button {{action submit}} class='btn btn-primary'>Sign in</button>
+              <button {{action login}} class='btn btn-primary'>Sign in</button>
     {{else}}
-                <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
+              <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
     {{/if}}
 
     {{#if createMode}}
-                <button {{action submit}} class='btn btn-primary'>Create account</button>
+              <button {{action create}} class='btn btn-primary'>Create account</button>
     {{else}}
-                <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
+              <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
+    {{/if}}
+
+    {{#if resetPasswordMode}}   
+              <button {{action resetPassword}} class='btn btn-primary'>Reset password</button>
+    {{else}}
+              <a {{action switchToResetPassword}} class='btn'>Forgot password</a>
     {{/if}}
         </form>
+
     </div>
     <div class="col-md-4"></div>
   </div>
