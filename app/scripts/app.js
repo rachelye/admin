@@ -63,9 +63,11 @@ App.sessionHandler = function(err, session, user) {
     App.set('session', session);
     App.set('user', App.Principal.create(user));
 
-    if (App.get('attemptedNavigation')) {
+    if (App.get('attemptedNavigation') && App.get('attemptedNavigation') !== '#/login') {
         console.log('successful auth, reloading attempedNavigation url: ' + App.get('attemptedNavigation'));
         window.location = App.get('attemptedNavigation');
+    } else {
+        window.location = "#/principals";
     }
 
     session.onAuthFailure(App.resetSession);
