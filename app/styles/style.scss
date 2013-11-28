@@ -22,6 +22,12 @@
   color: #FFF;   
 }
 
+.white-caret
+{
+  border-top-color: white !important;
+  border-bottom-color: red !important;
+}
+
 /* Fix up bootstrap navbar underflow issues */
 
 body {

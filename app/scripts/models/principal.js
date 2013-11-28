@@ -16,14 +16,18 @@ App.Principal.reopen({
         return this.is('device');
     }.property('type'),
 
-    nameOrId: function() {
-        return this.get('name') || this.get('id');
-    }.property('id','name'),
+    isUser: function() {
+        return this.is('user');
+    }.property('type'),
 
     lastConnectionString: function() {
         var date = new Date(Date.parse(this.get('last_connection')));
         return date.toLocaleString();
     }.property('last_connection'),
+
+    nameOrId: function() {
+        return this.get('name') || this.get('id');
+    }.property('id','name'),
 
     save: function() {
         return App.saveWithDeferred(new nitrogen.Principal(this));

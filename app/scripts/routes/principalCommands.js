@@ -8,7 +8,6 @@ App.PrincipalCommandsRoute = App.AuthenticatedRoute.extend({
     },
 
     model: function() {
-        console.log('in commands model');
         return this.modelFor("principal");
     }
 });

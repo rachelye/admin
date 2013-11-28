@@ -19,5 +19,4 @@ App.ClaimView = Em.View.extend({
             });
         }
     }
-
 });
