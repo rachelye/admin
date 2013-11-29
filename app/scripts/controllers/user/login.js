@@ -1,4 +1,4 @@
-App.LoginController = Ember.Controller.extend({
+App.UserLoginController = Ember.Controller.extend({
     mode: 'signin',
 
     createMode:             function() { return this.get('mode') === 'create';   }.property('mode'),

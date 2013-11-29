@@ -49,7 +49,7 @@ App.resetSession = function(err) {
     App.set('user', null);
 
     App.set('attemptedNavigation', window.location.hash);
-    window.location = "/#/login";
+    window.location = "/#/user/login";
 };
 
 App.sessionHandler = function(err, session, user) {
@@ -63,7 +63,7 @@ App.sessionHandler = function(err, session, user) {
     App.set('session', session);
     App.set('user', App.Principal.create(user));
 
-    if (App.get('attemptedNavigation') && App.get('attemptedNavigation') !== '#/login') {
+    if (App.get('attemptedNavigation') && App.get('attemptedNavigation') !== '#/user/login') {
         console.log('successful auth, reloading attempedNavigation url: ' + App.get('attemptedNavigation'));
         window.location = App.get('attemptedNavigation');
     } else {
