@@ -5,13 +5,13 @@
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-3">
-            {{#if controller.hasPreviousPage}}
-                <a {{bindAttr href="previousPageUrl"}} class="btn btn-default">
+            {{#if router.hasPreviousPage}}
+                <a {{bindAttr href="router.previousPageUrl"}} class="btn">
                     <strong>PREVIOUS</strong>
                 </a>
             {{/if}}
-            {{#if controller.fullPage}}
-                <a {{bindAttr href="nextPageUrl"}} class="btn btn-default">
+            {{#if router.fullPage}}
+                <a {{bindAttr href="router.nextPageUrl"}} class="btn">
                     <strong>NEXT</strong>
                 </a>
             {{/if}}
