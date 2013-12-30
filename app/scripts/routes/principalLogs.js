@@ -16,8 +16,6 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
     },
 
     model: function(params) {
-        console.log('in logs model');
-
         params = {
           sort: 'ts',
           skip: 0,
@@ -37,12 +35,7 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
 
         return App.Message.find({
             $and: [ 
-              { 
-                  $or: [ 
-                      { type: 'heartbeat' }, 
-                      { type: 'log' } 
-                  ] 
-              },
+              { type: 'log' },
               { 
                   $or: [ 
                       { to: principal.id }, 
