@@ -21,17 +21,15 @@ App.CameraCapabilityView = Em.View.extend({
     invalidation: null,
 
     init: function() {
-        this.cameraManager = new nitrogen.CameraManager();
+        this.cameraManager = new nitrogen.CameraManager(this.get('principal'));
         var self = this;
 
-        this.cameraManager.start(App.session, this.get('principal.id'), function(err, message) {
-            console.log("got another message, invalidating.");
+        this.cameraManager.start(App.session, function(err, message) {
             self.set('invalidation', new Date());
         });
     },
 
     sendCommand: function(cmd) {
-        console.log('sending command');
         var command = new nitrogen.Message({
             expires: 'never',
             to: this.get('principal.id'),

@@ -36,12 +36,10 @@ App.SwitchCapabilityView = Em.View.extend({
     invalidation: null,
 
     init: function() {
-        this.switchManager = new nitrogen.SwitchManager();
+        this.switchManager = new nitrogen.SwitchManager(this.get('principal'));
         var self = this;
 
-        var principalId = this.get('principal.id');
-
-        this.switchManager.start(App.session, { $or: [ { to: principalId }, { from: principalId } ] }, function(err, message) {
+        this.switchManager.start(App.session, function(err, message) {
             self.set('invalidation', new Date());
         });
     }
