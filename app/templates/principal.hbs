@@ -4,9 +4,7 @@
             <h4>PRINCIPAL: {{content.nameOrId}}</h4>
         </div>
         <div class='col-md-1'>
-            {{#if content.isDevice}}
-                <button {{action delete content}} class="btn btn-default">Delete</button>
-            {{/if}}
+            <button {{action delete content}} class="btn btn-default">Delete</button>
         </div>
     </div>
     <div class='row'>
