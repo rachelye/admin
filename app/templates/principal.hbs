@@ -1,48 +1,46 @@
-<div class='container'>
-    <div class='row'>
-        <div class='col-md-11'>
-            <h4>PRINCIPAL: {{content.nameOrId}}</h4>
-        </div>
-        <div class='col-md-1'>
-            <button {{action delete content}} class="btn btn-default">Delete</button>
-        </div>
+<div class='row'>
+    <div class='col-md-11'>
+        <h4>{{content.nameOrId}}</h4>
     </div>
-    <div class='row'>
-        <div class='col-md-3'><b>ID</b></div>
-        <div class='col-md-3'><b>NAME</b></div>
-        <div class='col-md-1'><b>TYPE</b></div>
-        <div class='col-md-3'><b>LAST CONTACT</b></div>
-        <div class='col-md-2'><b>LAST IP</b></div>
+    <div class='col-md-1'>
+        <button {{action delete content}} class="btn btn-default">Delete</button>
     </div>
-
-    <div class='row'>
-         <div class='col-md-3'>{{content.id}}</div>
-         <div class='col-md-3'>
-             <div class="input-group">
-                {{view Ember.TextField valueBinding="content.name" classNames="col-lg-2 form-control" disabledBinding='view.viewing'}}
-                <span class="input-group-btn">
-                    {{#if view.viewing}}
-                         <button {{action edit target="view"}} class="btn btn-default" type="button">Edit</button>
-                    {{else}}
-                         <button {{action save content target="view"}} class="btn btn-default">Save</button>
-                    {{/if}}
-                </span>
-            </div>
-             <div class="input-append">
-             </div>
-         </div>
-         <div class='col-md-1'>{{content.type}}</div>
-         <div class='col-md-3'>{{content.lastConnectionString}}</div>
-         <div class='col-md-2'>{{content.last_ip}}</div>
-
-    </div>
-
-    <ul class="nav nav-tabs" style="margin-bottom:15px; margin-top:15px">
-      <li id='principalMessagesTab'>{{#linkTo "principal.messages" content}}Messages{{/linkTo}}</li>
-      <li id='commandsTab'>{{#linkTo "principal.commands" content}}Commands{{/linkTo}}</li>
-      <li id='principalLogsTab'>{{#linkTo "principal.logs" content}}Logs{{/linkTo}}</li>
-      <li id='principalPermissionsTab'>{{#linkTo "principal.permissions" content}}Permissions{{/linkTo}}</li>
-    </ul>
-
-    {{outlet}}
 </div>
+<div class='row'>
+    <div class='col-md-3'><b>ID</b></div>
+    <div class='col-md-3'><b>NAME</b></div>
+    <div class='col-md-1'><b>TYPE</b></div>
+    <div class='col-md-3'><b>LAST CONTACT</b></div>
+    <div class='col-md-2'><b>LAST IP</b></div>
+</div>
+
+<div class='row'>
+     <div class='col-md-3'>{{content.id}}</div>
+     <div class='col-md-3'>
+         <div class="input-group">
+            {{view Ember.TextField valueBinding="content.name" classNames="col-lg-2 form-control" disabledBinding='view.viewing'}}
+            <span class="input-group-btn">
+                {{#if view.viewing}}
+                     <button {{action edit target="view"}} class="btn btn-default" type="button">Edit</button>
+                {{else}}
+                     <button {{action save content target="view"}} class="btn btn-default">Save</button>
+                {{/if}}
+            </span>
+        </div>
+         <div class="input-append">
+         </div>
+     </div>
+     <div class='col-md-1'>{{content.type}}</div>
+     <div class='col-md-3'>{{content.lastConnectionString}}</div>
+     <div class='col-md-2'>{{content.last_ip}}</div>
+
+</div>
+
+<ul class="nav nav-tabs" style="margin-bottom:15px; margin-top:15px">
+  <li id='principalMessagesTab'>{{#linkTo "principal.messages" content}}Messages{{/linkTo}}</li>
+  <li id='commandsTab'>{{#linkTo "principal.commands" content}}Commands{{/linkTo}}</li>
+  <li id='principalLogsTab'>{{#linkTo "principal.logs" content}}Logs{{/linkTo}}</li>
+  <li id='principalPermissionsTab'>{{#linkTo "principal.permissions" content}}Permissions{{/linkTo}}</li>
+</ul>
+
+{{outlet}}

@@ -1,47 +1,56 @@
-<div class="container" style='margin-top: 25px;'>
-
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <h4>{{modeTitle}}</h4>
-        <form role="form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            {{input value=email type='email' classNames='form-control col-md-2' id='email'}}
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+      <h3>{{modeTitle}}</h3>
+      <form class="register-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-icon">
+            <i class="fa fa-envelope"></i>
+            {{input value=email type='email' classNames='form-control placeholder-no-fix' id='email'}}
           </div>
+        </div>
 {{#if notResetPasswordMode}}
-          <div class="form-group">
-            <label for="password">Password</label>
-            {{input value=password type='password' classNames='form-control' id='password'}}
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-icon">
+            <i class="fa fa-lock"></i>
+            {{input value=password type='password' classNames='form-control placeholder-no-fix' id='password'}}
           </div>
-    {{#if createMode}}
-          <div class="form-group">
-            <label for="name">Full Name</label>
+        </div>
+  {{#if createMode}}
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <div class="input-icon">
+            <i class="fa fa-user"></i>
             {{input value=name type='text' id='name' classNames='form-control'}}
           </div>
-    {{/if}}
+        </div>
+  {{/if}}
 {{/if}}
+       <div class="form-group">
 
-    {{#if signInMode}}
-              <button {{action login}} class='btn btn-primary'>Sign in</button>
-    {{else}}
-              <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
-    {{/if}}
+  {{#if signInMode}}
+            <button {{action login}} class='btn green'>Sign in</button>
+  {{else}}
+            <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
+  {{/if}}
 
-    {{#if createMode}}
-              <button {{action create}} class='btn btn-primary'>Create account</button>
-    {{else}}
-              <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
-    {{/if}}
+  {{#if createMode}}
+            <button {{action create}} class='btn green'>Create account</button>
+  {{else}}
+            <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
+  {{/if}}
+        </div>
+        <div class="form-group">
+  {{#if resetPasswordMode}}   
+            <button {{action resetPassword}} class='btn green'>Reset password</button>
+  {{else}}
+            <a {{action switchToResetPassword}}>Forgot password?</a>
+  {{/if}}
+        </div>
+      </form>
 
-    {{#if resetPasswordMode}}   
-              <button {{action resetPassword}} class='btn btn-primary'>Reset password</button>
-    {{else}}
-              <a {{action switchToResetPassword}} class='btn'>Forgot password</a>
-    {{/if}}
-        </form>
-
-    </div>
-    <div class="col-md-4"></div>
   </div>
+  <div class="col-md-4"></div>
 </div>

@@ -1,30 +1,26 @@
-<div class="container" style="padding:0">
-    <div class="row">
-        <div class="col-md-3">
-            <h4>MESSAGES</h4>
-        </div>
-        <div class="col-md-6"></div>
-        <div class="col-md-3">
-            {{#if router.hasPreviousPage}}
-                <a {{bindAttr href="router.previousPageUrl"}} class="btn">
-                    <strong>PREVIOUS</strong>
-                </a>
-            {{/if}}
-            {{#if router.fullPage}}
-                <a {{bindAttr href="router.nextPageUrl"}} class="btn">
-                    <strong>NEXT</strong>
-                </a>
-            {{/if}}
-        </div>
+<div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
+    <div class="col-md-2">
+        {{#if router.hasPreviousPage}}
+            <a {{bindAttr href="router.previousPageUrl"}}">
+                <i class="fa fa-angle-double-left"></i>
+            </a>
+        {{/if}}
+        <strong>TIMESTAMP</strong>
     </div>
+    <div class="col-md-2"><strong>FROM</strong></div>
+    <div class="col-md-2"><strong>TO</strong></div>
+    <div class="col-md-2"><strong>TYPE</strong></div>
+    <div class="col-md-4">
+        <strong>BODY</strong>
 
-    <div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
-        <div class="col-md-2"><strong>TIMESTAMP</strong></div>
-        <div class="col-md-2"><strong>FROM</strong></div>
-        <div class="col-md-2"><strong>TO</strong></div>
-        <div class="col-md-2"><strong>TYPE</strong></div>
-        <div class="col-md-4"><strong>BODY</strong></div>
+    {{#if router.fullPage}}
+        <a {{bindAttr href="router.nextPageUrl"}} class="pull-right">
+            <i class="fa fa-angle-double-right"></i>
+        </a>
+    {{/if}}
+
     </div>
+</div>
 
 {{#each message in view.content}}
 
@@ -47,5 +43,3 @@
     </div>
 
 {{/each}}
-
-</div>

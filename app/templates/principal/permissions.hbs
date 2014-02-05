@@ -1,12 +1,11 @@
-<div class="container">
-
     <div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
             <div class="col-md-2"><strong>ACTION</strong></div>
             <div class="col-md-2"><strong>ISSUED TO</strong></div>
             <div class="col-md-2"><strong>PRINCIPAL FOR</strong></div>
             <div class="col-md-2"><strong>FILTER</strong></div>
-            <div class="col-md-2"><strong>AUTHORIZED</strong></div>
+            <div class="col-md-1"><strong>AUTHORIZED</strong></div>
             <div class="col-md-2"><strong>EXPIRES</strong></div>
+            <div class="col-md-1"></div>
     </div>
 
 {{#each permission in content}}
@@ -15,9 +14,12 @@
         <div class="col-md-2">{{permission.issuedToName}}</div>
         <div class="col-md-2">{{permission.principalForName}}</div>
         <div class="col-md-2">{{permission.filter}}</div>
-        <div class="col-md-2">{{permission.authorized}}</div>
+        <div class="col-md-1">{{permission.authorized}}</div>
         <div class="col-md-2">{{permission.expiresString}}</div>
+        <div class="col-md-1">
+            <button type="button" {{action deletePermission permission}} class="btn btn-default">
+                Delete
+            </button>
+        </div>
     </div>
 {{/each}}
-
-</div>
