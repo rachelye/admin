@@ -1,30 +1,33 @@
-<div class='row' style='margin-bottom: 10px; border-bottom: 1px solid'>
-    <div class='col-md-4'><b>ID</b></div>
-    <div class='col-md-2'><b>NAME</b></div>
-    <div class='col-md-1'><b>TYPE</b></div>
-    <div class='col-md-2'><b>LAST CONTACT</b></div>
-    <div class='col-md-3'><b>LAST IP</b></div>
-</div>
-
+<table class="table">
+    <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>TYPE</th>
+        <th class="hidden-xs hidden-sm">LAST CONTACT</th>
+        <th class="hidden-xs hidden-sm">LAST IP</th>
+    </thead>
+    <tbody>
 {{#each principal in controller}}
-    <div class='row'>
-        <div class='col-md-4'>
-            {{#linkTo "principal.messages" principal}}
-                {{principal.id}}
-            {{/linkTo}}
-        </div>
-        <div class='col-md-2'>
-            {{#if view.editing}}
-                {{view Ember.TextField valueBinding="principal.name" classNames="col-md-2"}}
-            {{else}}
-                {{principal.name}}
-            {{/if}}
-        </div>
+        <tr>
+            <td>
+                {{#linkTo "principal.messages" principal}}
+                    {{principal.id}}
+                {{/linkTo}}
+            </td>
+            <td>
+                {{#if view.editing}}
+                    {{view Ember.TextField valueBinding="principal.name" classNames="col-md-2"}}
+                {{else}}
+                    {{principal.name}}
+                {{/if}}
+            </td>
 
-        <div class='col-md-1'>{{principal.type}}</div>
-        <div class='col-md-2'>{{principal.lastConnectionString}}</div>
-        <div class='col-md-3'>{{principal.last_ip}}</div>
-    </div>
+            <td>{{principal.type}}</td>
+            <td class="hidden-xs hidden-sm">{{principal.lastConnectionString}}</td>
+            <td class="hidden-xs hidden-sm">{{principal.last_ip}}</td>
+        </tr>
 {{/each}}
+    </tbody>
+</table>
 
 {{view App.ClaimView}}
