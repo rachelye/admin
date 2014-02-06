@@ -37,7 +37,7 @@ App.deferReadiness();
 
 App.resetSession = function(err) {
     if (App.get('session')) {
-        App.get('session').close();
+        App.get('session').stop();
     }
 
     var flash = null;
@@ -66,8 +66,11 @@ App.sessionHandler = function(err, session, user) {
     if (App.get('attemptedNavigation') && App.get('attemptedNavigation') !== '#/user/login') {
         console.log('successful auth, reloading attempedNavigation url: ' + App.get('attemptedNavigation'));
         window.location = App.get('attemptedNavigation');
+        App.set('attemptedNavigation', null);
+
     } else {
-        window.location = "#/principals";
+        console.log('successful auth, using default url');
+        window.location = "/#/principals";
     }
 
     session.onAuthFailure(App.resetSession);
