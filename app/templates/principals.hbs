@@ -10,9 +10,9 @@
 {{#each principal in controller}}
         <tr>
             <td>
-                {{#linkTo "principal.messages" principal}}
+                {{#link-to "principal.messages" principal}}
                     {{principal.id}}
-                {{/linkTo}}
+                {{/link-to}}
             </td>
             <td>
                 {{#if view.editing}}

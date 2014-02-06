@@ -1,5 +1,5 @@
 {{#if router.hasPreviousPage}}
-    <a {{bindAttr href="router.previousPageUrl"}}" class="btn default" style="width:100%">
+    <a {{bind-attr href="router.previousPageUrl"}}" class="btn default" style="width:100%">
         <i class="fa fa-angle-double-up" style="font-size:125%"></i> Newer Messages <i class="fa fa-angle-double-up" style="font-size:125%"></i>
     </a>
 {{/if}}
@@ -21,7 +21,7 @@
                 <td>{{message.type}}</td>
                 <td>
                     {{#if message.isImage}}
-                        <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
+                        <img {{bind-attr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
                     {{else}}
                         {{#if message.isLog}}
                             {{message.body.severity}}: {{message.body.message}}
@@ -36,7 +36,7 @@
 </table>
 
 {{#if router.fullPage}}
-    <a {{bindAttr href="router.nextPageUrl"}} class="btn default" style="width:100%">
+    <a {{bind-attr href="router.nextPageUrl"}} class="btn default" style="width:100%">
         <i class="fa fa-angle-double-down" style="font-size:125%"></i> Older Messages <i class="fa fa-angle-double-down" style="font-size:125%"></i>
     </a>
 {{/if}}
