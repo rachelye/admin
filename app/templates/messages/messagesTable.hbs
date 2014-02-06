@@ -13,27 +13,25 @@
         <th>BODY</th> 
     </thead>
     <tbody>
-
-
         {{#each message in view.content}}
-        <tr>
-            <td>{{message.timestampString}}</td>
-            <td>{{message.fromName}}</td>
-            <td>{{message.toName}}</td>
-            <td>{{message.type}}</td>
-            <td>
-                {{#if message.isImage}}
-                    <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
-                {{else}}
-                    {{#if message.isLog}}
-                        {{message.body.severity}}: {{message.body.message}}
+            <tr>
+                <td>{{message.timestampString}}</td>
+                <td>{{message.fromName}}</td>
+                <td>{{message.toName}}</td>
+                <td>{{message.type}}</td>
+                <td>
+                    {{#if message.isImage}}
+                        <img {{bindAttr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
                     {{else}}
-                        {{message.bodyJSON}}
+                        {{#if message.isLog}}
+                            {{message.body.severity}}: {{message.body.message}}
+                        {{else}}
+                            {{message.bodyJSON}}
+                        {{/if}}
                     {{/if}}
-                {{/if}}
-            </td>
-        </tr>
-        {{/each}}        
+                </td>
+            </tr>
+        {{/each}}
     </tbody>
 </table>
 
