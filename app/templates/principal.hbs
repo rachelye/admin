@@ -1,40 +1,36 @@
-<div class='row'>
-    <div class='col-md-11'>
-        <h4>{{content.nameOrId}}</h4>
-    </div>
-    <div class='col-md-1'>
-        <button {{action delete content}} class="btn btn-default">Delete</button>
-    </div>
-</div>
-<div class='row'>
-    <div class='col-md-3'><b>ID</b></div>
-    <div class='col-md-3'><b>NAME</b></div>
-    <div class='col-md-1'><b>TYPE</b></div>
-    <div class='col-md-3'><b>LAST CONTACT</b></div>
-    <div class='col-md-2'><b>LAST IP</b></div>
-</div>
-
-<div class='row'>
-     <div class='col-md-3'>{{content.id}}</div>
-     <div class='col-md-3'>
-         <div class="input-group">
-            {{view Ember.TextField valueBinding="content.name" classNames="col-lg-2 form-control" disabledBinding='view.viewing'}}
-            <span class="input-group-btn">
-                {{#if view.viewing}}
-                     <button {{action edit target="view"}} class="btn btn-default" type="button">Edit</button>
-                {{else}}
-                     <button {{action save content target="view"}} class="btn btn-default">Save</button>
-                {{/if}}
-            </span>
-        </div>
-         <div class="input-append">
-         </div>
-     </div>
-     <div class='col-md-1'>{{content.type}}</div>
-     <div class='col-md-3'>{{content.lastConnectionString}}</div>
-     <div class='col-md-2'>{{content.last_ip}}</div>
-
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>NAME</td>
+            <td>TYPE</td>
+            <td class="hidden-xs hidden-sm">LAST CONTACT</td>
+            <td class="hidden-xs hidden-sm">LAST IP</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{content.id}}</td>
+            <td>
+                <div class="input-group">
+                    {{view Ember.TextField 
+                        valueBinding="content.name" 
+                        classNames="input-medium form-control" 
+                        disabledBinding='view.viewing'}}
+                    {{#if view.viewing}}
+                         <button {{action edit target="view"}} class="btn btn-default" type="button">Edit</button>
+                         <!-- <button {{action delete content}} class="btn btn-default">Delete</button> -->
+                    {{else}}
+                         <button {{action save content target="view"}} class="btn btn-default">Save</button>
+                    {{/if}}
+                </div>
+            </td>
+            <td>{{content.type}}</td>
+            <td class="hidden-xs hidden-sm">{{content.lastConnectionString}}</td>
+            <td class="hidden-xs hidden-sm">{{content.last_ip}}</td>
+        </tr>
+    </tbody>
+</table>
 
 <ul class="nav nav-tabs" style="margin-bottom:15px; margin-top:15px">
   <li id='principalMessagesTab'>{{#link-to "principal.messages" content}}Messages{{/link-to}}</li>

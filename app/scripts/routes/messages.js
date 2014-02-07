@@ -55,7 +55,7 @@ App.MessagesRoute = App.MessagePagingRoute.extend({
     actions: {
         willTransition: function(transition) {
             if (this.subscription) {
-                App.session.disconnectSubscription(this.subscription);
+                App.get('session').disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
         }        
