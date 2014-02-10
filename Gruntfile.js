@@ -35,10 +35,10 @@ module.exports = function (grunt) {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
             },
-            compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server']
-            },
+            //compass: {
+            //    files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+            //    tasks: ['compass:server']
+            //},
             neuter: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['neuter', 'livereload']
@@ -348,7 +348,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'neuter:app',
         'concat',
-        'cssmin',
+        /* 'cssmin', */
         'uglify',
         'copy',
         'rev',

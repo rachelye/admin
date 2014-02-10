@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# This script enables to statically deploy the built version of the admin console by creating a delta commit against between versions.
+# This script enables to statically deploy the built version of the admin console by creating a 
+# delta commit against between versions.
 
-# It assumes that you have the admin-deploy directory for static deployment of the built admin app at ../../admin-deploy (parallel to the admin repo's directory)
+# It assumes that you have the admin-deploy directory for static deployment of the built admin 
+# app at ../../admin-deploy (parallel to the admin repo's directory)
 
 grunt build
 cd ../admin-deploy
+cp -r styles/fonts fonts
 find * -exec git rm -r {} \;
+mkdir ../admin-deploy/fonts
+cp ../admin/app/metronic/plugins/font-awesome/fonts/* fonts
 cp -r ../admin/dist/* .
 git add -A
