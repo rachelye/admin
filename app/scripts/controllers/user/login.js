@@ -38,12 +38,16 @@ App.UserLoginController = Ember.Controller.extend({
         },
 
         resetPassword: function() {
-            // App.service.resetPassword(this.get('email'), function(err) {
-            //     var msg = err || "Your password has been reset.  We'll email you a link to reset your password shortly."
-            //     App.set('flash', msg);
-            //
-            //     this.switchToSignIn();
-            // });
+            var self = this;
+            nitrogen.Principal.resetPassword(App.config, this.get('email'), function(err) {
+                var message;
+                if (err) message = err.message;
+
+                var msg = message || "Your password has been reset.  Please check your email for login instructions.";
+                App.set('flash', msg);
+            
+                if (!err) self.set('mode', 'signin');
+            });
         },
 
         switchToCreate:         function() { this.set('mode', 'create'); },

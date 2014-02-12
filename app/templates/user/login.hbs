@@ -28,6 +28,8 @@
         </div>
   {{/if}}
 {{/if}}
+
+  {{#if notResetPasswordMode}}
        <div class="form-group">
 
   {{#if signInMode}}
@@ -42,9 +44,11 @@
             <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
   {{/if}}
         </div>
+  {{/if}}
         <div class="form-group">
   {{#if resetPasswordMode}}   
             <button {{action resetPassword}} class='btn green'>Reset password</button>
+            <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
   {{else}}
             <a {{action switchToResetPassword}}>Forgot password?</a>
   {{/if}}
