@@ -1,12 +1,4 @@
 App.PrincipalRoute = App.AuthenticatedRoute.extend({
-    actions : {
-        delete: function(principal) {
-            var self = this;
-            principal.remove(App.session, function(err) {
-                self.transitionTo('principals');
-            });
-        }
-    },
 
     activate: function() {
         setTimeout(function() { $('#principalsTab').addClass('active'); }, 0);

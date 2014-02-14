@@ -49,14 +49,21 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 //        }, 10000);
     },
 
-/*
     actions: {
+        delete: function(principal) {
+            var self = this;
+            principal.remove(App.session, function(err) {
+                self.transitionTo('principals');
+            });
+        }
+/*
+
         willTransition: function(transition) {
             if (this.subscription) {
                 App.session.disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
         }        
-    }
 */
+    }
 });

@@ -5,6 +5,7 @@
         <th>TYPE</th>
         <th class="hidden-xs hidden-sm">LAST CONTACT</th>
         <th class="hidden-xs hidden-sm">LAST IP</th>
+        <th class="hidden-xs hidden-sm"></th>
     </thead>
     <tbody>
 {{#each principal in controller}}
@@ -25,6 +26,11 @@
             <td>{{principal.type}}</td>
             <td class="hidden-xs hidden-sm">{{principal.lastConnectionString}}</td>
             <td class="hidden-xs hidden-sm">{{principal.last_ip}}</td>
+            <td class="hidden-xs hidden-sm">
+                <button type="button" {{action delete principal}} class="btn btn-default">
+                    Delete
+                </button>
+            </td>
         </tr>
 {{/each}}
     </tbody>
