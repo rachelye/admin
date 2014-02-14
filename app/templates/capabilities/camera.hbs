@@ -1,31 +1,32 @@
-<hr/>
-<div class='row'>
-    <div class='col-md-12'>
-        <h4>
-            CAMERA
-            <button type="button" {{action sendSnapshot target="view"}} class="btn btn-default" style="margin-left: 15px">
-                Snapshot
-            </button>
-            <button type="button" {{action sendMotion target="view"}} class="btn btn-default">
-                Detect Motion
-            </button>
-        </h4>
-    </div>
-</div>
-
-<div class='row'>
-    <div class='col-md-4'><strong>EXECUTE AT</strong></div>
-    <div class='col-md-3'><strong>FROM</strong></div>
-    <div class='col-md-1'><strong>COMMAND</strong></div>
-    <div class='col-md-4'><strong>EXPIRES</strong></div>
-</div>
-
+<table class='table'>
+    <thead>
+        <tr>
+            <th colspan="4">
+                <h4>CAMERA
+                    <button type="button" {{action sendSnapshot target="view"}} class="btn btn-default" style="margin-left: 15px">
+                        Snapshot
+                    </button>
+                    <button type="button" {{action sendMotion target="view"}} class="btn btn-default">
+                        Detect Motion
+                    </button>
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>EXECUTE AT</th>
+            <th>FROM</th>
+            <th>COMMAND</th>
+            <th>EXPIRES</th>
+        </tr>
+    </thead>
+    <tbody>
 {{#each command in view.commands}}
-    <div class='row'>
-        <div class='col-md-4'>{{command.ts}}</div>
-        <div class='col-md-3'>{{command.from}}</div>
-        <div class='col-md-1'>{{command.body.command}}</div>
-        <div class='col-md-4'>{{command.expires}}</div>
-    </div>
+        <tr>
+            <td>{{command.ts}}</td>
+            <td>{{command.from}}</td>
+            <td>{{command.body.command}}</td>
+            <td>{{command.expires}}</td>
+        </tr>
 {{/each}}
-<hr/>
+    </tbody>
+</table>
