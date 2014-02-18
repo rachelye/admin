@@ -1,25 +1,30 @@
-    <div class="row" style="margin-bottom: 10px; border-bottom: 1px solid">
-            <div class="col-md-2"><strong>ACTION</strong></div>
-            <div class="col-md-2"><strong>ISSUED TO</strong></div>
-            <div class="col-md-2"><strong>PRINCIPAL FOR</strong></div>
-            <div class="col-md-2"><strong>FILTER</strong></div>
-            <div class="col-md-1"><strong>AUTHORIZED</strong></div>
-            <div class="col-md-2"><strong>EXPIRES</strong></div>
-            <div class="col-md-1"></div>
-    </div>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>ACTION</th>
+            <th>ISSUED TO</th>
+            <th>PRINCIPAL FOR</th>
+            <th>FILTER</th>
+            <th>AUTHORIZED</th>
+            <th class="hidden-xs hidden-sm">EXPIRES</th>
+            <th class="hidden-xs hidden-sm"></th>
+        </tr>
+    </thead>
+    <tbody>
 {{#each permission in content}}
-    <div class="row">
-        <div class="col-md-2">{{permission.actionString}}</div>
-        <div class="col-md-2">{{permission.issuedToName}}</div>
-        <div class="col-md-2">{{permission.principalForName}}</div>
-        <div class="col-md-2">{{permission.filter}}</div>
-        <div class="col-md-1">{{permission.authorized}}</div>
-        <div class="col-md-2">{{permission.expiresString}}</div>
-        <div class="col-md-1">
-            <button type="button" {{action deletePermission permission}} class="btn btn-default">
-                Delete
-            </button>
-        </div>
-    </div>
+        <tr>
+            <td>{{permission.actionString}}</td>
+            <td>{{permission.issuedToName}}</td>
+            <td>{{permission.principalForName}}</td>
+            <td>{{permission.filter}}</td>
+            <td>{{permission.authorized}}</td>
+            <td class="hidden-xs hidden-sm">{{permission.expiresString}}</td>
+            <td class="hidden-xs hidden-sm">
+                <button type="button" {{action deletePermission permission}} class="btn btn-default">
+                    Delete
+                </button>
+            </td>
+        </tr>
 {{/each}}
+    </tbody>
+</table>
