@@ -15,25 +15,10 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
         setTimeout(function() { $('#principalLogsTab').removeClass('active'); }, 0);
     },
 
-    model: function(params) {
-        params = {
-          sort: 'ts',
-          skip: 0,
-          direction: -1
-        };
-
+    filter: function() {
         var principal = this.modelFor("principal");
 
-        console.log('skip: ' + params.skip);
-        console.log('direction: ' + params.direction);
-        console.log('sort: ' + params.sort);
-
-        this.set('params', params);
-
-        var sort = {};
-        sort[params.sort] = parseInt(params.direction);
-
-        return App.Message.find({
+        return {
             $and: [ 
               { type: 'log' },
               { 
@@ -43,12 +28,59 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
                   ] 
               }
             ] 
-        }, {
+        };
+    },
+
+    model: function(params) {
+        if (!params.sort)
+            params.sort = 'ts';
+
+        if (!params.skip)
+            params.skip = 0;
+
+        if (!params.direction)
+            params.direction = -1;
+
+        this.set('params', params);
+
+        return this.query(params);
+    },
+
+    query: function(params) {
+
+        var sort = {};
+        sort[params.sort] = parseInt(params.direction);
+
+        return App.Message.find(this.filter(), {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('messagePageLimit')),
             sort: sort
+        });        
+    },
+
+    setupController: function(controller, model) {
+        this._super(controller, model);
+
+        this.controller.set('router', this);
+
+        var self = this;
+        this.subscription = App.session.onMessage(this.filter(), function(nitrogenMessage) {
+            self.query(self.get('params')).then(function(messages) {
+                self.controller.set('content', messages);
+            });
         });
-    }/*,
+    },
+
+    actions: {
+        willTransition: function(transition) {
+            if (this.subscription) {
+                App.get('session').disconnectSubscription(this.subscription);
+                this.subscription = null;
+            }
+        }        
+    }
+
+    /*,
 
     serialize: function() {
         var params = this.get('params');

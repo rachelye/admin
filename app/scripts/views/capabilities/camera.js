@@ -25,7 +25,7 @@ App.CameraCapabilityView = Em.View.extend({
         var self = this;
 
         this.cameraManager.start(App.session, function(err, message) {
-            self.set('invalidation', new Date());
+            if (!self.isDestroyed) self.set('invalidation', new Date());
         });
     },
 

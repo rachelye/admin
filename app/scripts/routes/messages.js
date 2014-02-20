@@ -11,10 +11,6 @@ App.MessagesRoute = App.MessagePagingRoute.extend({
     },
 
     model: function(params) {
-        console.log('skip: ' + params.skip);
-        console.log('direction: ' + params.direction);
-        console.log('sort: ' + params.sort);
-
         this.set('params', params);
 
         return this.query();

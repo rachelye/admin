@@ -40,7 +40,7 @@ App.SwitchCapabilityView = Em.View.extend({
         var self = this;
 
         this.switchManager.start(App.session, function(err, message) {
-            self.set('invalidation', new Date());
+            if (!self.isDestroyed) self.set('invalidation', new Date());
         });
     }
 });
