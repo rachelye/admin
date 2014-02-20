@@ -53,7 +53,11 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
         delete: function(principal) {
             var self = this;
             principal.remove(App.session, function(err) {
-                self.transitionTo('principals');
+                if (err) return App.set('flash', err.message);
+
+                self.query().then(function(principals) {
+                    self.controller.set('content', principals);
+                });
             });
         }
 /*
