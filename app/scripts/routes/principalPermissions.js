@@ -10,7 +10,10 @@ App.PrincipalPermissionsRoute = App.AuthenticatedRoute.extend({
     },
 
     model: function(params) {
-        console.log('in permissions model');
+        return this.query();
+    },
+
+    query: function() {
         var principal = this.modelFor('principal');
         return App.Permission.find({ 
             $or: [ 
@@ -18,5 +21,19 @@ App.PrincipalPermissionsRoute = App.AuthenticatedRoute.extend({
                 { principal_for: principal.id } 
             ] 
         }, {});
+    },
+
+    actions: {
+        deletePermission: function(permission) {
+            var self = this;
+            permission.remove(App.session, function(err) {
+                if (err) return App.set('flash', err.message);
+
+                self.query().then(function(permissions) {
+                    self.controller.set('content', permissions);
+                });
+            });
+        }        
     }
+
 });

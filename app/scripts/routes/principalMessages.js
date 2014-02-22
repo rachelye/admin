@@ -84,7 +84,7 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
         var self = this;
         this.subscription = App.session.onMessage(this.filter(), function(nitrogenMessage) {
             self.query(self.get('params')).then(function(messages) {
-                self.controller.set('content', messages);
+                if (!self.isDestroyed) self.controller.set('content', messages);
             });
         });
     },
