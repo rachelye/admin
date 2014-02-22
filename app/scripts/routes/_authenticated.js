@@ -9,6 +9,11 @@ App.AuthenticatedRoute = Ember.Route.extend({
         error: function(reason, transition) {
             App.set('attempedTransition', transition);
             this.transitionTo('user.login');
+        },
+
+        willTransition: function(transition) {
+            App.set('flash', null);
+            return true;
         }
     }
 });
