@@ -18,38 +18,38 @@
     <!-- END HORIZONTAL MENU -->
 
     <!-- BEGIN TOP NAVIGATION MENU -->
-    <ul class="nav navbar-nav pull-right">
+    <div class="hor-menu pull-right">
+      <ul class="nav navbar-nav pull-right">
 
-      {{#if App.session}}
+        {{#if App.session}}
 
-        <!-- BEGIN USER LOGIN DROPDOWN -->
-        <li class="dropdown user">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-          <span class="username">
-             {{App.user.name}}
-          </span>
-          <i class="fa fa-angle-down"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#/user/password"><i class="fa fa-lock"></i> Change password</a>
-            </li>
-            <li class="divider">
-            </li>
-            <li>
-              <a {{action signout}}><i class="fa fa-key"></i> Sign Out</a>
-            </li>
-          </ul>
+          <!-- BEGIN USER LOGIN DROPDOWN -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+               {{App.user.name}}
+            <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#/user/password"><i class="fa fa-lock"></i> Change password</a>
+              </li>
+              <li class="divider">
+              </li>
+              <li>
+                <a {{action signout}}><i class="fa fa-key"></i> Sign Out</a>
+              </li>
+            </ul>
 
-        </li>
-        <!-- END USER LOGIN DROPDOWN -->
-      {{else}}
-        <li class="user">
-          <a href="#/user/login"  ><i class="fa fa-key"></i> Sign In </a>
-        </li>
-      {{/if}}
+          </li>
+          <!-- END USER LOGIN DROPDOWN -->
+        {{else}}
+          <li>
+            <a href="#/user/login"><i class="fa fa-key"></i> Sign In </a>
+          </li>
+        {{/if}}
 
-    </ul>
+      </ul>
+    </div>
     <!-- END TOP NAVIGATION MENU -->
 
   </div>
