@@ -12,9 +12,9 @@
 
     <td>
 {{#if view.editing}}
-    <button {{action save agent target="view"}} class="btn btn-primary">Save</button>
+    <button {{action 'save' agent target="view"}} class="btn btn-primary">Save</button>
 {{else}}
-    <button {{action edit target="view"}} class="btn btn-primary">Edit</button>
+    <button {{action 'edit' target="view"}} class="btn btn-primary">Edit</button>
 {{/if}}
     </td>
 

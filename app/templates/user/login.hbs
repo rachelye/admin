@@ -33,24 +33,24 @@
        <div class="form-group">
 
   {{#if signInMode}}
-            <button {{action login}} class='btn green'>Sign in</button>
+            <button {{action 'login'}} class='btn green'>Sign in</button>
   {{else}}
-            <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
+            <button {{action 'switchToSignIn'}} class='btn btn-default'>Sign in</button>
   {{/if}}
 
   {{#if createMode}}
-            <button {{action create}} class='btn green'>Create account</button>
+            <button {{action 'create'}} class='btn green'>Create account</button>
   {{else}}
-            <button {{action switchToCreate}} class='btn btn-default'>Create account</button>
+            <button {{action 'switchToCreate'}} class='btn btn-default'>Create account</button>
   {{/if}}
         </div>
   {{/if}}
         <div class="form-group">
   {{#if resetPasswordMode}}   
-            <button {{action resetPassword}} class='btn green'>Reset password</button>
-            <button {{action switchToSignIn}} class='btn btn-default'>Sign in</button>
+            <button {{action 'resetPassword'}} class='btn green'>Reset password</button>
+            <button {{action 'switchToSignIn'}} class='btn btn-default'>Sign in</button>
   {{else}}
-            <a {{action switchToResetPassword}}>Forgot password?</a>
+            <a {{action 'switchToResetPassword'}}>Forgot password?</a>
   {{/if}}
         </div>
       </form>

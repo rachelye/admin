@@ -3,7 +3,7 @@
         <div class="input-group">
           {{view Ember.TextField valueBinding="view.claimCode" classNames='form-control' placeholder='Claim code for device'}}
           <span class="input-group-btn">
-            <button class="btn btn-default" {{action claim target="view"}}>Claim</button>
+            <button class="btn btn-default" {{action 'claim' target="view"}}>Claim</button>
           </span>
         </div>
     </div>

@@ -20,7 +20,7 @@
             <td>{{permission.authorized}}</td>
             <td class="hidden-xs hidden-sm">{{permission.expiresString}}</td>
             <td class="hidden-xs hidden-sm">
-                <button type="button" {{action deletePermission permission}} class="btn btn-default">
+                <button type="button" {{action 'deletePermission' permission}} class="btn btn-default">
                     Delete
                 </button>
             </td>

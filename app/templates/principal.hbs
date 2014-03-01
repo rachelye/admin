@@ -18,10 +18,10 @@
                         classNames="input-medium form-control" 
                         disabledBinding='view.viewing'}}
                     {{#if view.viewing}}
-                         <button {{action edit target="view"}} class="btn btn-default" type="button">Edit</button>
-                         <!-- <button {{action delete content}} class="btn btn-default">Delete</button> -->
+                         <button {{action 'edit' target="view"}} class="btn btn-default" type="button">Edit</button>
+                         <!-- <button {{action 'delete' content}} class="btn btn-default">Delete</button> -->
                     {{else}}
-                         <button {{action save content target="view"}} class="btn btn-default">Save</button>
+                         <button {{action 'save' content target="view"}} class="btn btn-default">Save</button>
                     {{/if}}
                 </div>
             </td>
