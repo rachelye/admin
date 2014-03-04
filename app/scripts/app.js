@@ -76,9 +76,9 @@ App.sessionHandler = function(err, session, user) {
     session.onAuthFailure(App.resetSession);
 };
 
-var user = new nitrogen.User({ 
-    nickname: 'current' 
-});
-
 App.set('attemptedNavigation', window.location.hash);
-App.service.resume(user, App.sessionHandler);
+
+App.config.store.get('principal.current', function(err, userJSON) {
+    userJSON.nickname = 'current';
+    App.service.authenticate(new nitrogen.User(userJSON), App.sessionHandler);
+});
