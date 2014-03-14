@@ -78,14 +78,14 @@ App.sessionHandler = function(err, session, user) {
 
 App.set('attemptedNavigation', window.location.hash);
 
-App.config.store.get('principal.current', function(err, userJSON) {
+App.config.store.get('principal.current', function(err, userJson) {
     var user;
 
-    if (!userJSON) {
+    if (!userJson) {
         user = new nitrogen.User({ nickname: 'current' });
     } else {
         userJson.nickname = 'current';
-        user = new nitrogen.User(userJSON);
+        user = new nitrogen.User(userJson);
     }
 
     App.service.authenticate(user, App.sessionHandler);
