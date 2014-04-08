@@ -40,4 +40,4 @@ The Nitrogen project is housed in a set of GitHub projects:
 5. [commands](https://github.com/nitrogenjs/commands): CommandManagers and schemas for well known command types.
 6. [cli](https://github.com/nitrogenjs/cli): Command line interface for working with the Nitrogen service.
 7. [reactor](https://github.com/nitrogenjs/reactor): Always-on hosted application execution platform.
-7. [apps](https://github.com/nitrogenjs/apps): Project maintained Nitrogen applications.
+8. [apps](https://github.com/nitrogenjs/apps): Project maintained Nitrogen applications.
