@@ -7,7 +7,6 @@ App.CameraCapabilityView = Em.View.extend({
     },
 
     commands: function() {
-
         var ret = Em.A();
         if (!this.cameraManager) return Em.A([]);
 
@@ -31,9 +30,9 @@ App.CameraCapabilityView = Em.View.extend({
 
     sendCommand: function(cmd) {
         var command = new nitrogen.Message({
-            expires: 'never',
             to: this.get('principal.id'),
             type: 'cameraCommand',
+            tags: [ nitrogen.CommandManager.commandTag(App.session) ],
             body: {
                 command: cmd
             }

@@ -8,8 +8,7 @@ App.ClaimView = Em.View.extend({
                 type: 'claim',
                 body: {
                     claim_code: this.get('claimCode').toUpperCase()
-                },
-                expires: 'never'
+                }
             });
 
             response.send(App.session, function(err) {
