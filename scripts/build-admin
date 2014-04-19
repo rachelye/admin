@@ -8,9 +8,8 @@
 
 grunt build
 cd ../admin-deploy
-cp -r styles/fonts fonts
 find * -exec git rm -r {} \;
-mkdir ../admin-deploy/fonts
+mkdir fonts
 cp ../admin/app/metronic/plugins/font-awesome/fonts/* fonts
 cp -r ../admin/dist/* .
 git add -A
