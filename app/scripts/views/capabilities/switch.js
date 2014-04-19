@@ -5,10 +5,12 @@ App.SwitchCapabilityView = Em.View.extend({
         sendSwitch: function() {
             var self = this;
             var newState = this.switchManager.state === 0.0 ? 1.0 : 0.0;
+            var switchId = this.get('principal.id');
 
             var command = new nitrogen.Message({
-                to: this.get('principal.id'),
-                type: 'switchCommand',
+                to:     switchId,
+                type:   'switchCommand',
+                tags:   [ nitrogen.CommandManager.commandTag(switchId) ],
                 body: {
                     on: newState
                 }
