@@ -29,10 +29,12 @@ App.CameraCapabilityView = Em.View.extend({
     },
 
     sendCommand: function(cmd) {
+        var cameraId = this.get('principal.id');
+
         var command = new nitrogen.Message({
-            to: this.get('principal.id'),
+            to: cameraId,
             type: 'cameraCommand',
-            tags: [ nitrogen.CommandManager.commandTag(App.session) ],
+            tags: [ nitrogen.CommandManager.commandTag(cameraId) ],
             body: {
                 command: cmd
             }
