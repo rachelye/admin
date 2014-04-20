@@ -1,7 +1,7 @@
 <div class='row' style='margin-top:20px'>
     <div class='col-md-4'>
         <div class="input-group">
-          {{view Ember.TextField valueBinding="view.claimCode" classNames='form-control' placeholder='Claim code for device'}}
+          {{view Ember.TextField valueBinding="view.claimCode" classNames='form-control' placeholder='Claim code for principal'}}
           <span class="input-group-btn">
             <button class="btn btn-default" {{action 'claim' target="view"}}>Claim</button>
           </span>

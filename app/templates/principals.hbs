@@ -10,7 +10,9 @@
         </tr>
     </thead>
     <tbody>
-{{#each principal in controller}}
+
+{{#if controller.length}}
+    {{#each principal in controller}}
         <tr>
             <td>
                 {{#link-to "principal.messages" principal}}
@@ -34,7 +36,15 @@
                 </button>
             </td>
         </tr>
-{{/each}}
+    {{/each}}
+{{else}}
+        <tr>
+            <td colspan='6'>
+                (nothing to show)
+            </td>
+        </tr>
+{{/if}}
+
     </tbody>
 </table>
 

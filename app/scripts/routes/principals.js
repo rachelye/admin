@@ -4,32 +4,61 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     timeoutSet: false,
     nextUpdate: new Date(),
 
+    tabHighlight: function() {
+        if (this.get('params.type') === 'user') {
+            setTimeout(function() { $('#usersTab').addClass('active'); }, 0);
+            setTimeout(function() { $('#allTab').removeClass('active'); }, 0);
+            setTimeout(function() { $('#devicesTab').removeClass('active'); }, 0);
+        } else if (this.get('params.type') === 'device') {
+            setTimeout(function() { $('#usersTab').removeClass('active'); }, 0);
+            setTimeout(function() { $('#allTab').removeClass('active'); }, 0);
+            setTimeout(function() { $('#devicesTab').addClass('active'); }, 0);
+        } else {
+            setTimeout(function() { $('#usersTab').removeClass('active'); }, 0);
+            setTimeout(function() { $('#allTab').addClass('active'); }, 0);
+            setTimeout(function() { $('#devicesTab').removeClass('active'); }, 0);
+        }
+    }.observes('params.type'),
+
     activate: function() {
-        setTimeout(function() { $('#principalsTab').addClass('active'); }, 0);
+        if (this.get('params.type') === 'user') {
+            setTimeout(function() { $('#usersTab').addClass('active'); }, 0);
+        } else if (this.get('params.type') === 'device') {
+            setTimeout(function() { $('#devicesTab').addClass('active'); }, 0);
+        } else {
+            setTimeout(function() { $('#allTab').addClass('active'); }, 0);
+        }
     },
 
     deactivate: function() {
-        setTimeout(function() { $('#principalsTab').removeClass('active'); }, 0);
+        setTimeout(function() { $('#usersTab').removeClass('active'); }, 0);
+        setTimeout(function() { $('#allTab').removeClass('active'); }, 0);
+        setTimeout(function() { $('#devicesTab').removeClass('active'); }, 0);
     },
 
     model: function(params) {
-        params = {
-            sort: 'last_connection',
-            direction: -1,
-            skip: 0
-        };
+        params.sort = 'last_connection';
+        params.direction = -1;
+        params.skip = 0;
 
         this.set('params', params);
         return this.query();
     },
 
     query: function() {
+        var filter = {};
+
+        console.log(this.get('params.type'));
+        if (this.get('params.type') != 'all') {
+            filter.type = this.get('params.type');
+        }
+
         var sort = {};
         sort[this.get('params').sort] = parseInt(this.get('params').direction);
 
         if (!App.session) return;
 
-        return App.Principal.find({ }, {
+        return App.Principal.find(filter, {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('pageLimit')),
             sort: sort
@@ -67,7 +96,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
                 App.session.disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
-        }        
+        }
 */
     }
 });

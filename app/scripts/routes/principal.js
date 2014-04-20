@@ -1,11 +1,12 @@
 App.PrincipalRoute = App.AuthenticatedRoute.extend({
 
     activate: function() {
-        setTimeout(function() { $('#principalsTab').addClass('active'); }, 0);
     },
 
     deactivate: function() {
-        setTimeout(function() { $('#principalsTab').removeClass('active'); }, 0);
+        setTimeout(function() { $('#usersTab').removeClass('active'); }, 0);
+        setTimeout(function() { $('#allTab').removeClass('active'); }, 0);
+        setTimeout(function() { $('#devicesTab').removeClass('active'); }, 0);
     },
 
     model: function(params) {
@@ -19,29 +20,31 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
 
     serialize: function(model, params) {
         return { id: model.get('id') };
-    }/*,
+    },
 
     setupController: function(controller, principal) {
         this._super(controller, principal);
 
         this.controller.set('router', this);
 
+        if (this.get('controller.content.type') === 'user') {
+            setTimeout(function() { $('#usersTab').addClass('active'); }, 0);
+        } else if (this.get('controller.content.type') === 'device') {
+            setTimeout(function() { $('#devicesTab').addClass('active'); }, 0);
+        } else {
+            setTimeout(function() { $('#allTab').addClass('active'); }, 0);
+        }
 
-        TODO: principals_realtime: disabled until we work out rate limiting to prevent update storms.
-
-        this.subscription = App.session.onPrincipal({ id: this.get('controller.content.id') }, function(nitrogenPrincipal) {
-            var updatedPrincipal = App.Principal.create(nitrogenPrincipal);
-            self.controller.set('content', updatedPrincipal);
-        });
     },
 
+    /*
     actions: {
         willTransition: function(transition) {
             if (this.subscription) {
                 App.session.disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
-        }        
+        }
     }
     */
 

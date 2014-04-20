@@ -1,7 +1,7 @@
 App.Router.map(function() {
     this.resource('agents');
     this.resource('messages', { path: '/messages/skip/:skip/sort/:sort/direction/:direction' });
-    this.resource('principals');
+    this.resource('principals', { path: 'principals/:type' });
 
     this.resource('principal', { path: 'principal/:id' }, function() {
         this.route('commands');
@@ -18,6 +18,6 @@ App.Router.map(function() {
 
 App.IndexRoute = Ember.Route.extend({
     redirect: function() {
-      this.transitionTo('principals');
+        this.transitionTo('principals', 'all');
     }
 });
