@@ -17,11 +17,11 @@ require('scripts/views/messages/*');
 require('scripts/views/principals/*');
 
 App.config = {
-//    Nitrogen uses the following by default to connect to the service.   Modify these as necessary to point elsewhere.
-//
-//    host: 'localhost',
-//    http_port: 3030,
-//    protocol: 'http'
+    // host: 'localhost',
+    // http_port: 3030,
+    // protocol: 'http',
+
+    log_levels: ['info', 'warn', 'error']
 };
 
 request.log = {
