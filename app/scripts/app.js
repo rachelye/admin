@@ -70,7 +70,7 @@ App.sessionHandler = function(err, session, user) {
 
     } else {
         console.log('successful auth, using default url');
-        window.location = "/#/principals";
+        window.location = "/#/principals/all";
     }
 
     session.onAuthFailure(App.resetSession);
