@@ -16,20 +16,15 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
         var principal = this.modelFor("principal");
 
         return {
-            $and: [ 
-              { 
-                  $and: [ 
-                      { type: { $ne: 'heartbeat' } }, 
-                      { type: { $ne: 'log' } } 
-                  ] 
-              },
-              { 
-                  $or: [ 
-                      { to: principal.id }, 
-                      { from: principal.id } 
-                  ] 
-              }
-            ] 
+            $and: [
+              { type: { $ne: 'heartbeat' } },
+              { type: { $ne: 'log' } },
+              { ts: { $lt: new Date() } }
+            ],
+            $or: [
+              { to: principal.id },
+              { from: principal.id }
+            ]
         };
     },
 
@@ -63,9 +58,9 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
 
     serialize: function() {
         var params = this.get('params');
-        
+
         if (!params) {
-            params = {                
+            params = {
                 skip: '0',
                 sort: 'ts',
                 direction: '1'
@@ -95,6 +90,6 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
                 App.get('session').disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
-        }        
+        }
     }
 });
