@@ -11,5 +11,6 @@ cd ../admin-deploy
 find * -exec git rm -r {} \;
 mkdir fonts
 cp ../admin/app/metronic/plugins/font-awesome/fonts/* fonts
+git add fonts
 cp -r ../admin/dist/* .
 git add -A
