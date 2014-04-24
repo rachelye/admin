@@ -48,7 +48,6 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     query: function() {
         var filter = {};
 
-        console.log(this.get('params.type'));
         if (this.get('params.type') != 'all') {
             filter.type = this.get('params.type');
         }
