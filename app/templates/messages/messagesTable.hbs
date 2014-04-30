@@ -7,10 +7,10 @@
 <table class="table">
     <thead>
         <th>TIMESTAMP</th>
-        <th>FROM</th>        
-        <th>TO</th>        
-        <th>TYPE</th>        
-        <th>BODY</th> 
+        <th>FROM</th>
+        <th>TO</th>
+        <th>TYPE</th>
+        <th>BODY</th>
     </thead>
     <tbody>
         {{#each message in view.content}}
@@ -21,7 +21,7 @@
                 <td>{{message.type}}</td>
                 <td>
                     {{#if message.isImage}}
-                        <img {{bind-attr src="message.bodyUrlWithAccessToken"}} width="320" height="240" />
+                        <img {{bind-attr src="message.bodyUrlWithAccessToken"}} style="max-width: 320px" />
                     {{else}}
                         {{#if message.isLog}}
                             {{message.body.severity}}: {{message.body.message}}

@@ -19,15 +19,15 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
         var principal = this.modelFor("principal");
 
         return {
-            $and: [ 
+            $and: [
               { type: 'log' },
-              { 
-                  $or: [ 
-                      { to: principal.id }, 
-                      { from: principal.id } 
-                  ] 
+              {
+                  $or: [
+                      { to: principal.id },
+                      { from: principal.id }
+                  ]
               }
-            ] 
+            ]
         };
     },
 
@@ -55,7 +55,7 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('messagePageLimit')),
             sort: sort
-        });        
+        });
     },
 
     setupController: function(controller, model) {
@@ -74,19 +74,21 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
     actions: {
         willTransition: function(transition) {
             if (this.subscription) {
-                App.get('session').disconnectSubscription(this.subscription);
+                var session = App.get('session');
+
+                if (session) session.disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
-        }        
+        }
     }
 
     /*,
 
     serialize: function() {
         var params = this.get('params');
-        
+
         if (!params) {
-            params = {                
+            params = {
                 skip: '0',
                 sort: 'ts',
                 direction: '1'

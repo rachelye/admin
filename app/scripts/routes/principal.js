@@ -1,5 +1,4 @@
 App.PrincipalRoute = App.AuthenticatedRoute.extend({
-
     activate: function() {
     },
 
@@ -35,17 +34,5 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
             setTimeout(function() { $('#allTab').addClass('active'); }, 0);
         }
 
-    },
-
-    /*
-    actions: {
-        willTransition: function(transition) {
-            if (this.subscription) {
-                App.session.disconnectSubscription(this.subscription);
-                this.subscription = null;
-            }
-        }
     }
-    */
-
 });

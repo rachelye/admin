@@ -1,5 +1,6 @@
 App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
     messagePageLimit: 25,
+
     baseUrl: function() {
         return "/#/principal/" + this.modelFor('principal').id  + "/messages";
     }.property(),
@@ -18,8 +19,7 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
         return {
             $and: [
               { type: { $ne: 'heartbeat' } },
-              { type: { $ne: 'log' } },
-              { ts: { $lt: new Date() } }
+              { type: { $ne: 'log' } }
             ],
             $or: [
               { to: principal.id },
@@ -74,9 +74,8 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
     setupController: function(controller, model) {
         this._super(controller, model);
 
-        this.controller.set('router', this);
-
         var self = this;
+
         this.subscription = App.session.onMessage(this.filter(), function(nitrogenMessage) {
             self.query(self.get('params')).then(function(messages) {
                 if (!self.isDestroyed) self.controller.set('content', messages);
@@ -87,7 +86,9 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
     actions: {
         willTransition: function(transition) {
             if (this.subscription) {
-                App.get('session').disconnectSubscription(this.subscription);
+                var session = App.get('session');
+
+                if (session) session.disconnectSubscription(this.subscription);
                 this.subscription = null;
             }
         }
