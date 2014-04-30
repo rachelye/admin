@@ -41,7 +41,7 @@ App.MessagesRoute = App.MessagePagingRoute.extend({
     setupController: function(controller, model) {
         this._super(controller, model);
 
-        this.controller.set('router', this);
+        //this.get('controller').set('router', this);
 
         var self = this;
         this.subscription = App.session.onMessage(function(nitrogenMessage) {

@@ -67,7 +67,7 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
     setupController: function(controller, model) {
         this._super(controller, model);
 
-        this.controller.set('router', this);
+        //this.controller.set('router', this);
 
 //        var self = this;
 //        setInterval(function() {

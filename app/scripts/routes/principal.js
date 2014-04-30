@@ -24,7 +24,7 @@ App.PrincipalRoute = App.AuthenticatedRoute.extend({
     setupController: function(controller, principal) {
         this._super(controller, principal);
 
-        this.controller.set('router', this);
+        //this.controller.set('router', this);
 
         if (this.get('controller.content.type') === 'user') {
             setTimeout(function() { $('#usersTab').addClass('active'); }, 0);
