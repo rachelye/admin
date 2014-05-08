@@ -49,13 +49,19 @@ App.resetSession = function(err) {
     App.set('user', null);
 
     App.set('attemptedNavigation', window.location.hash);
-    window.location = "/#/user/login";
+
+    if (window.location.hash !== '#/user/login') {
+        window.location.reload();
+    }
 };
 
 App.sessionHandler = function(err, session, user) {
     App.advanceReadiness();
 
-    if (err || !session || !user) return App.resetSession(err);
+    if (err || !session || !user)  {
+        window.location = "/#/user/login";
+        return App.resetSession(err);
+    }
 
     App.set('flash', null);
 
