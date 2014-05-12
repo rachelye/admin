@@ -7,8 +7,7 @@ App.AuthenticatedRoute = Ember.Route.extend({
 
     actions: {
         error: function(reason, transition) {
-            App.set('attempedTransition', transition);
-            this.transitionTo('user.login');
+            App.resetSession();
         },
 
         willTransition: function(transition) {

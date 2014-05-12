@@ -1,5 +1,4 @@
 App.Message = Ember.Object.extend(nitrogen.Message.prototype);
-
 App.Message.reopen({
 
     bodyJSON: function() {

@@ -1,7 +1,6 @@
 /*global Ember */
 
 var App = window.App = Ember.Application.create({
-    rootElement: window.TESTING ? '#mocha' : '#app',
     LOG_TRANSITIONS: true
 });
 
@@ -16,13 +15,15 @@ require('scripts/views/capabilities/*');
 require('scripts/views/messages/*');
 require('scripts/views/principals/*');
 
-App.config = {
-    // host: 'localhost',
-    // http_port: 3030,
-    // protocol: 'http',
+App.set('config', {
+    host: 'localhost',
+    http_port: 3030,
+    protocol: 'http',
+
+    api_key: 'admin',
 
     log_levels: ['info', 'warn', 'error']
-};
+});
 
 request.log = {
     debug: function() {},
@@ -30,69 +31,76 @@ request.log = {
     error: function() {}
 };
 
-App.config.store = new App.HTML5Store(App.config);
-App.service = new nitrogen.Service(App.config);
+function getParam(name) {
 
-App.deferReadiness();
+    var queryIdx = window.location.href.lastIndexOf("?");
+    if (queryIdx > -1) {
+        var queryString = location.href.substr(queryIdx+1);
+        var params = queryString.split('&');
+        for (var idx=0; idx < params.length; idx++) {
+            var components = params[idx].split('=');
+            if (decodeURIComponent(components[0]) === name) {
+                var value = "";
+                for (var vidx=1; vidx < components.length; vidx++) {
+                    if (vidx !== 1)
+                        value += "=";
+                    value += decodeURIComponent(components[vidx]);
+                }
+                return value;
+            }
+        }
+    }
 
-App.resetSession = function(err) {
+    return null;
+}
+
+function cleanUrl() {
+    var queryIdx = window.location.hash.indexOf('?');
+    var cleanedHash = window.location.hash.substr(0, queryIdx);
+
+    window.history.pushState("", "Nitrogen", "/" + cleanedHash);
+}
+
+App.resetSession = function() {
     if (App.get('session')) {
         App.get('session').stop();
     }
 
-    var flash = null;
-    if (err && err.message)
-        flash = err.message;
-
-    App.set('flash', flash);
     App.set('session', null);
-    App.set('user', null);
+    App.get('service').configure(App.get('user'), function(err, config) {
+        if (err) return App.resetSession(err);
 
-    App.set('attemptedNavigation', window.location.hash);
+        App.set('config', config);
 
-    if (window.location.hash !== '#/user/login') {
-        window.location.reload();
-    }
+        var principal = getParam('principal');
+        var accessToken = getParam('accessToken');
+
+        if (!principal || !accessToken) {
+            var impersonateRedirect = config.endpoints.users + "/impersonate" +
+                "?redirect_uri=" + encodeURIComponent(document.URL) +
+                "&api_key=" + encodeURIComponent(App.get('config').api_key);
+
+            return window.location.replace(impersonateRedirect);
+        }
+
+        principal = JSON.parse(principal);
+        principal.accessToken = accessToken = JSON.parse(accessToken);
+
+        cleanUrl();
+
+        App.set('user', new nitrogen.User(principal));
+
+        App.set('service', new nitrogen.Service(App.get('config')));
+        App.set('session', App.get('service').startSession(App.get('user'), accessToken));
+        App.get('session').onAuthFailure(App.resetSession);
+
+        App.advanceReadiness();
+    });
 };
 
-App.sessionHandler = function(err, session, user) {
-    App.advanceReadiness();
+App.set('service', new nitrogen.Service(App.get('config')));
 
-    if (err || !session || !user)  {
-        window.location = "/#/user/login";
-        return App.resetSession(err);
-    }
+// wait for user login and impersonation to complete
+App.deferReadiness();
 
-    App.set('flash', null);
-
-    // save away the session for use in the ember application.
-    App.set('session', session);
-    App.set('user', App.Principal.create(user));
-
-    if (App.get('attemptedNavigation') && App.get('attemptedNavigation') !== '#/user/login') {
-        console.log('successful auth, reloading attempedNavigation url: ' + App.get('attemptedNavigation'));
-        window.location = App.get('attemptedNavigation');
-        App.set('attemptedNavigation', null);
-
-    } else {
-        console.log('successful auth, using default url');
-        window.location = "/#/principals/all";
-    }
-
-    session.onAuthFailure(App.resetSession);
-};
-
-App.set('attemptedNavigation', window.location.hash);
-
-App.config.store.get('principal.current', function(err, userJson) {
-    var user;
-
-    if (!userJson) {
-        user = new nitrogen.User({ nickname: 'current' });
-    } else {
-        userJson.nickname = 'current';
-        user = new nitrogen.User(userJson);
-    }
-
-    App.service.authenticate(user, App.sessionHandler);
-});
+App.resetSession();

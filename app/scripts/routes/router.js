@@ -9,11 +9,6 @@ App.Router.map(function() {
         this.route('messages'/*, { path: 'messages/skip/:skip/sort/:sort/direction/:direction'}*/);
         this.route('permissions');
     });
-
-    this.resource('user', function() {
-        this.route('password');
-        this.route('login');
-    });
 });
 
 App.IndexRoute = Ember.Route.extend({

@@ -1,16 +1,16 @@
 App.Principal = Ember.Object.extend(nitrogen.Principal.prototype);
 App.Principal.reopen({
-    hasCapability: function(capability) {
-        return this.get('capabilities').indexOf(capability) !== -1;
+    hasTag: function(tag) {
+        return this.get('tags').indexOf(tag) !== -1;
     },
 
     hasCamera: function() {
-        return this.hasCapability('cameraCommand');
-    }.property('capabilities'),
+        return this.hasTag('executes:cameraCommand');
+    }.property('tags'),
 
     hasSwitch: function() {
-        return this.hasCapability('switchCommand');
-    }.property('capabilities'),
+        return this.hasTag('executes:switchCommand');
+    }.property('tags'),
 
     isDevice: function() {
         return this.is('device');
