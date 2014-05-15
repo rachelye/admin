@@ -21,6 +21,7 @@ App.set('config', {
     //protocol: 'http',
 
     api_key: 'admin',
+    force_https: true,
 
     log_levels: ['info', 'warn', 'error']
 });
@@ -76,8 +77,11 @@ App.resetSession = function() {
         var accessToken = getParam('accessToken');
 
         if (!principal || !accessToken) {
+            if (App.get('config').force_https)
+                var redirectUrl = document.URL.replace('http://', 'https://');
+
             var impersonateRedirect = config.endpoints.users + "/impersonate" +
-                "?redirect_uri=" + encodeURIComponent(document.URL) +
+                "?redirect_uri=" + encodeURIComponent(redirectUrl) +
                 "&api_key=" + encodeURIComponent(App.get('config').api_key);
 
             return window.location.replace(impersonateRedirect);
