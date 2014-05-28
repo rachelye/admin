@@ -77,8 +77,9 @@ App.resetSession = function() {
         var accessToken = getParam('accessToken');
 
         if (!principal || !accessToken) {
+            var redirectUrl = document.URL;
             if (App.get('config').force_https)
-                var redirectUrl = document.URL.replace('http://', 'https://');
+                redirectUrl = redirectUrl.replace('http://', 'https://');
 
             var impersonateRedirect = config.endpoints.users + "/impersonate" +
                 "?redirect_uri=" + encodeURIComponent(redirectUrl) +

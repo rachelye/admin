@@ -1,5 +1,5 @@
 App.Router.map(function() {
-    this.resource('agents');
+    this.resource('apikeys');
     this.resource('messages', { path: '/messages/skip/:skip/sort/:sort/direction/:direction' });
     this.resource('principals', { path: 'principals/:type' });
 

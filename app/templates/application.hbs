@@ -10,13 +10,11 @@
             <a href="#" style="font-size:140%; color:#236AB4">nitrogen</a>
           </li>
         {{#if App.session}}
-          <!-- <li><a href="#/agents">Agents</a></li> -->
           <li id='allTab'><a href="#/principals/all">All</a></li>
           <li id='usersTab'><a href="#/principals/user">Users</a></li>
           <li id='devicesTab'><a href="#/principals/device">Devices</a></li>
           <li id='messagesTab'><a href="#/messages/skip/0/sort/ts/direction/-1">Messages</a></li>
-        {{else}}
-          <li id='logoTab'>Nitrogen</li>
+          <li id='messagesTab'>{{#link-to "apikeys"}}API Keys{{/link-to}}</li>
         {{/if}}
       </ul>
     </div>

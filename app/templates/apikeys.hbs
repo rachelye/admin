@@ -1,0 +1,40 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>KEY</th>
+            <th>IMAGES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+{{#if controller.length}}
+    {{#each apikey in controller}}
+        <tr>
+            <td>
+                {{apikey.id}}
+            </td>
+            <td>
+                {{apikey.name}}
+            </td>
+            <td>
+                {{apikey.key}}
+            </td>
+            <td>
+            {{#if apikey.raspbian_image_id}}
+                <a {{action 'redirectToRaspbianImage' apikey}} class="btn green">Raspbian</a>
+            {{/if}}
+            </td>
+        </tr>
+    {{/each}}
+{{else}}
+        <tr>
+            <td colspan='6'>
+                (no api keys)
+            </td>
+        </tr>
+{{/if}}
+
+    </tbody>
+</table>
