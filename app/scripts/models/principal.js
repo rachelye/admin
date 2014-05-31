@@ -29,7 +29,7 @@ App.Principal.reopen({
         return this.get('name') || this.get('id');
     }.property('id','name'),
 
-    save: function() {
+    saveModel: function() {
         return App.saveWithDeferred(new nitrogen.Principal(this));
     }
 });
