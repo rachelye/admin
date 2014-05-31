@@ -5,7 +5,7 @@ App.ApikeysRoute = App.AuthenticatedRoute.extend({
 
     actions: {
         redirectToRaspbianImage: function(apikey) {
-            var imageUrl = App.get('session.service.config.endpoints.images') + '/raspbian-' + apikey.key + ".gz";
+            var imageUrl = App.get('session.service.config.endpoints.images') + '/raspbian-' + apikey.key + ".img.gz";
             window.location = imageUrl;
         }        
     }

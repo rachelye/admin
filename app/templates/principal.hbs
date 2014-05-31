@@ -5,6 +5,7 @@
             <th>NAME</th>
             <th>TYPE</th>
             <th class="hidden-xs hidden-sm">LAST CONTACT</th>
+            <th class="hidden-xs hidden-sm">LOCATION</th>
             <th class="hidden-xs hidden-sm">LAST IP</th>
         </tr>
     </thead>
@@ -27,6 +28,9 @@
             </td>
             <td>{{content.type}}</td>
             <td class="hidden-xs hidden-sm">{{content.lastConnectionString}}</td>
+            <td class="hidden-xs hidden-sm">
+                {{view App.LocationCapabilityView principalBinding='controller.content'}}
+            </td>
             <td class="hidden-xs hidden-sm">{{content.last_ip}}</td>
         </tr>
     </tbody>
