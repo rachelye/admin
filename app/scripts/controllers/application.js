@@ -3,6 +3,10 @@ App.ApplicationController = Ember.Controller.extend({
         return App.get('session.service.config.endpoints.users') + '/changepassword';
     }.property('App.session'),
 
+    deleteAccountUrl: function() {
+        return App.get('session.service.config.endpoints.users') + '/delete';
+    }.property('App.session'),
+
     loginUrl: function() {
         return App.get('session.service.config.endpoints.users') + '/login';
     }.property('App.session'),
