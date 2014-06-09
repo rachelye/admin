@@ -18,6 +18,7 @@ App.LocationCapabilityView = Em.View.extend({
             var location = new nitrogen.Message({
                 from: principalId,
                 type: 'location',
+                index_until: nitrogen.Message.INDEX_FOREVER,
                 body: {
                     accuracy: position.coords.accuracy,
                     latitude: position.coords.latitude,
