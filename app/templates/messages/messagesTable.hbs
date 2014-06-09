@@ -26,7 +26,29 @@
                         {{#if message.isLog}}
                             {{message.body.severity}}: {{message.body.message}}
                         {{else}}
-                            {{message.bodyJSON}}
+                            {{#if message.isReactorState}}
+                                <table width="100%">
+
+                                    <thead>
+                                        <th>INSTANCE</th>
+                                        <th>STATE</th>
+                                        <th>MODULE</th>
+                                        <th>EXECUTE AS</th>
+                                    </thead>
+                                    <tbody>
+                                {{#each instance in message.instanceStates}}
+                                    <tr>
+                                        <td>{{instance.name}}</td>
+                                        <td>{{instance.state}}</td>
+                                        <td>{{instance.module}}</td>
+                                        <td>{{instance.execute_as}}</td>
+                                    </tr>
+                                {{/each}}
+                                    </tbody>
+                                </table>
+                            {{else}}
+                                {{message.bodyJSON}}
+                            {{/if}}
                         {{/if}}
                     {{/if}}
                 </td>

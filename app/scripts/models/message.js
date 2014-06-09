@@ -43,6 +43,20 @@ App.Message.reopen({
         return this.get('toPrincipal.name');
     }.property('to', 'toPrincipal'),
 
+    instanceStates: function() {
+        var instanceStates = [];
+        if (this.get('isReactorState')) {
+            var state = this.get('body.state');
+            for (var instanceName in state) {
+                state[instanceName].name = instanceName;
+
+                instanceStates.push(state[instanceName]);
+            }
+        }
+
+        return instanceStates;
+    }.property('body'),
+
     isCameraCommand: function() { return this.is('cameraCommand'); }.property('type'),
     isHeartbeat: function() { return this.is('heartbeat'); }.property('type'),
     isImage: function() { return this.is('image'); }.property('type'),
@@ -50,6 +64,7 @@ App.Message.reopen({
     isIP: function() { return this.is('ip'); }.property('type'),
     isIPMatch: function() { return this.is('ip_match'); }.property('type'),
     isNotHeartbeat: function() { return !this.is('heartbeat'); }.property('type'),
+    isReactorState: function() { return this.is('reactorState'); }.property('type'),
 
     send: function() {
         return App.sendWithDeferred(new nitrogen.Message(this));
