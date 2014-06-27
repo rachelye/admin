@@ -8,7 +8,10 @@ App.Router.map(function() {
         this.route('logs'/*, { path: 'logs/skip/:skip/sort/:sort/direction/:direction'}*/);
         this.route('messages'/*, { path: 'messages/skip/:skip/sort/:sort/direction/:direction'}*/);
         this.route('permissions');
+        this.route('scratchpad');
     });
+
+    this.resource('store');
 });
 
 App.IndexRoute = Ember.Route.extend({

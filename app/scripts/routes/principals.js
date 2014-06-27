@@ -66,15 +66,6 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
 
     setupController: function(controller, model) {
         this._super(controller, model);
-
-        //this.controller.set('router', this);
-
-//        var self = this;
-//        setInterval(function() {
-//            self.query().then(function(principals) {
-//                self.controller.set('content', principals);
-//            });
-//        }, 10000);
     },
 
     actions: {
@@ -88,14 +79,5 @@ App.PrincipalsRoute = App.AuthenticatedRoute.extend({
                 });
             });
         }
-/*
-
-        willTransition: function(transition) {
-            if (this.subscription) {
-                App.session.disconnectSubscription(this.subscription);
-                this.subscription = null;
-            }
-        }
-*/
     }
 });

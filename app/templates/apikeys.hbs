@@ -3,13 +3,16 @@
         <tr>
             <th>ID</th>
             <th>NAME</th>
+            <th>TYPE</th>
             <th>KEY</th>
+            <th>REDIRECT URI</th>
             <th>IMAGES</th>
         </tr>
     </thead>
     <tbody>
 
 {{#if controller.length}}
+
     {{#each apikey in controller}}
         <tr>
             <td>
@@ -19,13 +22,20 @@
                 {{apikey.name}}
             </td>
             <td>
+                {{apikey.type}}
+            </td>
+            <td>
                 {{apikey.key}}
+            </td>
+            <td>
+                {{apikey.redirect_uri}}
             </td>
             <td>
                 <a {{action 'redirectToRaspbianImage' apikey}} class="btn green">Raspbian</a>
             </td>
         </tr>
     {{/each}}
+
 {{else}}
         <tr>
             <td colspan='6'>
@@ -33,6 +43,23 @@
             </td>
         </tr>
 {{/if}}
+
+    <tr>
+        <td></td>
+        <td>
+            <input type="text" class="form-control" id="newName" placeholder="Name" />
+        </td>
+        <td>
+            app
+        </td>
+        <td></td>
+        <td>
+            <input type="text" class="form-control" id="newRedirectUri" placeholder="Redirect URI" />
+        </td>
+        <td>
+            <a {{action 'createNew'}} class="btn green">Create</a>
+        </td>
+    </tr>
 
     </tbody>
 </table>
