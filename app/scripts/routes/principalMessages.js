@@ -17,10 +17,6 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
         var principal = this.modelFor("principal");
 
         return {
-            $and: [
-              { type: { $ne: 'heartbeat' } },
-              { type: { $ne: 'log' } }
-            ],
             $or: [
               { to: principal.id },
               { from: principal.id }
