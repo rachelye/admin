@@ -27,6 +27,7 @@
                             {{message.body.severity}}: {{message.body.message}}
                         {{else}}
                             {{#if message.isReactorState}}
+                                {{#if message.instanceStates}}
                                 <table width="100%">
 
                                     <thead>
@@ -46,6 +47,7 @@
                                 {{/each}}
                                     </tbody>
                                 </table>
+                                {{/if}}
                             {{else}}
                                 {{message.bodyJSON}}
                             {{/if}}
