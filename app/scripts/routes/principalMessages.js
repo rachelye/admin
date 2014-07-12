@@ -17,10 +17,7 @@ App.PrincipalMessagesRoute = App.MessagePagingRoute.extend({
         var principal = this.modelFor("principal");
 
         return {
-            $or: [
-              { to: principal.id },
-              { from: principal.id }
-            ]
+            tags: 'involves:' + principal.id
         };
     },
 

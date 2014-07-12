@@ -20,10 +20,7 @@ App.MessagesRoute = App.MessagePagingRoute.extend({
         var sort = {};
         sort[this.get('params').sort] = parseInt(this.get('params').direction);
 
-        return App.Message.find({
-            type:   { $ne: 'heartbeat' },
-            ts:     { $lt: new Date() }
-        }, {
+        return App.Message.find({}, {
             skip: parseInt(this.get('params').skip),
             limit: parseInt(this.get('messagePageLimit')),
             sort: sort
