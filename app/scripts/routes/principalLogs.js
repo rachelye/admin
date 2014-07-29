@@ -19,15 +19,8 @@ App.PrincipalLogsRoute = App.MessagePagingRoute.extend({
         var principal = this.modelFor("principal");
 
         return {
-            $and: [
-              { type: 'log' },
-              {
-                  $or: [
-                      { to: principal.id },
-                      { from: principal.id }
-                  ]
-              }
-            ]
+            type: 'log',
+            tags: 'involves:' + principal.id
         };
     },
 
