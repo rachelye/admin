@@ -2,11 +2,11 @@
     {{view App.CameraCapabilityView principalBinding='controller.content'}}
 {{/if}}
 
+
 {{#if controller.content.hasSwitch}}
     {{view App.SwitchCapabilityView principalBinding='controller.content'}}
 {{/if}}
 
 {{#if controller.content.hasLight}}
-loading light
     {{view App.LightCapabilityView principalBinding='controller.content'}}
 {{/if}}
