@@ -21,7 +21,7 @@ App.set('config', {
     //protocol: 'http',
 
     api_key: 'admin_local',
-    force_https: false,
+    force_https: true,
 
     log_levels: ['info', 'warn', 'error']
 });
